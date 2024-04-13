@@ -12,12 +12,13 @@ namespace SoldByWizards.Computers
     // this is kind of an amalgamation but it works
     public class ComputersManager : MonoBehaviour
     {
-        [SerializeField] private InteractionsManager _interactionsManager;
-        [SerializeField] private InputController _inputController;
-        [SerializeField] private PlayerController _playerController;
-        [SerializeField] private TweenManager _tweenManager;
+        [SerializeField] private InteractionsManager _interactionsManager = null!;
+        [SerializeField] private InputController _inputController = null!;
+        [SerializeField] private PlayerController _playerController = null!;
+        [SerializeField] private TweenManager _tweenManager = null!;
+        [SerializeField] private ComputerItemEntryController _computerItemEntryController = null!;
 
-        [CanBeNull] private Computer _activeComputer;
+        private Computer? _activeComputer;
 
         [SerializeField] private Ease _animationEase = Ease.Linear;
         [SerializeField] private float _animationLength = 1f;
@@ -76,6 +77,7 @@ namespace SoldByWizards.Computers
             );
 
             computer.CustomVisualsWhenEnabled.SetActive(true);
+            _computerItemEntryController.CreateListings(computer);
             _transitioning = false;
         }
 

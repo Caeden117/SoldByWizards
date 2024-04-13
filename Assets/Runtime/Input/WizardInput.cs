@@ -212,6 +212,114 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Inventory"",
+            ""id"": ""d7e97cad-ddf0-45a4-9e71-4a0d240d3978"",
+            ""actions"": [
+                {
+                    ""name"": ""Scroll Inventory"",
+                    ""type"": ""Value"",
+                    ""id"": ""f44c0168-0b4b-4bcc-91ec-68676f7098ea"",
+                    ""expectedControlType"": ""Delta"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Inventory Slot 1"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e5b31f4-1216-4121-bcf0-ce316735b742"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory Slot 2"",
+                    ""type"": ""Button"",
+                    ""id"": ""281d5995-21f6-4516-ac1d-b91db90dff06"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory Slot 3"",
+                    ""type"": ""Button"",
+                    ""id"": ""6304048c-dbb5-46bc-a7a5-1f6fbe512206"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory Slot 4"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b914af3-5f7d-47c2-9db2-8636d370189b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1693f91f-4e7c-4e2c-807d-f573c1d28065"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1dc3ccf2-c5b8-4903-b0fe-6973e003fb65"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory Slot 1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""638710ba-0a04-445a-99d5-f3326e6a98b0"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory Slot 2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f9bc172f-2206-4ea2-80d1-d7236f744916"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory Slot 3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e0b1b58-49c2-4bde-b747-f8fa3b821f5e"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory Slot 4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -227,6 +335,13 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         // Glyphs
         m_Glyphs = asset.FindActionMap("Glyphs", throwIfNotFound: true);
         m_Glyphs_Interact = m_Glyphs.FindAction("Interact", throwIfNotFound: true);
+        // Inventory
+        m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
+        m_Inventory_ScrollInventory = m_Inventory.FindAction("Scroll Inventory", throwIfNotFound: true);
+        m_Inventory_InventorySlot1 = m_Inventory.FindAction("Inventory Slot 1", throwIfNotFound: true);
+        m_Inventory_InventorySlot2 = m_Inventory.FindAction("Inventory Slot 2", throwIfNotFound: true);
+        m_Inventory_InventorySlot3 = m_Inventory.FindAction("Inventory Slot 3", throwIfNotFound: true);
+        m_Inventory_InventorySlot4 = m_Inventory.FindAction("Inventory Slot 4", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -438,6 +553,84 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         }
     }
     public GlyphsActions @Glyphs => new GlyphsActions(this);
+
+    // Inventory
+    private readonly InputActionMap m_Inventory;
+    private List<IInventoryActions> m_InventoryActionsCallbackInterfaces = new List<IInventoryActions>();
+    private readonly InputAction m_Inventory_ScrollInventory;
+    private readonly InputAction m_Inventory_InventorySlot1;
+    private readonly InputAction m_Inventory_InventorySlot2;
+    private readonly InputAction m_Inventory_InventorySlot3;
+    private readonly InputAction m_Inventory_InventorySlot4;
+    public struct InventoryActions
+    {
+        private @WizardInput m_Wrapper;
+        public InventoryActions(@WizardInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ScrollInventory => m_Wrapper.m_Inventory_ScrollInventory;
+        public InputAction @InventorySlot1 => m_Wrapper.m_Inventory_InventorySlot1;
+        public InputAction @InventorySlot2 => m_Wrapper.m_Inventory_InventorySlot2;
+        public InputAction @InventorySlot3 => m_Wrapper.m_Inventory_InventorySlot3;
+        public InputAction @InventorySlot4 => m_Wrapper.m_Inventory_InventorySlot4;
+        public InputActionMap Get() { return m_Wrapper.m_Inventory; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InventoryActions set) { return set.Get(); }
+        public void AddCallbacks(IInventoryActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InventoryActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InventoryActionsCallbackInterfaces.Add(instance);
+            @ScrollInventory.started += instance.OnScrollInventory;
+            @ScrollInventory.performed += instance.OnScrollInventory;
+            @ScrollInventory.canceled += instance.OnScrollInventory;
+            @InventorySlot1.started += instance.OnInventorySlot1;
+            @InventorySlot1.performed += instance.OnInventorySlot1;
+            @InventorySlot1.canceled += instance.OnInventorySlot1;
+            @InventorySlot2.started += instance.OnInventorySlot2;
+            @InventorySlot2.performed += instance.OnInventorySlot2;
+            @InventorySlot2.canceled += instance.OnInventorySlot2;
+            @InventorySlot3.started += instance.OnInventorySlot3;
+            @InventorySlot3.performed += instance.OnInventorySlot3;
+            @InventorySlot3.canceled += instance.OnInventorySlot3;
+            @InventorySlot4.started += instance.OnInventorySlot4;
+            @InventorySlot4.performed += instance.OnInventorySlot4;
+            @InventorySlot4.canceled += instance.OnInventorySlot4;
+        }
+
+        private void UnregisterCallbacks(IInventoryActions instance)
+        {
+            @ScrollInventory.started -= instance.OnScrollInventory;
+            @ScrollInventory.performed -= instance.OnScrollInventory;
+            @ScrollInventory.canceled -= instance.OnScrollInventory;
+            @InventorySlot1.started -= instance.OnInventorySlot1;
+            @InventorySlot1.performed -= instance.OnInventorySlot1;
+            @InventorySlot1.canceled -= instance.OnInventorySlot1;
+            @InventorySlot2.started -= instance.OnInventorySlot2;
+            @InventorySlot2.performed -= instance.OnInventorySlot2;
+            @InventorySlot2.canceled -= instance.OnInventorySlot2;
+            @InventorySlot3.started -= instance.OnInventorySlot3;
+            @InventorySlot3.performed -= instance.OnInventorySlot3;
+            @InventorySlot3.canceled -= instance.OnInventorySlot3;
+            @InventorySlot4.started -= instance.OnInventorySlot4;
+            @InventorySlot4.performed -= instance.OnInventorySlot4;
+            @InventorySlot4.canceled -= instance.OnInventorySlot4;
+        }
+
+        public void RemoveCallbacks(IInventoryActions instance)
+        {
+            if (m_Wrapper.m_InventoryActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInventoryActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InventoryActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InventoryActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InventoryActions @Inventory => new InventoryActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -451,5 +644,13 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
     public interface IGlyphsActions
     {
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IInventoryActions
+    {
+        void OnScrollInventory(InputAction.CallbackContext context);
+        void OnInventorySlot1(InputAction.CallbackContext context);
+        void OnInventorySlot2(InputAction.CallbackContext context);
+        void OnInventorySlot3(InputAction.CallbackContext context);
+        void OnInventorySlot4(InputAction.CallbackContext context);
     }
 }
