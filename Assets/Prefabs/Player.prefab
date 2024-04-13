@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5926132769092507562}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8125, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56,10 +56,10 @@ MonoBehaviour:
     m_Bits: 4294967295
   _defaultCameraHeight: 0.75
   _crouchedCameraHeight: 0.3
-  _maxSpeed: 10
+  _maxSpeed: 6.5
   _groundAccel: 52
   _groundDecel: 28
-  _airAccel: 48
+  _airAccel: 40
   _jumpForce: 7
 --- !u!33 &4827732370783573462
 MeshFilter:
@@ -76,7 +76,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5926132769092507562}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -130,8 +130,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.35
+  m_Height: 1.625
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3115324787123387179
@@ -189,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 6752532318699110860}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -226,8 +226,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.1
+  far clip plane: 250
   field of view: 72
   orthographic: 0
   orthographic size: 5
@@ -277,7 +277,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
