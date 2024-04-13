@@ -8,6 +8,7 @@ namespace SoldByWizards.Computers
         public Transform CameraFocusPoint = null!;
         public GameObject CustomVisualsWhenEnabled = null!;
         public Camera ComputerCamera = null!;
+        public RectTransform ItemListingContainer = null!;
         public float IntendedFov = 72f;
     }
 }

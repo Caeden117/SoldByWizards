@@ -77,7 +77,7 @@ namespace SoldByWizards.Computers
             );
 
             computer.CustomVisualsWhenEnabled.SetActive(true);
-            _computerItemEntryController.CreateListings();
+            _computerItemEntryController.CreateListings(computer);
             _transitioning = false;
         }
 

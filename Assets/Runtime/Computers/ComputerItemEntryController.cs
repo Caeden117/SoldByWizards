@@ -15,7 +15,6 @@ namespace SoldByWizards.Computers
         [SerializeField] private TweenManager _tweenManager;
         [SerializeField] public List<ItemSO> CurrentItems = new();
         [SerializeField] private ItemListing _itemListingTemplate;
-        [SerializeField] private RectTransform _itemListingContainer;
         [SerializeField] private int _characterMultiplier = 1;
         [SerializeField] private float _scrollAmount = 700;
         [SerializeField] private float _itemListingContainerHeight = -5000f;
@@ -26,13 +25,16 @@ namespace SoldByWizards.Computers
         private int _totalCharactersTyped = 0;
         private int _currentItem = 0;
         private bool _receiveKeyboardInput = false;
+        private Computer? _computer;
 
         // call when coming back from a teleport
-        public void CreateListings()
+        public void CreateListings(Computer computer)
         {
             // TODO: Better state management
             if (_receiveKeyboardInput)
                 return;
+
+            _computer = computer;
 
             foreach (var listing in _spawnedItemListings)
             {
@@ -44,7 +46,7 @@ namespace SoldByWizards.Computers
             foreach (var item in CurrentItems)
             {
                 // create item
-                var itemListing = Instantiate(_itemListingTemplate, _itemListingContainer);
+                var itemListing = Instantiate(_itemListingTemplate, _computer.ItemListingContainer);
                 _spawnedItemListings.Add(itemListing);
                 itemListing.Clear();
                 itemListing.SetItem(item);
@@ -77,12 +79,15 @@ namespace SoldByWizards.Computers
         // Right now it's hard to out-spam the scroll, but eventually it will be possible and multiple tweens may overlap
         private async UniTask ScrollToNextItem()
         {
+            if (_computer == null)
+                return;
+
             Debug.Log("Scrolling...");
             _currentItem++;
 
-            await _tweenManager.Run(_itemListingContainer.anchoredPosition.y, _itemListingContainerHeight + (_currentItem * _scrollAmount), _pageScrollAnimationLength, (value) =>
+            await _tweenManager.Run(_computer.ItemListingContainer.anchoredPosition.y, _itemListingContainerHeight + (_currentItem * _scrollAmount), _pageScrollAnimationLength, (value) =>
             {
-                _itemListingContainer.anchoredPosition = new Vector2(_itemListingContainer.anchoredPosition.x, value);
+                _computer.ItemListingContainer.anchoredPosition = new Vector2(_computer.ItemListingContainer.anchoredPosition.x, value);
             }, _pageScrollAnimationEase.ToProcedure());
         }
 

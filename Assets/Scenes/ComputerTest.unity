@@ -1899,6 +1899,7 @@ MonoBehaviour:
   CameraFocusPoint: {fileID: 2001147593}
   CustomVisualsWhenEnabled: {fileID: 38284699}
   ComputerCamera: {fileID: 812953738}
+  ItemListingContainer: {fileID: 1651977604}
   IntendedFov: 72
 --- !u!65 &1445243369
 BoxCollider:
