@@ -4,7 +4,6 @@ using UnityEngine;
 namespace SoldByWizards.Items
 {
     // TODO: Rewrite this class to handle multiple held items (Up to 4?)
-    // TODO: Further filter by an Item component class
     public class ItemsManager : MonoBehaviour
     {
         [SerializeField] private InteractionsManager _interactionsManager;
@@ -42,6 +41,7 @@ namespace SoldByWizards.Items
             var colliderBounds = raycastHit.collider.bounds;
 
             _heldItem.transform.position = ray.GetPoint(raycastHit.distance - _heldItemBounds.extents.magnitude);
+            _heldItem.transform.LookAt(ray.origin, Vector3.up);
             _heldItem.SetActive(true);
             _heldItem = null;
         }

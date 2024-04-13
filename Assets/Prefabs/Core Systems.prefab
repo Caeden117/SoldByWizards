@@ -1,5 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1321701775556373889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5456495709527709839}
+  - component: {fileID: 840331921987958783}
+  m_Layer: 0
+  m_Name: Computer Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5456495709527709839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321701775556373889}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1973495882924098640}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &840331921987958783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321701775556373889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6b8e3d8a3249bb83b75a73266359a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionsManager: {fileID: 4272238469662924679}
+  _inputController: {fileID: 7873154328158371443}
+  _playerController: {fileID: 5490063951668748881}
+  _tweenManager: {fileID: 7906262010617632155}
+  _animationEase: 6
+  _animationLength: 0.4
 --- !u!1 &1432855322688375745
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +83,7 @@ Transform:
   - {fileID: 6467535733535187093}
   - {fileID: 632762413219795535}
   - {fileID: 1617736192799135569}
+  - {fileID: 5456495709527709839}
   - {fileID: 8662494213230341615}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -282,10 +333,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4850766826588119741, guid: 3e08c73020e33b843be9e4f701aee00f,
+        type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850766826588119741, guid: 3e08c73020e33b843be9e4f701aee00f,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850766826588119741, guid: 3e08c73020e33b843be9e4f701aee00f,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850766826588119741, guid: 3e08c73020e33b843be9e4f701aee00f,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5926132769092507562, guid: 3e08c73020e33b843be9e4f701aee00f,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926132769092507562, guid: 3e08c73020e33b843be9e4f701aee00f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752532318699110860, guid: 3e08c73020e33b843be9e4f701aee00f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -298,6 +379,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 6779658868009851578}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5490063951668748881 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1307890807053318379, guid: 3e08c73020e33b843be9e4f701aee00f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6779658868009851578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 925dba04a6c463f4ba08be5d4e8399f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8662494213230341615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2747603995084552021, guid: 3e08c73020e33b843be9e4f701aee00f,

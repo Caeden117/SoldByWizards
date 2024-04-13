@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using SoldByWizards.Glyphs;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,14 +15,6 @@ namespace SoldByWizards.Maps
 
         private void Start()
         {
-            // ahahahahahaha
-            var glyphAggregate = FindObjectOfType<GlyphAggregator>();
-
-            if (glyphAggregate == null) return;
-
-            // Init seed based on glyph aggregate
-            Random.InitState(glyphAggregate.GetAggregateHash());
-
             // Random hue for map shaders
             Shader.SetGlobalFloat(_randomHue, Random.Range(0, 360f));
 

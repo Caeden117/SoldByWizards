@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf8ab1a859a4a2b8943b1ff88a1c6f2, type: 3}
+  m_Name: WoodenChair
+  m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 3983152487647011520, guid: a6d61924a9a523248a7c05d9d1e3bc05,
+    type: 3}
+  ItemName: Wooden Chair
+  ItemDescription: HOLY CRAP! This is a wooden chair. It includes many things useful
+    for sitting, such as 4 legs and a back. I sure hope the description isn't droning
+    on for too long....
+  ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
+  BaseSaleValue: 5
+  StockMarketSeed: 3473.61
+  StockMarketLowModifier: 0.3
+  StockMarketHighModifier: 3
+  MultiSalesPenalty: -0.03
+  TwoHanded: 0

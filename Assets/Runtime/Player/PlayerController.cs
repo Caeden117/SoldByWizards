@@ -7,6 +7,7 @@ namespace SoldByWizards.Player
 {
     public class PlayerController : MonoBehaviour, WizardInput.IPlayerActions
     {
+        public Camera Camera => _camera;
         public bool IsGrounded => _grounded;
 
         private CapsuleCollider _capsuleCollider = null!;
@@ -68,7 +69,7 @@ namespace SoldByWizards.Player
 
         private void Update()
         {
-            if (!_inputController.Enabled) return;
+            if (!_inputController.Enabled || !_inputController.PlayerInputEnabled) return;
 
             var lookValue = _inputController.Input.Player.Look.ReadValue<Vector2>();
             lookValue *= Sensitivity * 0.1f;
