@@ -123,12 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &37979952 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1973495882924098640, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
-    type: 3}
-  m_PrefabInstance: {fileID: 4392569866904337235}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &38266336
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4069822b7cb2544ab3600319b64eb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemSO: {fileID: 0}
 --- !u!1 &242518379
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,67 +947,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 43.466, y: -139.009, z: -56.255}
---- !u!1 &631074177
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 631074178}
-  - component: {fileID: 631074179}
-  m_Layer: 0
-  m_Name: ComputerItemEntryController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &631074178
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631074177}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 37979952}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &631074179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631074177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a05f653645e54bafa7b6e16f25b48887, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tweenManager: {fileID: 1677637430}
-  CurrentItems:
-  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
-  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
-  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
-  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
-  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
-  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
-  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
-  _itemListingTemplate: {fileID: 8145730438845780067, guid: 2ace18dfd5be1d0468e7cad7e6f1691d,
-    type: 3}
-  _itemListingContainer: {fileID: 1651977604}
-  _characterMultiplier: 2
-  _scrollAmount: 700
-  _itemListingContainerHeight: -10000
-  _pageScrollAnimationLength: 0.3
-  _pageScrollAnimationEase: 12
 --- !u!1 &691221659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2378,18 +2310,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &1677637430 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7906262010617632155, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
-    type: 3}
-  m_PrefabInstance: {fileID: 4392569866904337235}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df931618c3507ac4fabf909d6fa79062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1804323871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,11 +2673,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 840331921987958783, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
-        type: 3}
-      propertyPath: _computerItemEntryController
-      value: 
-      objectReference: {fileID: 631074179}
     - target: {fileID: 1432855322688375745, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
       propertyPath: m_Name
@@ -2815,11 +2730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1973495882924098640, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
-        type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 631074178}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2165e2b3ca89bc94d8282cb6f84f551c, type: 3}
 --- !u!1660057539 &9223372036854775807
