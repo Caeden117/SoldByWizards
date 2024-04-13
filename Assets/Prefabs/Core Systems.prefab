@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionsManager: {fileID: 4272238469662924679}
+  _inputController: {fileID: 7873154328158371443}
 --- !u!1 &9152549451832393673
 GameObject:
   m_ObjectHideFlags: 0
