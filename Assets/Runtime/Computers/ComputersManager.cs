@@ -75,12 +75,14 @@ namespace SoldByWizards.Computers
                 computer.IntendedFov
             );
 
+            computer.CustomVisualsWhenEnabled.SetActive(true);
             _transitioning = false;
         }
 
         private async UniTask ComputerDisableAnimation(Computer computer)
         {
             _transitioning = true;
+            computer.CustomVisualsWhenEnabled.SetActive(false);
 
             // lerp static computer spot to player camera
             await LerpCamValues(

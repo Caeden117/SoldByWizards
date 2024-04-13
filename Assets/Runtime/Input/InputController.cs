@@ -70,6 +70,7 @@ namespace SoldByWizards.Input
                 return;
 
             Input.Player.Enable();
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void DisablePlayerInput(PlayerInputDisableSource source)
@@ -83,6 +84,9 @@ namespace SoldByWizards.Input
             PlayerInputDisableSources.Add(source);
 
             Input.Player.Disable();
+            Cursor.lockState = CursorLockMode.None;
+            // TODO: Don't do this in the pause menu!! This is only to do cool computer stuff
+            Cursor.visible = false;
         }
     }
 }
