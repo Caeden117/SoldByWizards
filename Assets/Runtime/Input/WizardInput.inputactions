@@ -162,6 +162,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Glyphs",
+            "id": "03b7a4ba-28fb-48fb-9ad4-4b81f211f0c4",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "02c542d6-c668-4784-8e3a-9f62a95c51f2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "18418391-98ce-460d-bde4-bab0cf2a872d",
+                    "path": "*/{PrimaryAction}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
