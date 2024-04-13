@@ -15,6 +15,7 @@ namespace SoldByWizards.Player.Interactions
 
         public event Action<Ray, RaycastHit> OnObjectInteract;
         public event Action<Ray, RaycastHit> OnInteractWithWorld;
+        public event Action OnInteractKeyPressed;
 
         private void Start() => _inputController.Input.Interactions.AddCallbacks(this);
 
@@ -28,6 +29,7 @@ namespace SoldByWizards.Player.Interactions
             if (Physics.Raycast(ray, out var hit, _interactRange, _interactionLayerMask))
             {
                 OnObjectInteract?.Invoke(ray, hit);
+                OnInteractKeyPressed?.Invoke();
                 return;
             }
 
@@ -35,6 +37,8 @@ namespace SoldByWizards.Player.Interactions
             {
                 OnInteractWithWorld?.Invoke(ray, worldHit);
             }
+
+            OnInteractKeyPressed?.Invoke();
         }
     }
 }

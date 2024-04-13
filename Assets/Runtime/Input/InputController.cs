@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,10 +14,15 @@ namespace SoldByWizards.Input
         /// </summary>
         public WizardInput Input { get; private set; }
 
+        // used to disable input from multiple sources without accidentally re-enabling it when we're not supposed to
+        public HashSet<PlayerInputDisableSource> PlayerInputDisableSources = new();
+
         /// <summary>
         /// Enabled state
         /// </summary>
         public bool Enabled { get; private set; }
+
+        public bool PlayerInputEnabled => Input?.Player.enabled ?? false;
 
         private void Awake()
         {
@@ -51,6 +57,32 @@ namespace SoldByWizards.Input
             }
 
             Enabled = false;
+        }
+
+        public void EnablePlayerInput(PlayerInputDisableSource source)
+        {
+            if (PlayerInputDisableSources.Contains(source))
+            {
+                PlayerInputDisableSources.Remove(source);
+            }
+
+            if (PlayerInputDisableSources.Count != 0)
+                return;
+
+            Input.Player.Enable();
+        }
+
+        public void DisablePlayerInput(PlayerInputDisableSource source)
+        {
+            if (PlayerInputDisableSources.Contains(source))
+            {
+                // do nothing, it's already disabled
+                return;
+            }
+
+            PlayerInputDisableSources.Add(source);
+
+            Input.Player.Disable();
         }
     }
 }
