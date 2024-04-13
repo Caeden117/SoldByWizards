@@ -42,6 +42,7 @@ namespace SoldByWizards.Items
             var colliderBounds = raycastHit.collider.bounds;
 
             _heldItem.transform.position = ray.GetPoint(raycastHit.distance - _heldItemBounds.extents.magnitude);
+            _heldItem.transform.LookAt(ray.origin, Vector3.up);
             _heldItem.SetActive(true);
             _heldItem = null;
         }

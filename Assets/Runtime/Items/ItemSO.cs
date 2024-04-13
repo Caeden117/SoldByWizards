@@ -5,7 +5,7 @@ namespace SoldByWizards.Items
     [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item", order = 1)]
     public class ItemSO : ScriptableObject
     {
-        public GameObject? ItemPrefab;
+        public Item? ItemPrefab;
 
         [Header("Shop Metadata")] public string ItemName = "New Item";
         public string ItemDescription = "Item description goes here.";
