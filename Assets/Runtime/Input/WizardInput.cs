@@ -184,6 +184,34 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Glyphs"",
+            ""id"": ""03b7a4ba-28fb-48fb-9ad4-4b81f211f0c4"",
+            ""actions"": [
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""02c542d6-c668-4784-8e3a-9f62a95c51f2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""18418391-98ce-460d-bde4-bab0cf2a872d"",
+                    ""path"": ""*/{PrimaryAction}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -196,6 +224,9 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         // Interactions
         m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
         m_Interactions_Interact = m_Interactions.FindAction("Interact", throwIfNotFound: true);
+        // Glyphs
+        m_Glyphs = asset.FindActionMap("Glyphs", throwIfNotFound: true);
+        m_Glyphs_Interact = m_Glyphs.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -361,6 +392,52 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         }
     }
     public InteractionsActions @Interactions => new InteractionsActions(this);
+
+    // Glyphs
+    private readonly InputActionMap m_Glyphs;
+    private List<IGlyphsActions> m_GlyphsActionsCallbackInterfaces = new List<IGlyphsActions>();
+    private readonly InputAction m_Glyphs_Interact;
+    public struct GlyphsActions
+    {
+        private @WizardInput m_Wrapper;
+        public GlyphsActions(@WizardInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_Glyphs_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_Glyphs; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GlyphsActions set) { return set.Get(); }
+        public void AddCallbacks(IGlyphsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GlyphsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GlyphsActionsCallbackInterfaces.Add(instance);
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+        }
+
+        private void UnregisterCallbacks(IGlyphsActions instance)
+        {
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+        }
+
+        public void RemoveCallbacks(IGlyphsActions instance)
+        {
+            if (m_Wrapper.m_GlyphsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IGlyphsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_GlyphsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_GlyphsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public GlyphsActions @Glyphs => new GlyphsActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -368,6 +445,10 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
     }
     public interface IInteractionsActions
+    {
+        void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IGlyphsActions
     {
         void OnInteract(InputAction.CallbackContext context);
     }
