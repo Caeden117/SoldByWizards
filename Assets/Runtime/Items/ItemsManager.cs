@@ -4,7 +4,6 @@ using UnityEngine;
 namespace SoldByWizards.Items
 {
     // TODO: Rewrite this class to handle multiple held items (Up to 4?)
-    // TODO: Further filter by an Item component class
     public class ItemsManager : MonoBehaviour
     {
         [SerializeField] private InteractionsManager _interactionsManager;
