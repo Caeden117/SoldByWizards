@@ -19,6 +19,7 @@ MonoBehaviour:
     Don't mind the smell.
   ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
   BaseSaleValue: 5
+  StockMarketSeed: 4891.123
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.03
