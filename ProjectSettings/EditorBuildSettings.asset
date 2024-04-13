@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Movement Sandbox.unity
+    guid: 8d13aa1f42e55524a8c74ce71ca958b8
+  - enabled: 1
+    path: Assets/Scenes/Maps/Backrooms.unity
+    guid: 7fe3fa3710eb22b49b477ed9009854ce
   m_configObjects: {}
