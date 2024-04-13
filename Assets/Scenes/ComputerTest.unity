@@ -377,12 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4069822b7cb2544ab3600319b64eb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemName: DEFAULT CUBE
-  _baseSaleValue: 0
-  _stockMarketLowModifier: 0.3
-  _stockMarketHighModifier: 3
-  _multiSalesPenalty: -0.03
-  _twoHanded: 0
+  ItemSO: {fileID: 0}
 --- !u!1 &242518379
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,7 +3185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1904351508}
   m_Layer: 0
-  m_Name: Description
+  m_Name: ItemListing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3608,6 +3603,7 @@ GameObject:
   - component: {fileID: 2079573649}
   - component: {fileID: 2079573651}
   - component: {fileID: 2079573650}
+  - component: {fileID: 2079573652}
   m_Layer: 0
   m_Name: ItemPanel
   m_TagString: Untagged
@@ -3675,6 +3671,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079573648}
   m_CullTransparentMesh: 1
+--- !u!114 &2079573652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079573648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2745d872b0b491b9b73f38545837e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _titleText: {fileID: 1986691195}
+  _sellerText: {fileID: 2071185028}
+  _descriptionText: {fileID: 1548119876}
+  _iconImage: {fileID: 517035040}
 --- !u!1001 &4392569866904337235
 PrefabInstance:
   m_ObjectHideFlags: 0
