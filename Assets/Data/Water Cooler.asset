@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf8ab1a859a4a2b8943b1ff88a1c6f2, type: 3}
+  m_Name: Water Cooler
+  m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 9112170275868957378, guid: 08b67560c5d145045bca20b541149a02,
+    type: 3}
+  ItemName: Water Cooler
+  ItemDescription: 'M. Bubbles.... mmmphm... '
+  ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
+  BaseSaleValue: 5
+  StockMarketSeed: 3827.595
+  StockMarketLowModifier: 0.3
+  StockMarketHighModifier: 3
+  MultiSalesPenalty: -0.03
+  TwoHanded: 0

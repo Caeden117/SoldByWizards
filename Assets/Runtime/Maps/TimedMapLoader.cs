@@ -21,7 +21,7 @@ namespace SoldByWizards.Maps
         public float TimeElapsed => (float)_timer.Elapsed.TotalSeconds;
 
         [PublicAPI]
-        public float MapRemaining => _mapLoadedDuration - TimeElapsed;
+        public float TimeRemaining => _mapLoadedDuration - TimeElapsed;
 
         private readonly Stopwatch _timer = new();
 
