@@ -998,15 +998,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05f653645e54bafa7b6e16f25b48887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tweenManager: {fileID: 1677637430}
   CurrentItems:
+  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
+  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
+  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
+  - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
   - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
   - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
   - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
   _itemListingTemplate: {fileID: 8145730438845780067, guid: 2ace18dfd5be1d0468e7cad7e6f1691d,
     type: 3}
   _itemListingContainer: {fileID: 1651977604}
-  _totalCharactersTyped: 0
-  _receiveKeyboardInput: 0
+  _characterMultiplier: 2
+  _scrollAmount: 700
+  _itemListingContainerHeight: -10000
+  _pageScrollAnimationLength: 0.3
+  _pageScrollAnimationEase: 12
 --- !u!1 &691221659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,8 +2349,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5000}
-  m_SizeDelta: {x: 0, y: 5000}
+  m_AnchoredPosition: {x: 0, y: -10000}
+  m_SizeDelta: {x: 0, y: 10000}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1651977605
 MonoBehaviour:
@@ -2370,6 +2378,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1677637430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7906262010617632155, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4392569866904337235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df931618c3507ac4fabf909d6fa79062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1804323871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2733,6 +2753,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 840331921987958783, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: _computerItemEntryController
+      value: 
+      objectReference: {fileID: 631074179}
     - target: {fileID: 1432855322688375745, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
       propertyPath: m_Name

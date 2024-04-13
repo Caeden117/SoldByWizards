@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using AuraTween;
+using Cysharp.Threading.Tasks;
 using SoldByWizards.Items;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,12 +12,15 @@ namespace SoldByWizards.Computers
     public class ComputerItemEntryController : MonoBehaviour
     {
         // TODO: Hook up dynamically
+        [SerializeField] private TweenManager _tweenManager;
         [SerializeField] public List<ItemSO> CurrentItems = new();
         [SerializeField] private ItemListing _itemListingTemplate;
         [SerializeField] private RectTransform _itemListingContainer;
         [SerializeField] private int _characterMultiplier = 1;
         [SerializeField] private float _scrollAmount = 700;
         [SerializeField] private float _itemListingContainerHeight = -5000f;
+        [SerializeField] private float _pageScrollAnimationLength = 1f;
+        [SerializeField] private Ease _pageScrollAnimationEase = Ease.Linear;
 
         private List<ItemListing> _spawnedItemListings = new();
         private int _totalCharactersTyped = 0;
@@ -25,6 +30,10 @@ namespace SoldByWizards.Computers
         // call when coming back from a teleport
         public void CreateListings()
         {
+            // TODO: Better state management
+            if (_receiveKeyboardInput)
+                return;
+
             foreach (var listing in _spawnedItemListings)
             {
                 listing.gameObject.SetActive(false);
@@ -47,11 +56,6 @@ namespace SoldByWizards.Computers
             _currentItem = 0;
         }
 
-        private void Start()
-        {
-            CreateListings();
-        }
-
         private void OnEnable()
         {
             // i forgor how to unsubscribe from this
@@ -64,15 +68,22 @@ namespace SoldByWizards.Computers
             _totalCharactersTyped = 0;
             _receiveKeyboardInput = false;
             _currentItem = 0;
+            CurrentItems.Clear();
 
             Debug.Log("DONE TYPING MODE!");
         }
 
-        private void ScrollToNextItem()
+        // This should have some way to cancel, i would like typing to get faster as you type more.
+        // Right now it's hard to out-spam the scroll, but eventually it will be possible and multiple tweens may overlap
+        private async UniTask ScrollToNextItem()
         {
             Debug.Log("Scrolling...");
-            _currentItem += 1;
-            _itemListingContainer.anchoredPosition = new Vector2(_itemListingContainer.anchoredPosition.x, _itemListingContainerHeight + (_currentItem * _scrollAmount));
+            _currentItem++;
+
+            await _tweenManager.Run(_itemListingContainer.anchoredPosition.y, _itemListingContainerHeight + (_currentItem * _scrollAmount), _pageScrollAnimationLength, (value) =>
+            {
+                _itemListingContainer.anchoredPosition = new Vector2(_itemListingContainer.anchoredPosition.x, value);
+            }, _pageScrollAnimationEase.ToProcedure());
         }
 
         private void OnAnyButtonPress(InputControl ctrl)
@@ -114,7 +125,7 @@ namespace SoldByWizards.Computers
                         break;
                     }
                     // item listing is saturated, scroll to next
-                    ScrollToNextItem();
+                    ScrollToNextItem().Forget();
                 }
             }
         }
