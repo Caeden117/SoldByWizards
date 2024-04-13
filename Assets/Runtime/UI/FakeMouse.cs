@@ -18,8 +18,10 @@ namespace SoldByWizards
 
             if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvasRectTransform, Mouse.current.position.ReadValue(), _camera, out Vector2 localPoint))
                 return;
+
             localPoint.x = Mathf.Clamp(localPoint.x, -_canvasRectSize.x / 2f, _canvasRectSize.x / 2f);
             localPoint.y = Mathf.Clamp(localPoint.y, -_canvasRectSize.y / 2f, _canvasRectSize.y / 2f);
+            
             _mouseVisuals.anchoredPosition = localPoint;
         }
     }
