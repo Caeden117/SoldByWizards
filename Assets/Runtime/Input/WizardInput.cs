@@ -221,7 +221,7 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
                     ""name"": ""Scroll Inventory"",
                     ""type"": ""Value"",
                     ""id"": ""f44c0168-0b4b-4bcc-91ec-68676f7098ea"",
-                    ""expectedControlType"": ""Delta"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

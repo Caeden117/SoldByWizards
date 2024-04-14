@@ -170,7 +170,7 @@ namespace SoldByWizards.Items
         {
             if (!context.performed) return;
 
-            var direction = (int)Mathf.Sign(context.ReadValue<float>());
+            var direction = (int)Mathf.Sign(context.ReadValue<Vector2>().y);
 
             if (direction == 0) return;
 

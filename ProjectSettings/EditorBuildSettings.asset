@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/Backrooms.unity
     guid: 7fe3fa3710eb22b49b477ed9009854ce
+  - enabled: 1
+    path: Assets/Scenes/Maps/Illuzion Warehouse.unity
+    guid: 29fb2135c4e076d4a878c15f961bcba7
   m_configObjects: {}

@@ -55,6 +55,7 @@ namespace SoldByWizards.UI
             _roundedTime = Mathf.Ceil(_timedMapLoader.TimeRemaining);
             _timeLength = _roundedTime;
             _timerText.text = Mathf.RoundToInt(_roundedTime).ToString();
+            _timerImage.fillAmount = 1;
 
             activeTween?.Cancel();
             activeTween = _tweenManager.Run(0f, 1f, _animTime,
