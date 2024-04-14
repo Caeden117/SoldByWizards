@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using SoldByWizards.Input;
 using SoldByWizards.Items;
 using TMPro;
@@ -133,8 +134,7 @@ namespace SoldByWizards.Computers
         {
             // finish "selling" items and send the event out
             SetListingPageState(ListingPageState.FinishedListingForDay);
-
-            _computerController.ListItemsForSale(_itemsWaitingForSale);
+            _computerController.ListItemsForSale(_itemsWaitingForSale.ToList());
             _itemsWaitingForSale.Clear();
         }
 

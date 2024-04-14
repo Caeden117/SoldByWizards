@@ -37,11 +37,11 @@ namespace SoldByWizards.UI
         }
 
         [PublicAPI]
-        public void SetItem(ItemSO item)
+        public void SetItem(Item item)
         {
-            if (item != _cachedItem)
+            if (item?.ItemSO != _cachedItem)
             {
-                _cachedItem = item;
+                _cachedItem = item?.ItemSO;
                 var startBottom = !item ? -25f : 0;
                 var endBottom = item ? -25f : 0;
 
@@ -51,11 +51,11 @@ namespace SoldByWizards.UI
                     Easer.InOutSine);
             }
 
-            var itemSprite = item ? item.ItemIcon : null;
+            var itemSprite = item ? item.ItemSO.ItemIcon : null;
             _itemImage.sprite = itemSprite;
             _itemImage.enabled = item;
 
-            var text = item ? $"${StockMarket.CalculatePriceFor(item):N2}" : string.Empty;
+            var text = item ? $"${item.SellPrice:N2}" : string.Empty;
             _salePriceText.text = text;
         }
     }

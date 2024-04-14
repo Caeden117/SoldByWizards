@@ -893,9 +893,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3796101c0642209fee9c83ec9a4971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _computerController: {fileID: 4392569866904337237}
   _baseRentAmount: 50
   _rentIncreasePerCycle: 25
-  _secondsPerRentCycle: 120
+  _secondsPerRentCycle: 240
 --- !u!114 &1162431982 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2724631481037577657, guid: 2165e2b3ca89bc94d8282cb6f84f551c,

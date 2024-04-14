@@ -19,9 +19,9 @@ namespace SoldByWizards.UI
             OnItemSelected(0, null);
         }
 
-        private void OnItemDrop(int itemIdx, ItemSO item) => _inventoryUISlots[itemIdx].SetItem(null);
+        private void OnItemDrop(int itemIdx, Item item) => _inventoryUISlots[itemIdx].SetItem(null);
 
-        private void OnItemPickup(int itemIdx, ItemSO item) => _inventoryUISlots[itemIdx].SetItem(item);
+        private void OnItemPickup(int itemIdx, Item item) => _inventoryUISlots[itemIdx].SetItem(item);
 
         private void OnItemSelected(int itemIdx, ItemSO item)
         {

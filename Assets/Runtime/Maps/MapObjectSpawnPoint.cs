@@ -38,6 +38,7 @@ namespace SoldByWizards.Maps
             item.transform.eulerAngles = new Vector3(0, Random.Range(0f, 360f), 0f);
 
             item.ItemSO = itemSO;
+            item.SellPrice = StockMarket.CalculatePriceFor(itemSO);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AuraTween;
 using Cysharp.Threading.Tasks;
 using SoldByWizards.Items;
@@ -36,7 +37,7 @@ namespace SoldByWizards.Computers
             if (_receiveKeyboardInput)
                 return;
 
-            _currentItems = items;
+            _currentItems = items.ToList();
 
             foreach (var listing in _spawnedItemListings)
             {
@@ -58,6 +59,9 @@ namespace SoldByWizards.Computers
             _totalCharactersTyped = 0;
             _receiveKeyboardInput = true;
             _currentItem = 0;
+
+            // scroll to first object
+            _computer.ItemListingContainer.anchoredPosition = new Vector2(_computer.ItemListingContainer.anchoredPosition.x, _itemListingContainerHeight);
         }
 
         private void OnEnable()

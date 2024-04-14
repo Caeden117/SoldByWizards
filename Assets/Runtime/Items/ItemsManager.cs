@@ -23,8 +23,8 @@ namespace SoldByWizards.Items
         [SerializeField] private TimedMapLoader _timedMapLoader = null!;
 
         public event Action<int, ItemSO>? OnItemSelected;
-        public event Action<int, ItemSO>? OnItemPickup;
-        public event Action<int, ItemSO>? OnItemDrop;
+        public event Action<int, Item>? OnItemPickup;
+        public event Action<int, Item>? OnItemDrop;
 
         private readonly ItemSO[] _heldItems = new ItemSO[MAX_ITEM_COUNT];
         private readonly Item[] _heldItemInstances = new Item[MAX_ITEM_COUNT];
@@ -78,7 +78,7 @@ namespace SoldByWizards.Items
             if (_droppedItems.Contains(item))
                 _droppedItems.Remove(item);
 
-            OnItemPickup?.Invoke(_selectedSlot, item.ItemSO);
+            OnItemPickup?.Invoke(_selectedSlot, item);
         }
 
         private void OnInteractWithWorld(Ray ray, RaycastHit raycastHit)
@@ -119,12 +119,11 @@ namespace SoldByWizards.Items
         {
             // Rally up all the items we have, so we can get ready to sell.
             Debug.Log("timer is over, selling...");
-            Debug.Log(_droppedItems.Count);
 
             List<Item> items = new();
             foreach (var item in _droppedItems)
             {
-                if (item == null)
+                if (item == null || item.MarkedForSale)
                     continue;
 
                 // make our best guess as to if this mesh is real
@@ -139,7 +138,7 @@ namespace SoldByWizards.Items
             // Count held items as items that can be sold
             foreach (var heldItem in _heldItemInstances)
             {
-                if (heldItem == null)
+                if (heldItem == null || heldItem.MarkedForSale)
                     continue;
 
                 items.Add(heldItem);
