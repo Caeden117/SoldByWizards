@@ -13,10 +13,11 @@ namespace SoldByWizards.Computers
 {
     public class ListingPageSpamController : MonoBehaviour
     {
-        [SerializeField] private Computer _computer;
+        [SerializeField] private Computer _computer = null!;
         [SerializeField] private ComputerController _computerController = null!;
-        [SerializeField] private TweenManager _tweenManager;
-        [SerializeField] private ItemListing _itemListingTemplate;
+        [SerializeField] private TweenManager _tweenManager = null!;
+        [SerializeField] private ItemListing _itemListingTemplate = null!;
+        [SerializeField] private RectTransform _finalListingTemplate = null!;
         [SerializeField] private int _characterMultiplier = 1;
         [SerializeField] private float _scrollAmount = 700;
         [SerializeField] private float _itemListingContainerHeight = -5000f;
@@ -25,6 +26,7 @@ namespace SoldByWizards.Computers
         [SerializeField] private RandomAudioPool? _keyboardSoundAudioPool;
 
         private List<ItemListing> _spawnedItemListings = new();
+        private RectTransform? _finalListing;
         private int _totalCharactersTyped = 0;
         private int _currentItem = 0;
         private bool _receiveKeyboardInput = false;
@@ -47,6 +49,13 @@ namespace SoldByWizards.Computers
             }
             _spawnedItemListings.Clear();
 
+            if (_finalListing != null)
+            {
+                _finalListing.gameObject.SetActive(false);
+                Destroy(_finalListing);
+            }
+            _finalListing = null;
+
             foreach (var item in _currentItems)
             {
                 // create item
@@ -55,6 +64,9 @@ namespace SoldByWizards.Computers
                 itemListing.Clear();
                 itemListing.SetItem(item.ItemSO!);
             }
+
+            // fake screen for final transition
+            _finalListing = Instantiate(_finalListingTemplate, _computer.ItemListingContainer);
 
             // reset typing
             _totalCharactersTyped = 0;
@@ -90,15 +102,17 @@ namespace SoldByWizards.Computers
             _selected = false;
         }
 
-        private void ExitTypingMode()
+        private async UniTask ExitTypingMode()
         {
-            // TODO: Animate out of this
-            _totalCharactersTyped = 0;
+            Debug.Log("DONE TYPING MODE!");
             _receiveKeyboardInput = false;
+
+            // fake scroll to next page
+            await ScrollToNextItem();
+
+            _totalCharactersTyped = 0;
             _currentItem = 0;
             _currentItems.Clear();
-
-            Debug.Log("DONE TYPING MODE!");
 
             _computerController.FinishSpamTyping();
         }
@@ -158,7 +172,7 @@ namespace SoldByWizards.Computers
                     if (_currentItem + 1 == _spawnedItemListings.Count)
                     {
                         // final. break, we are DONE!
-                        ExitTypingMode();
+                        ExitTypingMode().Forget();
                         break;
                     }
                     // item listing is saturated, scroll to next

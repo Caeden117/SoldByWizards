@@ -994,7 +994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5601493674378154830
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2232,6 +2232,8 @@ MonoBehaviour:
   _computerController: {fileID: 0}
   _tweenManager: {fileID: 0}
   _itemListingTemplate: {fileID: 8145730438845780067, guid: 2ace18dfd5be1d0468e7cad7e6f1691d,
+    type: 3}
+  _finalListingTemplate: {fileID: 7495486804499993825, guid: 8f6c50ff368288e489dd2eadcb88bdcc,
     type: 3}
   _characterMultiplier: 2
   _scrollAmount: 700
