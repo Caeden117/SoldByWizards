@@ -7,9 +7,13 @@ namespace SoldByWizards.Game
     // Each "day" is one teleportation
     public class GameController : MonoBehaviour
     {
+        public float SecondsPerRentCycle => _secondsPerRentCycle;
+
         [SerializeField] private float _baseRentAmount = 50f;
-        [SerializeField] private float _rentIncreasePerCycle = 25f;         // TODO: make into curve
+        [SerializeField] private float _rentIncreasePerCycle = 25f; // TODO: make into curve
         [SerializeField] private float _secondsPerRentCycle = 60f;
+
+        public Action<float>? OnDayProgressUpdated;
 
         private int _currentDay = 0;
         private float _currentMoney;
@@ -28,7 +32,7 @@ namespace SoldByWizards.Game
                 return;
 
             _timeElapsed += Time.deltaTime;
-
+            OnDayProgressUpdated?.Invoke(_timeElapsed / _secondsPerRentCycle);
             if (_timeElapsed > _secondsPerRentCycle)
             {
                 _dayIsProgressing = false;

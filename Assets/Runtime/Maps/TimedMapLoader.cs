@@ -11,6 +11,8 @@ namespace SoldByWizards.Maps
 {
     public class TimedMapLoader : MonoBehaviour
     {
+        public float MapLoadedDuration => _mapLoadedDuration;
+
         [SerializeField] private float _mapLoadedDuration = 75;
         [SerializeField] private MapLoader _mapLoader;
         [SerializeField] private PlayerController _playerController;
