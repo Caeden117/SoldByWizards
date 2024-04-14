@@ -1,17 +1,24 @@
 ﻿using System.Collections.Generic;
+using AuraTween;
+using Cysharp.Threading.Tasks;
 using SoldByWizards.Game;
+using SoldByWizards.Items;
 using SoldByWizards.Maps;
+using TMPro;
 using UnityEngine;
 
 namespace SoldByWizards.UI
 {
     public class RentUIController : MonoBehaviour
     {
+        [SerializeField] private TweenManager _tweenManager = null!;
         [SerializeField] private GameController _gameController = null!;
         [SerializeField] private TimedMapLoader _timedMapLoader = null!;
         [SerializeField] private RectTransform _barRectTransform = null!;
         [SerializeField] private RectTransform _barSpanContainer = null!;
         [SerializeField] private TimelineSpan _barSpanTemplate = null!;
+        [SerializeField] private TextMeshProUGUI _moneyText = null!;
+        [SerializeField] private TextMeshProUGUI _rentText = null!;
         [SerializeField] private float _barLength = 600f;
 
         private float _currentXPosition = 0f;
@@ -23,10 +30,13 @@ namespace SoldByWizards.UI
         private void OnEnable()
         {
             _gameController.OnDayProgressUpdated += OnDayProgressUpdated;
-            _gameController.OnDaySucceeded += Clear;
+            _gameController.OnDaySucceeded += OnDaySucceeded;
+            _gameController.OnItemSold += OnItemSold;
+
             _timedMapLoader.OnTimerStarted += OnTimerStarted;
             _timedMapLoader.OnTimerEnded += OnTimerEnded;
         }
+
 
         private TimelineSpan CreateSpan(float xPosition, float initialWidth)
         {
@@ -55,7 +65,9 @@ namespace SoldByWizards.UI
         private void OnDisable()
         {
             _gameController.OnDayProgressUpdated -= OnDayProgressUpdated;
-            _gameController.OnDaySucceeded -= Clear;
+            _gameController.OnDaySucceeded -= OnDaySucceeded;
+            _gameController.OnItemSold -= OnItemSold;
+
             _timedMapLoader.OnTimerStarted -= OnTimerStarted;
             _timedMapLoader.OnTimerEnded -= OnTimerEnded;
         }
@@ -93,6 +105,39 @@ namespace SoldByWizards.UI
         private void OnTimerEnded()
         {
             FinishSpan();
+        }
+
+
+        private void OnItemSold(Item item, float salePrice)
+        {
+            _moneyText.text = $"${_gameController.CurrentMoney:N2}";
+
+            FlyOutProfitText(salePrice).Forget();
+        }
+
+        private async UniTask FlyOutProfitText(float saleAmount)
+        {
+            var duplicate = Instantiate(_moneyText, _moneyText.transform.parent);
+
+            duplicate.text = $"+ ${saleAmount:N2}";
+
+            var tween = _tweenManager.Run(Color.green, Color.green.WithA(0), 1f,
+                c => duplicate.color = c, Easer.OutCubic);
+
+            _tweenManager.Run(-25, -100f, 1f,
+                y => duplicate.rectTransform.anchoredPosition = duplicate.rectTransform.anchoredPosition.WithY(y),
+                Easer.OutExpo);
+
+            await tween;
+
+            Destroy(duplicate);
+        }
+
+        private void OnDaySucceeded()
+        {
+            _moneyText.text = $"${_gameController.CurrentMoney:N2}";
+            _rentText.text = $"${_gameController.CurrentRent:N2}";
+            Clear();
         }
 
         private void OnDayProgressUpdated(float progressAmount)
