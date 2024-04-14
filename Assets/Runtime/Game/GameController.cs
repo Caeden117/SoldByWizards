@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using SoldByWizards.Computers;
 using SoldByWizards.Items;
-using SoldByWizards.Maps;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +13,10 @@ namespace SoldByWizards.Game
     {
         public float SecondsPerRentCycle => _secondsPerRentCycle;
 
+        public float CurrentMoney => _currentMoney;
+
+        public float CurrentRent => GetRentForCurrentDay();
+
         [SerializeField] private ComputerController _computerController = null!;
         [SerializeField] private ItemsManager _itemsManager = null!;
         [SerializeField] private float _baseRentAmount = 50f;
@@ -23,10 +26,12 @@ namespace SoldByWizards.Game
 
         public event Action OnDaySucceeded;
         public event Action OnDayFailed;
+        public event Action<Item, float> OnItemSold;
         public event Action<float>? OnDayProgressUpdated;
 
         private int _currentDay = 0;
         private float _currentMoney;
+        private float _currentRent;
         private float _timeElapsed = 0f;
         private bool _dayIsProgressing = false;
         private List<Item> _itemsToSell = new();
@@ -99,8 +104,6 @@ namespace SoldByWizards.Game
 
         private void OnItemsListedForSell(List<Item> items)
         {
-            Debug.Log("Marking items for The Great Sell!");
-            Debug.Log(items.Count);
             foreach (var item in items)
             {
                 if (item == null)
@@ -129,8 +132,9 @@ namespace SoldByWizards.Game
 
         private void SellItem(Item item)
         {
-            Debug.Log($"ITEM {item.ItemSO.ItemName} IS BEING SOLD!");
             _currentMoney += item.SellPrice;
+
+            OnItemSold?.Invoke(item, item.SellPrice);
 
             var hotbarIndex = _itemsManager.ItemHotbarIndex(item);
 
@@ -147,7 +151,6 @@ namespace SoldByWizards.Game
 
             // Update stock market
             StockMarket.OnItemSold(item.ItemSO);
-            Debug.Log($"Total money is now {_currentMoney}");
         }
     }
 }
