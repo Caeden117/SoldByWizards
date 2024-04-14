@@ -655,6 +655,16 @@ PrefabInstance:
       propertyPath: _safetyTeleportPoint
       value: 
       objectReference: {fileID: 1973257553}
+    - target: {fileID: 4361288000629244623, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361288000629244623, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8084436169350973543, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
       propertyPath: _glyphAggregator
@@ -2920,6 +2930,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ComputerDesk
       objectReference: {fileID: 0}
+    - target: {fileID: 2144211065248078107, guid: da4798b4276cec34c973864b2add5adf,
+        type: 3}
+      propertyPath: _crosshair
+      value: 
+      objectReference: {fileID: 1082137696}
     - target: {fileID: 2144211065248078107, guid: da4798b4276cec34c973864b2add5adf,
         type: 3}
       propertyPath: _inputController
@@ -5671,6 +5686,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e699dd6b1176d4b4abb916aa56d01f95, type: 3}
+--- !u!224 &1082137696 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4361288000629244623, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+    type: 3}
+  m_PrefabInstance: {fileID: 83915566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1130351064 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2724631481037577657, guid: 2165e2b3ca89bc94d8282cb6f84f551c,

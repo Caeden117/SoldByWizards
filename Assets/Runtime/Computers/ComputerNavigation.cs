@@ -25,6 +25,7 @@ namespace SoldByWizards.Computers
         [SerializeField] private RectTransform _currentlyListingPanel = null!;
         [SerializeField] private TextMeshProUGUI _itemsToSellTitleText = null!;
         [SerializeField] private TextMeshProUGUI _itemsToSellText = null!;
+        [SerializeField] private RectTransform? _crosshair;
 
         private List<Item> _itemsWaitingForSale = new();
         private ComputerPage _activePage = ComputerPage.Profile;
@@ -161,11 +162,19 @@ namespace SoldByWizards.Computers
         private void OnComputerSelected(Computer computer)
         {
             _selected = true;
+            if (_crosshair != null)
+            {
+                _crosshair.gameObject.SetActive(false);
+            }
         }
 
         private void OnComputerDeselected(Computer computer)
         {
             _selected = false;
+            if (_crosshair != null)
+            {
+                _crosshair.gameObject.SetActive(true);
+            }
         }
     }
 }
