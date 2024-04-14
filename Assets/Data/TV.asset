@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf8ab1a859a4a2b8943b1ff88a1c6f2, type: 3}
+  m_Name: TV
+  m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 6699809195060818920, guid: 10fc13a9787690e4d8403bf7ce5354fe,
+    type: 3}
+  ItemName: TV
+  ItemDescription: A retro relic of the past from when media was distributed via
+    radio waves prior to discovering the inhabitants of the RF dimension. Relive
+    the Content of days past in high-quality SD from the comfort of your wide sittingdevice!
+  ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
+  BaseSaleValue: 0
+  StockMarketSeed: 5319.722
+  StockMarketLowModifier: 0.3
+  StockMarketHighModifier: 3
+  MultiSalesPenalty: -0.03
+  TwoHanded: 0
