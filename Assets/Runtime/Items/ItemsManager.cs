@@ -36,7 +36,12 @@ namespace SoldByWizards.Items
         [PublicAPI]
         public void SelectItem(int idx)
         {
-            _selectedSlot = idx % MAX_ITEM_COUNT;
+            _selectedSlot = idx switch
+            {
+                < 0 => MAX_ITEM_COUNT - 1,
+                >= MAX_ITEM_COUNT => 0,
+                _ => idx
+            };
 
             OnItemSelected?.Invoke(_selectedSlot, _heldItems[_selectedSlot]);
         }
