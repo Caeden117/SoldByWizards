@@ -28,36 +28,39 @@ namespace SoldByWizards.Maps
         public event Action OnTimerEnded;
 
         [PublicAPI]
-        public float TimeElapsed => (float)_timer.Elapsed.TotalSeconds;
+        public float TimeElapsed => _timer;
 
         [PublicAPI]
-        public float TimeRemaining => _mapLoadedDuration - TimeElapsed;
+        public float TimeRemaining => _mapLoadedDuration - _timer;
 
-        private readonly Stopwatch _timer = new();
-
+        private float _timer = 0;
         private float _timeSinceLastPortalClose;
 
         [PublicAPI]
         public async UniTask LoadMapOnTimer(CancellationToken token = default)
         {
-            if (_timer.IsRunning || (Time.time - _timeSinceLastPortalClose) < _portalCooldown) return;
+            if (Time.time - _timeSinceLastPortalClose < _portalCooldown) return;
 
-            _timer.Restart();
+            _timer = 0;
+            _timeSinceLastPortalClose = Time.time + _mapLoadedDuration + _portalCooldown;
             OnTimerStarted?.Invoke();
 
             await _mapLoader.LoadMapFromGlyphs();
 
             _glyphAggregator.ClearAllGlyphs();
 
-            var target = TimeSpan.FromSeconds(_mapLoadedDuration);
-
             do
             {
                 await UniTask.Yield();
+                _timer += Time.deltaTime;
             }
-            while (!token.IsCancellationRequested && _timer.Elapsed < target);
+            while (!token.IsCancellationRequested && _timer < _mapLoadedDuration);
 
-            _timer.Stop();
+            if (token.IsCancellationRequested)
+            {
+                _timeSinceLastPortalClose = Time.time + _portalCooldown;
+            }
+
             OnTimerEnded?.Invoke();
 
             // dirtiest gamejam hack of my life
@@ -72,8 +75,6 @@ namespace SoldByWizards.Maps
             }
 
             await _mapLoader.UnloadMap();
-
-            _timeSinceLastPortalClose = Time.time;
         }
     }
 }
