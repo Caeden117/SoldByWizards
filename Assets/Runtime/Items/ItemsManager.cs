@@ -97,6 +97,11 @@ namespace SoldByWizards.Items
                 _droppedItems.Remove(item);
 
             OnItemPickup?.Invoke(_selectedSlot, item);
+
+            if (_heldItems[(_selectedSlot + 1) % MAX_ITEM_COUNT] == null)
+            {
+                SelectItem(_selectedSlot + 1);
+            }
         }
 
         private void OnInteractWithWorld(Ray ray, RaycastHit raycastHit)
