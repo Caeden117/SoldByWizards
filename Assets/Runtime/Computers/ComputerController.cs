@@ -16,6 +16,7 @@ namespace SoldByWizards.Computers
         public event Action<List<ItemSO>>? OnItemsListedForSale;
         public event Action<Computer>? OnComputerSelected;
         public event Action<Computer>? OnComputerDeselected;
+        public event Action OnSpamTypingFinished;
 
         public void RegisterCollectedItems(List<ItemSO> items)
         {
@@ -35,6 +36,11 @@ namespace SoldByWizards.Computers
         public void ComputerDeselected(Computer computer)
         {
             OnComputerDeselected?.Invoke(computer);
+        }
+
+        public void FinishSpamTyping()
+        {
+            OnSpamTypingFinished?.Invoke();
         }
 
         public async void Start()

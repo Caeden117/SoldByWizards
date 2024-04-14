@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SoldByWizards.Input;
 using SoldByWizards.Items;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,10 @@ namespace SoldByWizards.Computers
     // handles page navigation for profile and listings
     public class ComputerNavigation : MonoBehaviour
     {
+        [SerializeField] private Computer _computer = null!;
         [SerializeField] private ComputerController _computerController = null!;
+        [SerializeField] private InputController _inputController = null!;
+        [SerializeField] private ListingPageSpamController _listingPageSpamController = null!;
         [SerializeField] private RectTransform _profilePanel = null!;
         [SerializeField] private RectTransform _listingsPanel = null!;
         [SerializeField] private Image _listingNotificationImage = null!;
@@ -70,11 +74,20 @@ namespace SoldByWizards.Computers
             {
                 // disable buttons
                 SetButtonInteractableState(false);
+
+                // start listing items
+                _listingPageSpamController.CreateListings(_itemsWaitingForSale);
+
+                // re-enable import
+                _inputController.SetInteractionInputState(false);
             }
             else if (listingPageState == ListingPageState.FinishedListingForDay)
             {
                 // enable buttons
                 SetButtonInteractableState(true);
+
+                // re-enable export
+                _inputController.SetInteractionInputState(true);
             }
         }
 
@@ -113,6 +126,23 @@ namespace SoldByWizards.Computers
             _computerController.OnComputerSelected += OnComputerSelected;
             _computerController.OnComputerDeselected += OnComputerDeselected;
             _computerController.OnItemsCollected += OnItemsCollected;
+            _computerController.OnSpamTypingFinished += OnSpamTypingFinished;
+        }
+
+        private void OnSpamTypingFinished()
+        {
+            // finish "selling" items and send the event out
+            SetListingPageState(ListingPageState.FinishedListingForDay);
+
+            _computerController.ListItemsForSale(_itemsWaitingForSale);
+            _itemsWaitingForSale.Clear();
+        }
+
+        private void OnDisable()
+        {
+            _computerController.OnComputerSelected -= OnComputerSelected;
+            _computerController.OnComputerDeselected -= OnComputerDeselected;
+            _computerController.OnItemsCollected -= OnItemsCollected;
         }
 
         private void OnItemsCollected(List<ItemSO> items)

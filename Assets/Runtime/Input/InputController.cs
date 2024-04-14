@@ -88,5 +88,14 @@ namespace SoldByWizards.Input
             // TODO: Don't do this in the pause menu!! This is only to do cool computer stuff
             Cursor.visible = false;
         }
+
+        // used during spam typing bit
+        public void SetInteractionInputState(bool enabled)
+        {
+            if (enabled)
+                Input.Interactions.Enable();
+            else
+                Input.Interactions.Disable();
+        }
     }
 }

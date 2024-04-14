@@ -9,11 +9,12 @@ using UnityEngine.UI;
 
 namespace SoldByWizards.Computers
 {
-    public class ComputerItemEntryController : MonoBehaviour
+    public class ListingPageSpamController : MonoBehaviour
     {
         // TODO: Hook up dynamically
+        [SerializeField] private Computer _computer;
+        [SerializeField] private ComputerController _computerController = null!;
         [SerializeField] private TweenManager _tweenManager;
-        [SerializeField] public List<ItemSO> CurrentItems = new();
         [SerializeField] private ItemListing _itemListingTemplate;
         [SerializeField] private int _characterMultiplier = 1;
         [SerializeField] private float _scrollAmount = 700;
@@ -25,16 +26,17 @@ namespace SoldByWizards.Computers
         private int _totalCharactersTyped = 0;
         private int _currentItem = 0;
         private bool _receiveKeyboardInput = false;
-        private Computer? _computer;
+        private bool _selected = false;
+        private List<ItemSO> _currentItems = new();
 
         // call when coming back from a teleport
-        public void CreateListings(Computer computer)
+        public void CreateListings(List<ItemSO> items)
         {
             // TODO: Better state management
             if (_receiveKeyboardInput)
                 return;
 
-            _computer = computer;
+            _currentItems = items;
 
             foreach (var listing in _spawnedItemListings)
             {
@@ -43,7 +45,7 @@ namespace SoldByWizards.Computers
             }
             _spawnedItemListings.Clear();
 
-            foreach (var item in CurrentItems)
+            foreach (var item in _currentItems)
             {
                 // create item
                 var itemListing = Instantiate(_itemListingTemplate, _computer.ItemListingContainer);
@@ -62,6 +64,25 @@ namespace SoldByWizards.Computers
         {
             // i forgor how to unsubscribe from this
             InputSystem.onAnyButtonPress.Call(OnAnyButtonPress);
+
+            _computerController.OnComputerSelected += OnComputerSelected;
+            _computerController.OnComputerDeselected += OnComputerDeselected;
+        }
+
+        private void OnDisable()
+        {
+            _computerController.OnComputerSelected -= OnComputerSelected;
+            _computerController.OnComputerDeselected -= OnComputerDeselected;
+        }
+
+        private void OnComputerSelected(Computer computer)
+        {
+            _selected = true;
+        }
+
+        private void OnComputerDeselected(Computer computer)
+        {
+            _selected = false;
         }
 
         private void ExitTypingMode()
@@ -70,9 +91,11 @@ namespace SoldByWizards.Computers
             _totalCharactersTyped = 0;
             _receiveKeyboardInput = false;
             _currentItem = 0;
-            CurrentItems.Clear();
+            _currentItems.Clear();
 
             Debug.Log("DONE TYPING MODE!");
+
+            _computerController.FinishSpamTyping();
         }
 
         // This should have some way to cancel, i would like typing to get faster as you type more.
@@ -93,7 +116,7 @@ namespace SoldByWizards.Computers
 
         private void OnAnyButtonPress(InputControl ctrl)
         {
-            if (!_receiveKeyboardInput || ctrl.device is not Keyboard)
+            if (!_receiveKeyboardInput || ctrl.device is not Keyboard || !_selected)
                 return;
 
             _totalCharactersTyped += _characterMultiplier;
