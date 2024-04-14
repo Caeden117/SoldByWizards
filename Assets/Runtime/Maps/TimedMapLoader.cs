@@ -60,20 +60,20 @@ namespace SoldByWizards.Maps
             _timer.Stop();
             OnTimerEnded?.Invoke();
 
+            // dirtiest gamejam hack of my life
+            if (_playerController.transform.position.z > 0)
+            {
+                _playerController.Stop();
+                _itemsManager.DropAllItems();
+
+                _playerController.Rigidbody.position = _safetyTeleportPoint.position;
+                _playerCamera.transform.rotation = _safetyTeleportPoint.rotation;
+            }
+
+            await UniTask.Yield();
             await _mapLoader.UnloadMap();
 
             _timeSinceLastPortalClose = Time.time;
-
-            // dirtiest gamejam hack of my life
-            if (!(_playerController.transform.position.z > 0)) return;
-
-            _playerController.Stop();
-            _itemsManager.DropAllItems();
-
-            await UniTask.Yield();
-
-            _playerController.transform.position = _safetyTeleportPoint.position;
-            _playerCamera.transform.rotation = _safetyTeleportPoint.rotation;
         }
     }
 }

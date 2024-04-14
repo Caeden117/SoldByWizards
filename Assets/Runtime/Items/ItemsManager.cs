@@ -136,7 +136,8 @@ namespace SoldByWizards.Items
         {
             _heldItems[itemIdx] = null;
 
-            if (_heldItemInstances[itemIdx] != null)
+            bool itemExists = _heldItemInstances[itemIdx] != null;
+            if (itemExists)
             {
                 if (!_droppedItems.Contains(_heldItemInstances[itemIdx]))
                     _droppedItems.Add(_heldItemInstances[itemIdx]);
@@ -149,7 +150,7 @@ namespace SoldByWizards.Items
             OnItemDrop?.Invoke(itemIdx, null);
 
             // TODO: Different drop sound?
-            if (_pickupSoundAudioPool != null)
+            if (_pickupSoundAudioPool != null && itemExists)
             {
                 _pickupSoundAudioPool.PlayRandom();
             }

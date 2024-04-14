@@ -7,6 +7,7 @@ namespace SoldByWizards.Player
 {
     public class PlayerController : MonoBehaviour, WizardInput.IPlayerActions
     {
+        public Rigidbody Rigidbody => _rigidbody;
         public Camera Camera => _camera;
         public bool IsGrounded => _grounded;
         public bool WasGroundedThisFrame => _wasGroundedThisFrame;
