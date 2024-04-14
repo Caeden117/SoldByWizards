@@ -320,6 +320,45 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Pause"",
+            ""id"": ""b662021f-a4d3-46a9-b791-c65e75dce7ef"",
+            ""actions"": [
+                {
+                    ""name"": ""Toggle Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe99eb8a-e5bc-4c52-a7f4-68bdae264cb9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""680c8e23-ca6e-4e07-903e-514c1321bec8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6910dfd0-a10d-478c-a1f4-f28cd19552dd"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -342,6 +381,9 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         m_Inventory_InventorySlot2 = m_Inventory.FindAction("Inventory Slot 2", throwIfNotFound: true);
         m_Inventory_InventorySlot3 = m_Inventory.FindAction("Inventory Slot 3", throwIfNotFound: true);
         m_Inventory_InventorySlot4 = m_Inventory.FindAction("Inventory Slot 4", throwIfNotFound: true);
+        // Pause
+        m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
+        m_Pause_TogglePause = m_Pause.FindAction("Toggle Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -631,6 +673,52 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         }
     }
     public InventoryActions @Inventory => new InventoryActions(this);
+
+    // Pause
+    private readonly InputActionMap m_Pause;
+    private List<IPauseActions> m_PauseActionsCallbackInterfaces = new List<IPauseActions>();
+    private readonly InputAction m_Pause_TogglePause;
+    public struct PauseActions
+    {
+        private @WizardInput m_Wrapper;
+        public PauseActions(@WizardInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TogglePause => m_Wrapper.m_Pause_TogglePause;
+        public InputActionMap Get() { return m_Wrapper.m_Pause; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PauseActions set) { return set.Get(); }
+        public void AddCallbacks(IPauseActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PauseActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Add(instance);
+            @TogglePause.started += instance.OnTogglePause;
+            @TogglePause.performed += instance.OnTogglePause;
+            @TogglePause.canceled += instance.OnTogglePause;
+        }
+
+        private void UnregisterCallbacks(IPauseActions instance)
+        {
+            @TogglePause.started -= instance.OnTogglePause;
+            @TogglePause.performed -= instance.OnTogglePause;
+            @TogglePause.canceled -= instance.OnTogglePause;
+        }
+
+        public void RemoveCallbacks(IPauseActions instance)
+        {
+            if (m_Wrapper.m_PauseActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPauseActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PauseActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PauseActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PauseActions @Pause => new PauseActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -652,5 +740,9 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         void OnInventorySlot2(InputAction.CallbackContext context);
         void OnInventorySlot3(InputAction.CallbackContext context);
         void OnInventorySlot4(InputAction.CallbackContext context);
+    }
+    public interface IPauseActions
+    {
+        void OnTogglePause(InputAction.CallbackContext context);
     }
 }
