@@ -2968,6 +2968,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 461629346885489502, guid: b1ba0ebd1d139e14cb3ad9ef6ff8972d,
         type: 3}
+      propertyPath: m_MaxValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 461629346885489502, guid: b1ba0ebd1d139e14cb3ad9ef6ff8972d,
+        type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

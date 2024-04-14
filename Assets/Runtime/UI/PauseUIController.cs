@@ -70,6 +70,8 @@ namespace SoldByWizards.UI
                 _sfxVolumeSlider.SetValueWithoutNotify(DecibelsToLinear(v));
             }
 
+            _sensitivitySlider.SetValueWithoutNotify(_playerController.Sensitivity);
+
             _backgroundTransform.localScale = _uiTransform.localScale = Vector3.zero;
             _inputController.Input.Pause.AddCallbacks(this);
         }
