@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Trash
-  m_Shader: {fileID: -6465566751694194690, guid: 3f22efd09e757c04b8dcf4832ad1c082,
+  m_Shader: {fileID: -6465566751694194690, guid: 959c0385ff22d3343a6f9d8f0e6f8447,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -110,6 +110,7 @@ Material:
     - _Glossiness: 0
     - _GlossinessSource: 0
     - _GlossyReflections: 0
+    - _HueShiftStrength: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

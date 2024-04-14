@@ -17,7 +17,7 @@ MonoBehaviour:
   ItemName: Parable Cup
   ItemDescription: Holds enough water to fill an extremely small pool.
   ItemIcon: {fileID: 0}
-  BaseSaleValue: 0
+  BaseSaleValue: 5
   StockMarketSeed: 10420.615
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
