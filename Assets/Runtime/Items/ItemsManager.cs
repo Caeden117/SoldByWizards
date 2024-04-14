@@ -93,6 +93,12 @@ namespace SoldByWizards.Items
                 rigidbody.angularVelocity = Vector3.zero;
             }
 
+            if (item.SpawnPoint != null)
+            {
+                item.SpawnPoint.ClearSpawn();
+                item.SpawnPoint = null;
+            }
+
             _heldItems[_selectedSlot] = item.ItemSO;
             _heldItemInstances[_selectedSlot] = item;
             _heldItemBounds[_selectedSlot] = collider.bounds;
@@ -160,6 +166,11 @@ namespace SoldByWizards.Items
                 if (inBounds)
                 {
                     items.Add(item);
+                }
+                // Forcefully destroy this item
+                else
+                {
+                    Destroy(item.gameObject);
                 }
             }
 

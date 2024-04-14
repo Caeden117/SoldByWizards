@@ -1,4 +1,5 @@
 using System;
+using SoldByWizards.Maps;
 using UnityEngine;
 
 namespace SoldByWizards.Items
@@ -9,12 +10,7 @@ namespace SoldByWizards.Items
         [NonSerialized] public ItemSO ItemSO = null!;
         [NonSerialized] public bool MarkedForSale = false;
         [NonSerialized] public float SellPrice;
-
-        // :3
-        private void LateUpdate()
-        {
-            if (transform.position.y < -100) DestroyImmediate(gameObject);
-        }
+        [NonSerialized] public MapObjectSpawnPoint SpawnPoint;
 
         // TODO: Create a portal below, do a whole fancy animation
         public void SellAnimation()
