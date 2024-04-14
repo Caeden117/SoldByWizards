@@ -49,6 +49,24 @@ namespace SoldByWizards.Items
             }
         }
 
+        public void DropItemWithAnimation(int itemIdx)
+        {
+            // TODO: Portal out animation or something in the hotbar?
+            DropItem(itemIdx, new Vector3(0, -999, 0f));
+        }
+
+        public int? ItemHotbarIndex(Item item)
+        {
+            for (int i = 0; i < MAX_ITEM_COUNT; i++)
+            {
+                var itemInstance = _heldItemInstances[i];
+                if (itemInstance == item)
+                    return i;
+            }
+
+            return null;
+        }
+
         private void Start()
         {
             _interactionsManager.OnObjectInteract += OnObjectInteract;

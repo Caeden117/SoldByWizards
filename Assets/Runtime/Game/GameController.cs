@@ -15,9 +15,11 @@ namespace SoldByWizards.Game
         public float SecondsPerRentCycle => _secondsPerRentCycle;
 
         [SerializeField] private ComputerController _computerController = null!;
+        [SerializeField] private ItemsManager _itemsManager = null!;
         [SerializeField] private float _baseRentAmount = 50f;
         [SerializeField] private float _rentIncreasePerCycle = 25f; // TODO: make into curve
         [SerializeField] private float _secondsPerRentCycle = 60f;
+        [SerializeField] private Vector2 _sellCheckTimeRange = new Vector2(0f, 1f);
 
         public Action<float>? OnDayProgressUpdated;
 
@@ -64,6 +66,9 @@ namespace SoldByWizards.Game
                 _timeElapsed = 0f;
                 _dayIsProgressing = true;
                 _currentDay += 1;
+
+                // minus rent from money
+                _currentMoney -= rent;
             }
         }
 
@@ -100,7 +105,7 @@ namespace SoldByWizards.Game
         {
             while (_isAlive)
             {
-                await UniTask.Delay(500);
+                await UniTask.WaitForSeconds(Random.Range(_sellCheckTimeRange.x, _sellCheckTimeRange.y));
 
                 if (_itemsToSell.Count == 0)
                     continue;
@@ -114,9 +119,23 @@ namespace SoldByWizards.Game
 
         private void SellItem(Item item)
         {
-            Debug.Log("ITEM IS BEING SOLD!");
+            Debug.Log($"ITEM {item.ItemSO.ItemName} IS BEING SOLD!");
             _currentMoney += item.SellPrice;
-            item.SellAnimation();
+
+            var hotbarIndex = _itemsManager.ItemHotbarIndex(item);
+
+            if (hotbarIndex != null)
+            {
+                // this is a hotbar item.
+                _itemsManager.DropItemWithAnimation(hotbarIndex.Value);
+            }
+            else
+            {
+                // this is a dropped item.
+                item.SellAnimation();
+            }
+
+            Debug.Log($"Total money is now {_currentMoney}");
         }
     }
 }
