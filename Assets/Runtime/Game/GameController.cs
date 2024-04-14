@@ -21,7 +21,9 @@ namespace SoldByWizards.Game
         [SerializeField] private float _secondsPerRentCycle = 60f;
         [SerializeField] private Vector2 _sellCheckTimeRange = new Vector2(0f, 1f);
 
-        public Action<float>? OnDayProgressUpdated;
+        public event Action OnDaySucceeded;
+        public event Action OnDayFailed;
+        public event Action<float>? OnDayProgressUpdated;
 
         private int _currentDay = 0;
         private float _currentMoney;
@@ -59,6 +61,8 @@ namespace SoldByWizards.Game
             {
                 // fail player, game over
                 Debug.LogError("YOU FREAKIN' DIED!");
+
+                OnDayFailed?.Invoke();
             }
             else
             {
@@ -73,6 +77,8 @@ namespace SoldByWizards.Game
 
                 // minus rent from money
                 _currentMoney -= rent;
+
+                OnDaySucceeded?.Invoke();
             }
         }
 
