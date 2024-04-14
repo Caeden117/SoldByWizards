@@ -68,6 +68,7 @@ MonoBehaviour:
   _pitchBase: 1
   _pitchRandomness: 0.1
   _initialPoolSize: 0
+  _maxPoolSize: 10000
 --- !u!1 &5926132769092507562
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Sensitivity>k__BackingField: 1
   _inputController: {fileID: 0}
+  _gameController: {fileID: 0}
   _collisionMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -130,6 +132,7 @@ MonoBehaviour:
   _groundDecel: 28
   _airAccel: 40
   _jumpForce: 7
+  _groundedRadius: 0.1
 --- !u!33 &4827732370783573462
 MeshFilter:
   m_ObjectHideFlags: 0

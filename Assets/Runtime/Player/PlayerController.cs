@@ -51,6 +51,9 @@ namespace SoldByWizards.Player
         [SerializeField]
         private float _jumpForce = 0f;
 
+        [SerializeField]
+        private float _groundedRadius = 0.05f;
+
         private bool _grounded = false;
         private bool _wasGroundedThisFrame = false;
         private bool _inputJumping = false;
@@ -166,7 +169,7 @@ namespace SoldByWizards.Player
             var radius = _capsuleCollider.radius;
             var ray = new Ray(transform.position + new Vector3(0f, _capsuleCollider.height * -0.5f + radius, 0f), Vector3.down);
             bool _currentGrounded = _grounded;
-            _grounded = Physics.SphereCast(ray, radius - 0.05f, 0.051f, _collisionMask);
+            _grounded = Physics.SphereCast(ray, radius - 0.05f, _groundedRadius + 0.001f, _collisionMask);
 
             // used for footstep calc
             _wasGroundedThisFrame = !_currentGrounded && _grounded;
