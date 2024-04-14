@@ -21,8 +21,9 @@ namespace SoldByWizards.UI
         [SerializeField] private TextMeshProUGUI _salePriceText;
         [SerializeField] private Image _itemImage;
 
-        private Tween? colorTween;
-        private Tween? backgroundTween;
+        private Tween? _colorTween;
+        private Tween? _backgroundTween;
+        private ItemSO _cachedItem;
 
         [PublicAPI]
         public void SetSelected(bool selected)
@@ -30,20 +31,25 @@ namespace SoldByWizards.UI
             var startColor = !selected ? Color.white : new Color(0.5f, 0.5f, 0.5f, 0.5f);
             var endColor = selected ? Color.white : new Color(0.5f, 0.5f, 0.5f, 0.5f);
 
-            colorTween?.Cancel();
-            colorTween = _tweenManager.Run(startColor, endColor, _animTime,
+            _colorTween?.Cancel();
+            _colorTween = _tweenManager.Run(startColor, endColor, _animTime,
                 color => _backgroundImage.color = color, Easer.InOutSine);
         }
 
         [PublicAPI]
         public void SetItem(ItemSO item)
         {
-            var startBottom = !item ? -25f : 0;
-            var endBottom = item ? -25f : 0;
+            if (item != _cachedItem)
+            {
+                _cachedItem = item;
+                var startBottom = !item ? -25f : 0;
+                var endBottom = item ? -25f : 0;
 
-            backgroundTween?.Cancel();
-            backgroundTween = _tweenManager.Run(startBottom, endBottom, _animTime,
-                b => _backgroundTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, b, 100f - b), Easer.InOutSine);
+                _backgroundTween?.Cancel();
+                _backgroundTween = _tweenManager.Run(startBottom, endBottom, _animTime,
+                    b => _backgroundTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, b, 100f - b),
+                    Easer.InOutSine);
+            }
 
             var itemSprite = item ? item.ItemIcon : null;
             _itemImage.sprite = itemSprite;

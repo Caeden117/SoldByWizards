@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using SoldByWizards.Player.Interactions;
 using System;
 using SoldByWizards.Input;
+using SoldByWizards.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ namespace SoldByWizards.Items
         private const int MAX_ITEM_COUNT = 4;
 
         [SerializeField] private InteractionsManager _interactionsManager;
+        [SerializeField] private PlayerController _playerController;
         [SerializeField] private InputController _inputController;
 
         public event Action<int, ItemSO> OnItemSelected;
@@ -31,6 +33,14 @@ namespace SoldByWizards.Items
             _selectedSlot = idx % MAX_ITEM_COUNT;
 
             OnItemSelected?.Invoke(_selectedSlot, _heldItems[_selectedSlot]);
+        }
+
+        public void DropAllItems()
+        {
+            for (var i = 0; i < MAX_ITEM_COUNT; i++)
+            {
+                DropItem(i, _playerController.transform.position);
+            }
         }
 
         private void Start()
@@ -65,16 +75,24 @@ namespace SoldByWizards.Items
         {
             if (_heldItemInstances[_selectedSlot] == null) return;
 
-            var colliderBounds = raycastHit.collider.bounds;
-
-            _heldItems[_selectedSlot] = null;
-
-            _heldItemInstances[_selectedSlot].transform.position = ray.GetPoint(raycastHit.distance - _heldItemBounds[_selectedSlot].extents.magnitude);
             _heldItemInstances[_selectedSlot].transform.LookAt(ray.origin, Vector3.up);
-            _heldItemInstances[_selectedSlot].SetActive(true);
-            _heldItemInstances[_selectedSlot] = null;
+            var position = ray.GetPoint(raycastHit.distance - _heldItemBounds[_selectedSlot].extents.magnitude);
 
-            OnItemDrop?.Invoke(_selectedSlot, null);
+            DropItem(_selectedSlot, position);
+        }
+
+        private void DropItem(int itemIdx, Vector3 position)
+        {
+            _heldItems[itemIdx] = null;
+
+            if (_heldItemInstances[itemIdx] != null)
+            {
+                _heldItemInstances[itemIdx].transform.position = position;
+                _heldItemInstances[itemIdx].SetActive(true);
+                _heldItemInstances[itemIdx] = null;
+            }
+
+            OnItemDrop?.Invoke(itemIdx, null);
         }
 
         private void OnDestroy()
