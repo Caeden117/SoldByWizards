@@ -2598,6 +2598,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cffd9fcf7b8f7dc46a51a2fb5f1f6a05, type: 2}
   - {fileID: 11400000, guid: dea0b8935dcef3348a8ac3748f7c1857, type: 2}
   - {fileID: 11400000, guid: 5252996efdd10ea4fbc23597c16fbdfe, type: 2}
+  - {fileID: 11400000, guid: 80ce00ad54501a64085d00cb4366c3e1, type: 2}
+  - {fileID: 11400000, guid: 6a97e5c51f3e8f846819f8cc5b14f985, type: 2}
+  - {fileID: 11400000, guid: d4ff19a1a422e6048a31f8c3043dc723, type: 2}
+  - {fileID: 11400000, guid: 3c2c1d0014d90b74788389872bcaa959, type: 2}
+  - {fileID: 11400000, guid: ba607e7e215314749ae93a892c44c644, type: 2}
   _interactionsManager: {fileID: 4272238469662924679}
   _playerController: {fileID: 5490063951668748881}
   _computerController: {fileID: 6746458872283953923}

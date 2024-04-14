@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf8ab1a859a4a2b8943b1ff88a1c6f2, type: 3}
+  m_Name: BaseballBat
+  m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 6699809195060818920, guid: 48ad9199ca043d541b05e16a274ab86c,
+    type: 3}
+  ItemName: Intruder Whacker
+  ItemDescription: Keep your home safe from ghosts, demons, and others! *Illuzion
+    is not responsible for any bodily harm caused by this item
+  ItemIcon: {fileID: 0}
+  BaseSaleValue: 5
+  StockMarketSeed: 5746.789
+  StockMarketLowModifier: 0.3
+  StockMarketHighModifier: 3
+  MultiSalesPenalty: -0.03
+  TwoHanded: 0
