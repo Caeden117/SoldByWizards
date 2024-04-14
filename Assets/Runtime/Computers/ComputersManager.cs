@@ -8,15 +8,14 @@ using UnityEngine;
 
 namespace SoldByWizards.Computers
 {
-    // You should only be able to interact with one computer at once
-    // this is kind of an amalgamation but it works
+    // handles tabbing in/out of the computer
     public class ComputersManager : MonoBehaviour
     {
         [SerializeField] private InteractionsManager _interactionsManager = null!;
         [SerializeField] private InputController _inputController = null!;
         [SerializeField] private PlayerController _playerController = null!;
         [SerializeField] private TweenManager _tweenManager = null!;
-        [SerializeField] private ComputerItemEntryController _computerItemEntryController = null!;
+        [SerializeField] private ComputerController _computerController = null!;
 
         private Computer? _activeComputer;
 
@@ -64,6 +63,7 @@ namespace SoldByWizards.Computers
         {
             _transitioning = true;
             computer.ComputerCamera.enabled = true;
+            _computerController.ComputerSelected(computer);
 
             // lerp player camera to static computer spot
             await LerpCamValues(
@@ -77,7 +77,7 @@ namespace SoldByWizards.Computers
             );
 
             computer.CustomVisualsWhenEnabled.SetActive(true);
-            _computerItemEntryController.CreateListings(computer);
+            // _computerItemEntryController.CreateListings(computer);
             _transitioning = false;
         }
 
@@ -85,6 +85,7 @@ namespace SoldByWizards.Computers
         {
             _transitioning = true;
             computer.CustomVisualsWhenEnabled.SetActive(false);
+            _computerController.ComputerDeselected(computer);
 
             // lerp static computer spot to player camera
             await LerpCamValues(
