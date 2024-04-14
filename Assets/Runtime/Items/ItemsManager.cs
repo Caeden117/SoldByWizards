@@ -6,6 +6,7 @@ using SoldByWizards.Computers;
 using SoldByWizards.Input;
 using SoldByWizards.Maps;
 using SoldByWizards.Player;
+using SoldByWizards.Util;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,7 @@ namespace SoldByWizards.Items
         [SerializeField] private ComputerController _computerController = null!;
         [SerializeField] private InputController _inputController = null!;
         [SerializeField] private TimedMapLoader _timedMapLoader = null!;
+        [SerializeField] private RandomAudioPool? _pickupSoundAudioPool;
 
         public event Action<int, ItemSO>? OnItemSelected;
         public event Action<int, Item>? OnItemPickup;
@@ -107,6 +109,11 @@ namespace SoldByWizards.Items
             {
                 SelectItem(_selectedSlot + 1);
             }
+
+            if (_pickupSoundAudioPool != null)
+            {
+                _pickupSoundAudioPool.PlayRandom();
+            }
         }
 
         private void OnInteractWithWorld(Ray ray, RaycastHit raycastHit)
@@ -134,6 +141,12 @@ namespace SoldByWizards.Items
             }
 
             OnItemDrop?.Invoke(itemIdx, null);
+
+            // TODO: Different drop sound?
+            if (_pickupSoundAudioPool != null)
+            {
+                _pickupSoundAudioPool.PlayRandom();
+            }
         }
 
         private void OnDestroy()

@@ -655,26 +655,11 @@ PrefabInstance:
       propertyPath: _safetyTeleportPoint
       value: 
       objectReference: {fileID: 1973257553}
-    - target: {fileID: 4361288000629244623, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4361288000629244623, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8084436169350973543, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
       propertyPath: _glyphAggregator
       value: 
       objectReference: {fileID: 1925426600}
-    - target: {fileID: 8662494213230341615, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -11.75
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

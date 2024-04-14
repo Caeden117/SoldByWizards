@@ -45,14 +45,14 @@ namespace SoldByWizards.Computers
             foreach (var listing in _spawnedItemListings)
             {
                 listing.gameObject.SetActive(false);
-                Destroy(listing);
+                Destroy(listing.gameObject);
             }
             _spawnedItemListings.Clear();
 
             if (_finalListing != null)
             {
                 _finalListing.gameObject.SetActive(false);
-                Destroy(_finalListing);
+                Destroy(_finalListing.gameObject);
             }
             _finalListing = null;
 
