@@ -652,6 +652,11 @@ PrefabInstance:
       objectReference: {fileID: 1925426600}
     - target: {fileID: 2724631481037577657, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
+      propertyPath: _mapLoadedDuration
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724631481037577657, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
       propertyPath: _safetyTeleportPoint
       value: 
       objectReference: {fileID: 1973257553}

@@ -68,9 +68,9 @@ namespace SoldByWizards.Maps
 
                 _playerController.Rigidbody.position = _safetyTeleportPoint.position;
                 _playerCamera.transform.rotation = _safetyTeleportPoint.rotation;
+                await UniTask.Yield();
             }
 
-            await UniTask.Yield();
             await _mapLoader.UnloadMap();
 
             _timeSinceLastPortalClose = Time.time;
