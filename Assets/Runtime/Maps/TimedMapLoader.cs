@@ -22,6 +22,7 @@ namespace SoldByWizards.Maps
         [SerializeField] private GlyphAggregator _glyphAggregator;
         [SerializeField] private Transform _safetyTeleportPoint;
         [SerializeField] private ItemsManager _itemsManager;
+        [SerializeField] private float _portalCooldown = 0.5f;
 
         public event Action OnTimerStarted;
         public event Action OnTimerEnded;
@@ -34,10 +35,12 @@ namespace SoldByWizards.Maps
 
         private readonly Stopwatch _timer = new();
 
+        private float _timeSinceLastPortalClose;
+
         [PublicAPI]
         public async UniTask LoadMapOnTimer(CancellationToken token = default)
         {
-            if (_timer.IsRunning) return;
+            if (_timer.IsRunning || (Time.time - _timeSinceLastPortalClose) < _portalCooldown) return;
 
             _timer.Restart();
             OnTimerStarted?.Invoke();
@@ -58,6 +61,8 @@ namespace SoldByWizards.Maps
             OnTimerEnded?.Invoke();
 
             await _mapLoader.UnloadMap();
+
+            _timeSinceLastPortalClose = Time.time;
 
             // dirtiest gamejam hack of my life
             if (!(_playerController.transform.position.z > 0)) return;
