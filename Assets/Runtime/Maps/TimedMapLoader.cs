@@ -44,6 +44,8 @@ namespace SoldByWizards.Maps
 
             await _mapLoader.LoadMapFromGlyphs();
 
+            _glyphAggregator.ClearAllGlyphs();
+
             var target = TimeSpan.FromSeconds(_mapLoadedDuration);
 
             do

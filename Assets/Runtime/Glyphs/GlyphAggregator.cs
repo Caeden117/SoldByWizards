@@ -34,5 +34,14 @@ namespace SoldByWizards.Glyphs
 
             return hash;
         }
+
+        [PublicAPI]
+        public void ClearAllGlyphs()
+        {
+            for (var i = 0; i < _glyphControllers.Length; i++)
+            {
+                _glyphControllers[i].Clear();
+            }
+        }
     }
 }

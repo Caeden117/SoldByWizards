@@ -81,6 +81,12 @@ namespace SoldByWizards.Glyphs
             }
         }
 
+        public void Clear()
+        {
+            _numPoints = 0;
+            CancelDraw();
+        }
+
         private void Start() => _inputController.Input.Glyphs.AddCallbacks(this);
 
         private void Update()
