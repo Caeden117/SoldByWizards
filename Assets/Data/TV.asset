@@ -19,7 +19,7 @@ MonoBehaviour:
     radio waves prior to discovering the inhabitants of the RF dimension. Relive
     the Content of days past in high-quality SD from the comfort of your wide sittingdevice!
   ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
-  BaseSaleValue: 0
+  BaseSaleValue: 5
   StockMarketSeed: 5319.722
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3

@@ -19,7 +19,7 @@ MonoBehaviour:
     hit video game series Double Life. *Illuzion is not responsible for any bodily
     harm caused by this item
   ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
-  BaseSaleValue: 0
+  BaseSaleValue: 5
   StockMarketSeed: 22759.05
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3

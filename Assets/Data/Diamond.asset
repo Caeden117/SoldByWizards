@@ -18,7 +18,7 @@ MonoBehaviour:
   ItemDescription: Once a gemstone with a manufactured market behind it, prices have
     plummeted due to abundant pockets of the ore discovered in Winecraft
   ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
-  BaseSaleValue: 0
+  BaseSaleValue: 5
   StockMarketSeed: 3059.857
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
