@@ -21,5 +21,5 @@ MonoBehaviour:
   StockMarketSeed: 10420.615
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
-  MultiSalesPenalty: -0.03
+  MultiSalesPenalty: -0.1
   TwoHanded: 0

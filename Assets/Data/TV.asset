@@ -15,13 +15,12 @@ MonoBehaviour:
   ItemPrefab: {fileID: 6699809195060818920, guid: 10fc13a9787690e4d8403bf7ce5354fe,
     type: 3}
   ItemName: TV
-  ItemDescription: A retro relic of the past from when media was distributed via
-    radio waves prior to discovering the inhabitants of the RF dimension. Relive
-    the Content of days past in high-quality SD from the comfort of your wide sittingdevice!
+  ItemDescription: A retro relic of the past. Relive content of days past in high-quality
+    SD from the comfort of your wide sitting device!
   ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
   BaseSaleValue: 5
   StockMarketSeed: 5319.722
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
-  MultiSalesPenalty: -0.03
+  MultiSalesPenalty: -0.1
   TwoHanded: 0
