@@ -23,6 +23,7 @@ namespace SoldByWizards.UI
         private void OnEnable()
         {
             _gameController.OnDayProgressUpdated += OnDayProgressUpdated;
+            _gameController.OnDaySucceeded += Clear;
             _timedMapLoader.OnTimerStarted += OnTimerStarted;
             _timedMapLoader.OnTimerEnded += OnTimerEnded;
         }
@@ -53,9 +54,10 @@ namespace SoldByWizards.UI
 
         private void OnDisable()
         {
-            _gameController.OnDayProgressUpdated += OnDayProgressUpdated;
-            _timedMapLoader.OnTimerStarted += OnTimerStarted;
-            _timedMapLoader.OnTimerEnded += OnTimerEnded;
+            _gameController.OnDayProgressUpdated -= OnDayProgressUpdated;
+            _gameController.OnDaySucceeded -= Clear;
+            _timedMapLoader.OnTimerStarted -= OnTimerStarted;
+            _timedMapLoader.OnTimerEnded -= OnTimerEnded;
         }
 
 
