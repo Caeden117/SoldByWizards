@@ -60,7 +60,11 @@ namespace SoldByWizards.Maps
             // dirtiest gamejam hack of my life
             if (!(_playerController.transform.position.z > 0)) return;
 
+            _playerController.Stop();
             _itemsManager.DropAllItems();
+
+            await UniTask.Yield();
+
             _playerController.transform.position = _safetyTeleportPoint.position;
             _playerCamera.transform.rotation = _safetyTeleportPoint.rotation;
         }
