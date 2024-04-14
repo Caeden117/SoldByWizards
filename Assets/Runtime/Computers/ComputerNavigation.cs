@@ -147,9 +147,15 @@ namespace SoldByWizards.Computers
 
         private void OnItemsCollected(List<Item> items)
         {
-            // _itemsWaitingForSale.AddRange(items);
             _itemsWaitingForSale = items;
-            SetListingPageState(ListingPageState.ItemsToList);
+            if (items.Count == 0)
+            {
+                SetListingPageState(ListingPageState.NoItemsToList);
+            }
+            else
+            {
+                SetListingPageState(ListingPageState.ItemsToList);
+            }
         }
 
         private void OnComputerSelected(Computer computer)
