@@ -6,6 +6,8 @@ namespace SoldByWizards.Items
 {
     public static class StockMarket
     {
+        public static float GameTime = 0;
+
         private static Dictionary<ItemSO, int> _timesSold = new();
 
         public static float CalculatePriceFor(ItemSO item)
@@ -13,7 +15,7 @@ namespace SoldByWizards.Items
             var baseSale = item.BaseSaleValue;
 
             // TODO: TAKE DAYS INTO ACCOUNT FOR STOCK MARKET CALCULATIONS
-            var stockMarketNormalizedMultiplier = Mathf.PerlinNoise(item.StockMarketSeed, 0);
+            var stockMarketNormalizedMultiplier = Mathf.PerlinNoise(GameTime, item.StockMarketSeed);
 
             var stockMarketMultiplier = Remap(stockMarketNormalizedMultiplier, 0, 1,
                 item.StockMarketLowModifier, item.StockMarketHighModifier);
@@ -22,10 +24,14 @@ namespace SoldByWizards.Items
                 ? timesSold * item.MultiSalesPenalty
                 : 0.0f;
 
-            return baseSale * (stockMarketMultiplier - penalty);
+            return baseSale * (stockMarketMultiplier + penalty);
         }
 
-        public static void OnItemSold(ItemSO item) => _timesSold[item]++;
+        public static void OnItemSold(ItemSO item)
+        {
+            if (!_timesSold.TryAdd(item, 1))
+                _timesSold[item]++;
+        }
 
         public static void ResetStockMarket() => _timesSold.Clear();
 

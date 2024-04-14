@@ -67,6 +67,10 @@ namespace SoldByWizards.Game
                 _dayIsProgressing = true;
                 _currentDay += 1;
 
+                // Progress stock market, reset penalties from selling items
+                StockMarket.GameTime += 1;
+                StockMarket.ResetStockMarket();
+
                 // minus rent from money
                 _currentMoney -= rent;
             }
@@ -135,6 +139,8 @@ namespace SoldByWizards.Game
                 item.SellAnimation();
             }
 
+            // Update stock market
+            StockMarket.OnItemSold(item.ItemSO);
             Debug.Log($"Total money is now {_currentMoney}");
         }
     }

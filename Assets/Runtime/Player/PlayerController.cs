@@ -61,6 +61,8 @@ namespace SoldByWizards.Player
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        public void Stop() => _rigidbody.velocity = _rigidbody.angularVelocity = Vector3.zero;
+
         private void OnPlayerDeath()
         {
             _rigidbody.constraints = RigidbodyConstraints.None;
