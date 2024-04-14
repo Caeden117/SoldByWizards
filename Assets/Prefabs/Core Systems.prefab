@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _glyphAggregator: {fileID: 0}
-  _allMapSceneIdx: 01000000
+  _allMapSceneIdx: 0100000002000000
 --- !u!114 &2724631481037577657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   _itemsManager: {fileID: 6521334697690380257}
   _baseRentAmount: 50
   _rentIncreasePerCycle: 25
-  _secondsPerRentCycle: 20
+  _secondsPerRentCycle: 300
   _sellCheckTimeRange: {x: 2, y: 5}
 --- !u!1 &1019312459591802331
 GameObject:
