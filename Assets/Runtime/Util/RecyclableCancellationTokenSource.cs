@@ -7,25 +7,15 @@ namespace SoldByWizards.Util
     [PublicAPI]
     public class RecyclableCancellationTokenSource : IDisposable
     {
-        public CancellationToken Token { get; private set; }
+        public CancellationToken Token => _cancellationTokenSource?.Token ?? default;
 
-        private CancellationTokenSource? _cancellationTokenSource;
-
-        public RecyclableCancellationTokenSource() => RecycleToken();
+        private CancellationTokenSource? _cancellationTokenSource = new();
 
         public void Cancel()
         {
             _cancellationTokenSource?.Cancel();
-            RecycleToken();
-        }
-
-        private void RecycleToken()
-        {
-            // :3
-            Dispose();
-
-            _cancellationTokenSource = new();
-            Token = _cancellationTokenSource.Token;
+            _cancellationTokenSource?.Dispose();
+            _cancellationTokenSource = new CancellationTokenSource();
         }
 
         public void Dispose() => _cancellationTokenSource?.Dispose();

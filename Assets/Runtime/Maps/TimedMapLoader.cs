@@ -1,11 +1,13 @@
 using System;
 using System.Diagnostics;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using SoldByWizards.Glyphs;
 using SoldByWizards.Items;
 using SoldByWizards.Player;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace SoldByWizards.Maps
 {
@@ -33,7 +35,7 @@ namespace SoldByWizards.Maps
         private readonly Stopwatch _timer = new();
 
         [PublicAPI]
-        public async UniTask LoadMapOnTimer()
+        public async UniTask LoadMapOnTimer(CancellationToken token = default)
         {
             if (_timer.IsRunning) return;
 
@@ -42,7 +44,13 @@ namespace SoldByWizards.Maps
 
             await _mapLoader.LoadMapFromGlyphs();
 
-            await UniTask.Delay(TimeSpan.FromSeconds(_mapLoadedDuration));
+            var target = TimeSpan.FromSeconds(_mapLoadedDuration);
+
+            do
+            {
+                await UniTask.Yield();
+            }
+            while (!token.IsCancellationRequested && _timer.Elapsed < target);
 
             _timer.Stop();
             OnTimerEnded?.Invoke();
