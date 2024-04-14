@@ -1,5 +1,7 @@
+using System;
 using SoldByWizards.Input;
 using System.Collections.Generic;
+using SoldByWizards.Game;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +23,9 @@ namespace SoldByWizards.Player
 
         [SerializeField]
         private InputController _inputController = null!;
+
+        [SerializeField]
+        private GameController _gameController = null!;
 
         [SerializeField]
         private LayerMask _collisionMask;
@@ -62,7 +67,11 @@ namespace SoldByWizards.Player
             _inputController.Input.Player.AddCallbacks(this);
 
             Cursor.lockState = CursorLockMode.Locked;
+
+            _gameController.OnDayFailed += OnPlayerDeath;
         }
+
+        private void OnDestroy() => _gameController.OnDayFailed -= OnPlayerDeath;
 
         public void Stop() => _rigidbody.velocity = _rigidbody.angularVelocity = Vector3.zero;
 
