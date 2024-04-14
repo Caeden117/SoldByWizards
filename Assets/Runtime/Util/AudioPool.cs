@@ -37,6 +37,9 @@ namespace SoldByWizards.Util
         [Space, SerializeField]
         private int _initialPoolSize = 0;
 
+        [SerializeField]
+        private int _maxPoolSize = 10000;
+
         private List<AudioSource> _activeSources = new();
         private ObjectPool<AudioSource> _objectPool = null!;
 
@@ -56,7 +59,8 @@ namespace SoldByWizards.Util
                 null, // Nothing special needed on release
                 null, // Nothing special needed on destroy
                 false,
-                _initialPoolSize);
+                _initialPoolSize,
+                _maxPoolSize);
 
         private void Update()
         {

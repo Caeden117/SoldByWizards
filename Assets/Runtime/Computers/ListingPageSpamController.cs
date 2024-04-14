@@ -3,6 +3,7 @@ using System.Linq;
 using AuraTween;
 using Cysharp.Threading.Tasks;
 using SoldByWizards.Items;
+using SoldByWizards.Util;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
@@ -12,7 +13,6 @@ namespace SoldByWizards.Computers
 {
     public class ListingPageSpamController : MonoBehaviour
     {
-        // TODO: Hook up dynamically
         [SerializeField] private Computer _computer;
         [SerializeField] private ComputerController _computerController = null!;
         [SerializeField] private TweenManager _tweenManager;
@@ -22,6 +22,7 @@ namespace SoldByWizards.Computers
         [SerializeField] private float _itemListingContainerHeight = -5000f;
         [SerializeField] private float _pageScrollAnimationLength = 1f;
         [SerializeField] private Ease _pageScrollAnimationEase = Ease.Linear;
+        [SerializeField] private RandomAudioPool? _keyboardSoundAudioPool;
 
         private List<ItemListing> _spawnedItemListings = new();
         private int _totalCharactersTyped = 0;
@@ -125,6 +126,10 @@ namespace SoldByWizards.Computers
 
             _totalCharactersTyped += _characterMultiplier;
             SetTotalTextTyped(_totalCharactersTyped);
+            if (_keyboardSoundAudioPool != null)
+            {
+                _keyboardSoundAudioPool.PlayRandom();
+            }
         }
 
         private void SetTotalTextTyped(int totalCharactersTyped)
