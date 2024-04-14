@@ -65,8 +65,6 @@ namespace SoldByWizards.Game
             if (_currentMoney < rent)
             {
                 // fail player, game over
-                Debug.LogError("YOU FREAKIN' DIED!");
-
                 OnDayFailed?.Invoke();
             }
             else
