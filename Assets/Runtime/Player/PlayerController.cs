@@ -9,6 +9,7 @@ namespace SoldByWizards.Player
     {
         public Camera Camera => _camera;
         public bool IsGrounded => _grounded;
+        public bool WasGroundedThisFrame => _wasGroundedThisFrame;
 
         private CapsuleCollider _capsuleCollider = null!;
         private Rigidbody _rigidbody = null!;
@@ -45,6 +46,7 @@ namespace SoldByWizards.Player
         private float _jumpForce = 0f;
 
         private bool _grounded = false;
+        private bool _wasGroundedThisFrame = false;
         private bool _inputJumping = false;
         private bool _inputCrouching = false;
         private Vector2 _inputMovement = Vector2.zero;
@@ -153,7 +155,11 @@ namespace SoldByWizards.Player
         {
             var radius = _capsuleCollider.radius;
             var ray = new Ray(transform.position + new Vector3(0f, _capsuleCollider.height * -0.5f + radius, 0f), Vector3.down);
+            bool _currentGrounded = _grounded;
             _grounded = Physics.SphereCast(ray, radius - 0.05f, 0.051f, _collisionMask);
+
+            // used for footstep calc
+            _wasGroundedThisFrame = !_currentGrounded && _grounded;
         }
 
         public void OnJump(InputAction.CallbackContext context)

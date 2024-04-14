@@ -35,6 +35,11 @@ namespace SoldByWizards.Player
                 _audioPool.Play(_stepClip);
                 _timeSinceLastStep = 0f;
             }
+            else if (_playerController.WasGroundedThisFrame && _timeSinceLastStep > 0.3f)
+            {
+                _audioPool.Play(_stepClip);
+                _timeSinceLastStep = 0f;
+            }
         }
     }
 }
