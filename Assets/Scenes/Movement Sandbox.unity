@@ -1113,6 +1113,21 @@ PrefabInstance:
       propertyPath: _safetyTeleportPoint
       value: 
       objectReference: {fileID: 823025090}
+    - target: {fileID: 7470697617300697094, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470697617300697094, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7470697617300697094, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8084436169350973543, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
       propertyPath: _glyphAggregator

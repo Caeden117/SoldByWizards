@@ -1,7 +1,10 @@
 using JetBrains.Annotations;
 using SoldByWizards.Player.Interactions;
 using System;
+using System.Collections.Generic;
+using SoldByWizards.Computers;
 using SoldByWizards.Input;
+using SoldByWizards.Maps;
 using SoldByWizards.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,17 +16,20 @@ namespace SoldByWizards.Items
     {
         private const int MAX_ITEM_COUNT = 4;
 
-        [SerializeField] private InteractionsManager _interactionsManager;
-        [SerializeField] private PlayerController _playerController;
-        [SerializeField] private InputController _inputController;
+        [SerializeField] private InteractionsManager _interactionsManager = null!;
+        [SerializeField] private PlayerController _playerController = null!;
+        [SerializeField] private ComputerController _computerController = null!;
+        [SerializeField] private InputController _inputController = null!;
+        [SerializeField] private TimedMapLoader _timedMapLoader = null!;
 
-        public event Action<int, ItemSO> OnItemSelected;
-        public event Action<int, ItemSO> OnItemPickup;
-        public event Action<int, ItemSO> OnItemDrop;
+        public event Action<int, ItemSO>? OnItemSelected;
+        public event Action<int, ItemSO>? OnItemPickup;
+        public event Action<int, ItemSO>? OnItemDrop;
 
         private readonly ItemSO[] _heldItems = new ItemSO[MAX_ITEM_COUNT];
-        private readonly GameObject[] _heldItemInstances = new GameObject[MAX_ITEM_COUNT];
+        private readonly Item[] _heldItemInstances = new Item[MAX_ITEM_COUNT];
         private readonly Bounds[] _heldItemBounds = new Bounds[MAX_ITEM_COUNT];
+        private readonly List<Item?> _droppedItems = new();
 
         private int _selectedSlot = 0;
 
@@ -47,6 +53,7 @@ namespace SoldByWizards.Items
         {
             _interactionsManager.OnObjectInteract += OnObjectInteract;
             _interactionsManager.OnInteractWithWorld += OnInteractWithWorld;
+            _timedMapLoader.OnTimerEnded += OnTimerEnded;
 
             _inputController.Input.Inventory.AddCallbacks(this);
         }
@@ -64,9 +71,12 @@ namespace SoldByWizards.Items
             }
 
             _heldItems[_selectedSlot] = item.ItemSO;
-            _heldItemInstances[_selectedSlot] = raycastHit.transform.gameObject;
+            _heldItemInstances[_selectedSlot] = item;
             _heldItemBounds[_selectedSlot] = collider.bounds;
-            _heldItemInstances[_selectedSlot].SetActive(false);
+            _heldItemInstances[_selectedSlot].gameObject.SetActive(false);
+
+            if (_droppedItems.Contains(item))
+                _droppedItems.Remove(item);
 
             OnItemPickup?.Invoke(_selectedSlot, item.ItemSO);
         }
@@ -87,8 +97,11 @@ namespace SoldByWizards.Items
 
             if (_heldItemInstances[itemIdx] != null)
             {
+                if (!_droppedItems.Contains(_heldItemInstances[itemIdx]))
+                    _droppedItems.Add(_heldItemInstances[itemIdx]);
+
                 _heldItemInstances[itemIdx].transform.position = position;
-                _heldItemInstances[itemIdx].SetActive(true);
+                _heldItemInstances[itemIdx].gameObject.SetActive(true);
                 _heldItemInstances[itemIdx] = null;
             }
 
@@ -99,6 +112,41 @@ namespace SoldByWizards.Items
         {
             _interactionsManager.OnObjectInteract -= OnObjectInteract;
             _interactionsManager.OnInteractWithWorld -= OnInteractWithWorld;
+            _timedMapLoader.OnTimerEnded -= OnTimerEnded;
+        }
+
+        private void OnTimerEnded()
+        {
+            // Rally up all the items we have, so we can get ready to sell.
+            Debug.Log("timer is over, selling...");
+            Debug.Log(_droppedItems.Count);
+
+            List<Item> items = new();
+            foreach (var item in _droppedItems)
+            {
+                if (item == null)
+                    continue;
+
+                // make our best guess as to if this mesh is real
+                // this kinda sucks please fix this with a collider or something lol
+                bool inBounds = item.transform.position.z < 0;
+                if (inBounds)
+                {
+                    items.Add(item);
+                }
+            }
+
+            // Count held items as items that can be sold
+            foreach (var heldItem in _heldItemInstances)
+            {
+                if (heldItem == null)
+                    continue;
+
+                items.Add(heldItem);
+            }
+
+            // mark items as collected in the computer
+            _computerController.RegisterCollectedItems(items);
         }
 
         public void OnScrollInventory(InputAction.CallbackContext context)

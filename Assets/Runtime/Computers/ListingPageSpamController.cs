@@ -27,10 +27,10 @@ namespace SoldByWizards.Computers
         private int _currentItem = 0;
         private bool _receiveKeyboardInput = false;
         private bool _selected = false;
-        private List<ItemSO> _currentItems = new();
+        private List<Item> _currentItems = new();
 
         // call when coming back from a teleport
-        public void CreateListings(List<ItemSO> items)
+        public void CreateListings(List<Item> items)
         {
             // TODO: Better state management
             if (_receiveKeyboardInput)
@@ -51,7 +51,7 @@ namespace SoldByWizards.Computers
                 var itemListing = Instantiate(_itemListingTemplate, _computer.ItemListingContainer);
                 _spawnedItemListings.Add(itemListing);
                 itemListing.Clear();
-                itemListing.SetItem(item);
+                itemListing.SetItem(item.ItemSO!);
             }
 
             // reset typing

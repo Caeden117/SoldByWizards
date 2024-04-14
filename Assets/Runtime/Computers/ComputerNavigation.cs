@@ -25,7 +25,7 @@ namespace SoldByWizards.Computers
         [SerializeField] private TextMeshProUGUI _itemsToSellTitleText = null!;
         [SerializeField] private TextMeshProUGUI _itemsToSellText = null!;
 
-        private List<ItemSO> _itemsWaitingForSale = new();
+        private List<Item> _itemsWaitingForSale = new();
         private ComputerPage _activePage = ComputerPage.Profile;
         private ListingPageState _listingPageState = ListingPageState.NoItemsToList;
         private bool _selected = false;
@@ -108,7 +108,7 @@ namespace SoldByWizards.Computers
             string descriptionText = "";
             foreach (var itemToSell in _itemsWaitingForSale)
             {
-                descriptionText += $"{itemToSell.name}\n";
+                descriptionText += $"{itemToSell.ItemSO.ItemName}\n";
             }
 
             _itemsToSellTitleText.text = $"Creating listing for {_itemsWaitingForSale.Count} items:";
@@ -145,9 +145,10 @@ namespace SoldByWizards.Computers
             _computerController.OnItemsCollected -= OnItemsCollected;
         }
 
-        private void OnItemsCollected(List<ItemSO> items)
+        private void OnItemsCollected(List<Item> items)
         {
-            _itemsWaitingForSale.AddRange(items);
+            // _itemsWaitingForSale.AddRange(items);
+            _itemsWaitingForSale = items;
             SetListingPageState(ListingPageState.ItemsToList);
         }
 

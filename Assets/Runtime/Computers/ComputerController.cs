@@ -9,21 +9,18 @@ namespace SoldByWizards.Computers
     // used for external events and hooking things up
     public class ComputerController : MonoBehaviour
     {
-        [SerializeField]
-        private List<ItemSO> _debugItems = new();
-
-        public event Action<List<ItemSO>>? OnItemsCollected;
-        public event Action<List<ItemSO>>? OnItemsListedForSale;
+        public event Action<List<Item>>? OnItemsCollected;
+        public event Action<List<Item>>? OnItemsListedForSale;
         public event Action<Computer>? OnComputerSelected;
         public event Action<Computer>? OnComputerDeselected;
         public event Action OnSpamTypingFinished;
 
-        public void RegisterCollectedItems(List<ItemSO> items)
+        public void RegisterCollectedItems(List<Item> items)
         {
             OnItemsCollected?.Invoke(items);
         }
 
-        public void ListItemsForSale(List<ItemSO> items)
+        public void ListItemsForSale(List<Item> items)
         {
             OnItemsListedForSale?.Invoke(items);
         }
@@ -41,12 +38,6 @@ namespace SoldByWizards.Computers
         public void FinishSpamTyping()
         {
             OnSpamTypingFinished?.Invoke();
-        }
-
-        public async void Start()
-        {
-            await UniTask.Delay(5000);
-            RegisterCollectedItems(_debugItems);
         }
     }
 }
