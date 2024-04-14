@@ -64,11 +64,10 @@ namespace SoldByWizards.UI
 
         private void OnTimerEnded()
         {
-            _isRunning = false;
-
             activeTween?.Cancel();
             activeTween = _tweenManager.Run(1f, 0f, _animTime,
                 s => transform.localScale = s * Vector3.one, Easer.InElastic);
+            activeTween.Value.SetOnComplete(() => _isRunning = false);
         }
 
         private void OnDestroy()
