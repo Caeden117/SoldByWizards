@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ShipDeck
+  m_Name: ShippingContainer 1
   m_Shader: {fileID: -6465566751694194690, guid: 3f22efd09e757c04b8dcf4832ad1c082,
     type: 3}
   m_Parent: {fileID: 0}
@@ -73,7 +73,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2D:
-        m_Texture: {fileID: 2800000, guid: 7a71d4c77468bf84f8029da478295609, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2586ee83962616f4aa0faa183c03a5da, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -101,7 +101,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Detail_Intensity: 0.2
+    - _Detail_Intensity: 0.11
     - _Detail_Scale: 0.25
     - _DstBlend: 0
     - _DstBlendAlpha: 0
@@ -110,6 +110,8 @@ Material:
     - _Glossiness: 0
     - _GlossinessSource: 0
     - _GlossyReflections: 0
+    - _HueShiftMult: 13.54
+    - _HueShiftStrength: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -129,9 +131,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
-    - _Color: {r: 0.384, g: 0.28382608, b: 0.21704347, a: 1}
+    - _Color: {r: 0.14509808, g: 0.44705883, b: 0.38738766, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _VectorMult: {r: 0.2, g: 0.5, b: 0.2, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4685340638288532211
 MonoBehaviour:

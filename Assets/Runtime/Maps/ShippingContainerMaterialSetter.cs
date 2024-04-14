@@ -28,7 +28,7 @@ namespace SoldByWizards.Maps
                 var mat = _possibleMaterials[Random.Range(0, _possibleMaterials.Count)];
                 foreach (var coloredRenderer in shippingContainer.ColoredRenderers)
                 {
-                    coloredRenderer.sharedMaterials[0] = mat;
+                    coloredRenderer.sharedMaterial = mat;
                 }
             }
         }

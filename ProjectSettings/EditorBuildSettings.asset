@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/Illuzion Warehouse.unity
     guid: 29fb2135c4e076d4a878c15f961bcba7
+  - enabled: 1
+    path: Assets/Scenes/Maps/Ship.unity
+    guid: 4c1ac996369a3e2428722a098a067fdf
   m_configObjects: {}

@@ -665,6 +665,16 @@ PrefabInstance:
       propertyPath: _glyphAggregator
       value: 
       objectReference: {fileID: 1925426600}
+    - target: {fileID: 8084436169350973543, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: _allMapSceneIdx.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8084436169350973543, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: _allMapSceneIdx.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
