@@ -18,7 +18,7 @@ namespace SoldByWizards.Items
         [Header("Stock Market")] public float StockMarketSeed = (float)(rng.NextDouble() * short.MaxValue);
         public float StockMarketLowModifier = 0.3f;
         public float StockMarketHighModifier = 3.0f;
-        public float MultiSalesPenalty = -0.03f;
+        public float MultiSalesPenalty = -0.1f;
 
         public bool TwoHanded = false;
     }
