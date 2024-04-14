@@ -17,7 +17,9 @@ namespace SoldByWizards.Items
     {
         private const int MAX_ITEM_COUNT = 4;
 
-        [SerializeField] private InteractionsManager _interactionsManager = null!;
+        public ItemSO[] GlobalObjectPool;
+        
+        [Space, SerializeField] private InteractionsManager _interactionsManager = null!;
         [SerializeField] private PlayerController _playerController = null!;
         [SerializeField] private ComputerController _computerController = null!;
         [SerializeField] private InputController _inputController = null!;
