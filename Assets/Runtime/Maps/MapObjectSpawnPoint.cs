@@ -1,5 +1,7 @@
+using System;
 using SoldByWizards.Items;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SoldByWizards.Maps
 {
@@ -8,7 +10,7 @@ namespace SoldByWizards.Maps
         [SerializeField] private float _spawnChance = 0.75f;
         [SerializeField] private ItemSO[] _itemPrefabs;
 
-        public bool HasItem { get; private set; }
+        private Item _item = null!;
 
         public void RandomSpawn()
         {
@@ -19,9 +21,7 @@ namespace SoldByWizards.Maps
 
         public void Spawn()
         {
-            if (HasItem) return;
-
-            HasItem = true;
+            if (_item) return;
 
             var randomIdx = Random.Range(0, _itemPrefabs.Length);
             var t = transform;
@@ -34,12 +34,22 @@ namespace SoldByWizards.Maps
                 return;
             }
 
-            var item = Instantiate(itemSO.ItemPrefab, t.position, t.rotation);
+            _item = Instantiate(itemSO.ItemPrefab, t.position, t.rotation);
 
-            item.transform.localEulerAngles = item.transform.localEulerAngles.WithY(Random.Range(0f, 360f));
+            _item.transform.localEulerAngles = _item.transform.localEulerAngles.WithY(Random.Range(0f, 360f));
 
-            item.ItemSO = itemSO;
-            item.SellPrice = StockMarket.CalculatePriceFor(itemSO);
+            _item.ItemSO = itemSO;
+            _item.SellPrice = StockMarket.CalculatePriceFor(itemSO);
+            _item.SpawnPoint = this;
+        }
+
+        public void ClearSpawn() => _item = null;
+
+        private void OnDestroy()
+        {
+            if (!_item) return;
+
+            DestroyImmediate(_item.gameObject);
         }
     }
 }

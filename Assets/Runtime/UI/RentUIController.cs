@@ -23,6 +23,7 @@ namespace SoldByWizards.UI
 
         private float _currentXPosition = 0f;
         private float? _currentSpanXPosition;
+        private float _currentRent;
         private TimelineSpan? _currentSpan;
         private TimelineSpan? _previewSpan;
         private List<TimelineSpan> _spans = new();
@@ -32,6 +33,8 @@ namespace SoldByWizards.UI
             _gameController.OnDayProgressUpdated += OnDayProgressUpdated;
             _gameController.OnDaySucceeded += OnDaySucceeded;
             _gameController.OnItemSold += OnItemSold;
+
+            _currentRent = _gameController.CurrentRent;
 
             _timedMapLoader.OnTimerStarted += OnTimerStarted;
             _timedMapLoader.OnTimerEnded += OnTimerEnded;
@@ -115,6 +118,26 @@ namespace SoldByWizards.UI
             FlyOutProfitText(salePrice).Forget();
         }
 
+        private void OnDaySucceeded()
+        {
+            _moneyText.text = $"${_gameController.CurrentMoney:N2}";
+            _rentText.text = $"${_gameController.CurrentRent:N2}";
+            Clear();
+            FlyOutRentText(_currentRent).Forget();
+            _currentRent = _gameController.CurrentRent;
+        }
+
+        private void OnDayProgressUpdated(float progressAmount)
+        {
+            _currentXPosition = _barLength * progressAmount;
+            _barRectTransform.anchoredPosition = new Vector2(_currentXPosition, _barRectTransform.anchoredPosition.y);
+
+            if (_currentSpan != null && _currentSpanXPosition != null)
+            {
+                _currentSpan.RectTransform.sizeDelta = new Vector2(_currentXPosition - _currentSpanXPosition.Value, _currentSpan.RectTransform.sizeDelta.y);
+            }
+        }
+
         private async UniTask FlyOutProfitText(float saleAmount)
         {
             var duplicate = Instantiate(_moneyText, _moneyText.transform.parent);
@@ -133,22 +156,22 @@ namespace SoldByWizards.UI
             Destroy(duplicate);
         }
 
-        private void OnDaySucceeded()
+        private async UniTask FlyOutRentText(float rent)
         {
-            _moneyText.text = $"${_gameController.CurrentMoney:N2}";
-            _rentText.text = $"${_gameController.CurrentRent:N2}";
-            Clear();
-        }
+            var duplicate = Instantiate(_moneyText, _moneyText.transform.parent);
 
-        private void OnDayProgressUpdated(float progressAmount)
-        {
-            _currentXPosition = _barLength * progressAmount;
-            _barRectTransform.anchoredPosition = new Vector2(_currentXPosition, _barRectTransform.anchoredPosition.y);
+            duplicate.text = $"- ${rent:N2}";
 
-            if (_currentSpan != null && _currentSpanXPosition != null)
-            {
-                _currentSpan.RectTransform.sizeDelta = new Vector2(_currentXPosition - _currentSpanXPosition.Value, _currentSpan.RectTransform.sizeDelta.y);
-            }
+            var tween = _tweenManager.Run(Color.red, Color.red.WithA(0), 1f,
+                c => duplicate.color = c, Easer.OutCubic);
+
+            _tweenManager.Run(-25, -100f, 1f,
+                y => duplicate.rectTransform.anchoredPosition = duplicate.rectTransform.anchoredPosition.WithY(y),
+                Easer.OutExpo);
+
+            await tween;
+
+            Destroy(duplicate);
         }
     }
 }
