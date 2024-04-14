@@ -27,15 +27,16 @@ namespace SoldByWizards.Maps
             var t = transform;
 
             var itemSO = _itemPrefabs[randomIdx];
-            var item = Instantiate(itemSO.ItemPrefab, t.position, t.rotation);
 
-            if (item == null)
+            if (itemSO.ItemPrefab  == null)
             {
                 Debug.LogError("OOPS! SOMEONE FORGOT TO ASSIGN THE ITEM PREFAB!!");
                 return;
             }
 
-            item.transform.eulerAngles = new Vector3(0, Random.Range(0f, 360f), 0f);
+            var item = Instantiate(itemSO.ItemPrefab, t.position, t.rotation);
+
+            item.transform.localEulerAngles = item.transform.localEulerAngles.WithY(Random.Range(0f, 360f));
 
             item.ItemSO = itemSO;
         }
