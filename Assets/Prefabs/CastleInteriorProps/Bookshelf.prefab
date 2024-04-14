@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 127
   m_IsActive: 1
 --- !u!4 &5710828641213631252
 Transform:
@@ -131,6 +131,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Books
       objectReference: {fileID: 0}
+    - target: {fileID: 2271960890058667460, guid: d3400671ddb34274e989b97621c7da30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
+      objectReference: {fileID: 0}
     - target: {fileID: 3259112635800442913, guid: d3400671ddb34274e989b97621c7da30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -227,6 +232,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Books
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271960890058667460, guid: d3400671ddb34274e989b97621c7da30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 3259112635800442913, guid: d3400671ddb34274e989b97621c7da30,
         type: 3}
@@ -325,6 +335,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Books
       objectReference: {fileID: 0}
+    - target: {fileID: 2271960890058667460, guid: d3400671ddb34274e989b97621c7da30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
+      objectReference: {fileID: 0}
     - target: {fileID: 3259112635800442913, guid: d3400671ddb34274e989b97621c7da30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -421,6 +436,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Books
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271960890058667460, guid: d3400671ddb34274e989b97621c7da30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 3259112635800442913, guid: d3400671ddb34274e989b97621c7da30,
         type: 3}
@@ -519,6 +539,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Books
       objectReference: {fileID: 0}
+    - target: {fileID: 2271960890058667460, guid: d3400671ddb34274e989b97621c7da30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
+      objectReference: {fileID: 0}
     - target: {fileID: 3259112635800442913, guid: d3400671ddb34274e989b97621c7da30,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -615,6 +640,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Books
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271960890058667460, guid: d3400671ddb34274e989b97621c7da30,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 3259112635800442913, guid: d3400671ddb34274e989b97621c7da30,
         type: 3}
