@@ -80,8 +80,8 @@ namespace SoldByWizards.UI
             _currentSpanXPosition = _currentXPosition;
 
             var expectedWidth = _barLength * (_timedMapLoader.MapLoadedDuration / _gameController.SecondsPerRentCycle);
-            if (expectedWidth > _barLength)
-                expectedWidth = _barLength;
+            if (expectedWidth > _barLength - _currentXPosition)
+                expectedWidth = _barLength - _currentXPosition;
 
             _previewSpan = CreateSpan(_currentXPosition, expectedWidth);
             _previewSpan.Image.color = Color.blue;
