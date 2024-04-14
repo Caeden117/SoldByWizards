@@ -726,6 +726,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88223b5fb6844a4b99408ef169aae0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &83915570 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 5676895488158997097, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+    type: 3}
+  m_PrefabInstance: {fileID: 83915566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &112133279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2945,6 +2951,16 @@ PrefabInstance:
       propertyPath: _crosshair
       value: 
       objectReference: {fileID: 1082137696}
+    - target: {fileID: 2144211065248078107, guid: da4798b4276cec34c973864b2add5adf,
+        type: 3}
+      propertyPath: _tweenManager
+      value: 
+      objectReference: {fileID: 83915567}
+    - target: {fileID: 2144211065248078107, guid: da4798b4276cec34c973864b2add5adf,
+        type: 3}
+      propertyPath: _uiCanvasGroup
+      value: 
+      objectReference: {fileID: 83915570}
     - target: {fileID: 2144211065248078107, guid: da4798b4276cec34c973864b2add5adf,
         type: 3}
       propertyPath: _inputController
