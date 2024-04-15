@@ -25,6 +25,9 @@ namespace SoldByWizards.Glyphs
         public bool IsValidGlyph => _numPoints is >= 2 and <= 4;
 
         [PublicAPI]
+        public event Action OnGlyphFinish;
+
+        [PublicAPI]
         public int GetGlyphHash()
         {
             if (!IsValidGlyph) return 0;
@@ -135,6 +138,7 @@ namespace SoldByWizards.Glyphs
 
         private void CancelDraw()
         {
+            if (_isDrawing && IsValidGlyph) OnGlyphFinish.Invoke();
             _isDrawing = false;
             if (!IsValidGlyph) _numPoints = 0;
             ApplyPointsToLineRenderer();
