@@ -1,26 +1,27 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SoldByWizards.Maps
 {
     public class DisableOnMapStart : MonoBehaviour
     {
-        [SerializeField] private GameObject _target;
-        [SerializeField] private TimedMapLoader _timedMapLoader;
+        [SerializeField] private GameObject[] _target;
+        [SerializeField] private PortalController _portalController;
 
         private void Start()
         {
-            _timedMapLoader.OnTimerStarted += OnTimerStarted;
-            _timedMapLoader.OnTimerEnded += OnTimerEnded;
+            _portalController.OnPortalOpen += ToggleObjects;
+            _portalController.OnPortalClose += ToggleObjects;
         }
 
-        private void OnTimerEnded() => _target.SetActive(true);
-
-        private void OnTimerStarted() => _target.SetActive(false);
-
+        private void ToggleObjects()
+        {
+            foreach (var obj in _target) obj.SetActive(!obj.activeSelf);
+        }
         private void OnDestroy()
         {
-            _timedMapLoader.OnTimerStarted -= OnTimerStarted;
-            _timedMapLoader.OnTimerEnded -= OnTimerEnded;
+            _portalController.OnPortalOpen -= ToggleObjects;
+            _portalController.OnPortalClose -= ToggleObjects;
         }
     }
 }

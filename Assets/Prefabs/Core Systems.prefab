@@ -201,6 +201,7 @@ MonoBehaviour:
   _glyphAggregator: {fileID: 0}
   _safetyTeleportPoint: {fileID: 0}
   _itemsManager: {fileID: 6521334697690380257}
+  _portalController: {fileID: 4024636777205720566}
   _portalCooldown: 0.5
 --- !u!1 &964920238424640905
 GameObject:
@@ -535,6 +536,7 @@ Transform:
   - {fileID: 3266843266009886304}
   - {fileID: 5456495709527709839}
   - {fileID: 3188158208303125444}
+  - {fileID: 6586415594503976288}
   - {fileID: 8662494213230341615}
   - {fileID: 6206735857199719560}
   - {fileID: 1719263168138084543}
@@ -2094,6 +2096,53 @@ MonoBehaviour:
   - {fileID: 2420615189854624303}
   - {fileID: 1034468036379707026}
   _itemsManager: {fileID: 6521334697690380257}
+--- !u!1 &5388560253366966591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6586415594503976288}
+  - component: {fileID: 4024636777205720566}
+  m_Layer: 0
+  m_Name: Portal Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6586415594503976288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5388560253366966591}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.90740365, y: -2.2797773, z: 7.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1973495882924098640}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4024636777205720566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5388560253366966591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7cbe314da87559428a0ea5396bf499f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _portalAnimators:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &5657014916433047726
 GameObject:
   m_ObjectHideFlags: 0
