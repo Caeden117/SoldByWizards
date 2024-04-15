@@ -23,3 +23,36 @@ MonoBehaviour:
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
+  Reviews:
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - Received broken
+    - BROKEN
+    PossibleDescriptions:
+    - Got this in the mail and it literally does not work. This is the single worst
+      seller I've ever had the displeasure of dealing with.
+    - Got this in the mail and it literally does not work. It looks like it was smashed
+      by a sledgehammer.
+  - PossibleStarReviews: {x: 1, y: 2}
+    PossibleTitles:
+    - Misleading
+    - I feel mislead
+    - Misleading info
+    PossibleDescriptions:
+    - The listing said this was a 55" 4K LCD, but I received a TV so old it was still
+      in black and white.
+    - I was told I was buying a 4K TV, but this TV doesn't even have half a K. Why
+      is this seller allowed on illuzion?
+    - I thought this was a new flatscreen TV, but some random tiny AbracadabriExpress
+      junk showed up on my doorstep. STAY AWAY!
+  - PossibleStarReviews: {x: 2, y: 4}
+    PossibleTitles:
+    - Weird TV
+    - Strange object?
+    - TV weirdly tuned
+    PossibleDescriptions:
+    - The TV is pretty solid, but it only plays shows from Dimension 55B. Although,
+      all things considered, those shows are better than what I would have watched
+      anyways.
+    - The TV is good, but it only plays crime movies. Specifically about stealing
+      things and reselling them for profit. Not sure what's up with that.
