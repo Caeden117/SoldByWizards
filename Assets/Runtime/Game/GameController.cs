@@ -112,7 +112,7 @@ namespace SoldByWizards.Game
 
         private async UniTask SellAllItems(List<Item> items)
         {
-            UniTask[] tasks = new UniTask[items.Count];
+            var tasks = new UniTask[items.Count];
 
             for (var i = 0; i < items.Count; i++)
             {
