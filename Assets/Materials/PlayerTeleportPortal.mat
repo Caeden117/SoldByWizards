@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PortalTunnelOpeningFX
+  m_Name: PlayerTeleportPortal
   m_Shader: {fileID: -6465566751694194690, guid: fbcb5bf7f11571c49b545544e29581de,
     type: 3}
   m_Parent: {fileID: 0}
@@ -118,11 +118,11 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Hide_Center: 0
-    - _Intensity: 0
+    - _Intensity: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _Position_Offset: -0.5
+    - _Position_Offset: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1

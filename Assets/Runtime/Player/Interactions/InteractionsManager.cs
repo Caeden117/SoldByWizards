@@ -17,8 +17,26 @@ namespace SoldByWizards.Player.Interactions
         public event Action<Ray, RaycastHit> OnButtonInteract;
         public event Action<Ray, RaycastHit> OnWorldInteract;
         public event Action OnInteractKeyPressed;
+        public event Action OnInteractionHover;
+        public event Action OnInteractionUnhover;
+
+        private bool _hovering;
 
         private void Start() => _inputController.Input.Interactions.AddCallbacks(this);
+
+        private void Update()
+        {
+            var middlePoint = 0.5f * new Vector2(_raycastCamera.scaledPixelWidth, _raycastCamera.scaledPixelHeight);
+            var ray = _raycastCamera.ScreenPointToRay(middlePoint);
+
+            var hovering = Physics.SphereCast(ray, 0.25f, out _, _interactRange, _interactionLayerMask);
+
+            if (hovering == _hovering) return;
+
+            (hovering ? OnInteractionHover : OnInteractionUnhover)?.Invoke();
+
+            _hovering = hovering;
+        }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
@@ -67,7 +85,13 @@ namespace SoldByWizards.Player.Interactions
                 || Physics.SphereCast(ray, 0.15f, out worldHit, _interactRange, _generalLayerMask))
             {
                 OnWorldInteract?.Invoke(ray, worldHit);
+                return;
             }
+
+            worldHit.distance = _interactRange * 0.5f;
+            worldHit.point = ray.origin + ray.direction * worldHit.distance;
+            worldHit.normal = Vector3.up;
+            OnWorldInteract?.Invoke(ray, worldHit);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using AuraTween;
 using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using SoldByWizards.Glyphs;
@@ -24,6 +25,8 @@ namespace SoldByWizards.Maps
         [SerializeField] private ItemsManager _itemsManager;
         [SerializeField] private PortalController _portalController;
         [SerializeField] private float _portalCooldown = 0.5f;
+        [SerializeField] private TweenManager _tweenManager;
+        [SerializeField] private MeshRenderer _playerTeleportRenderer;
 
         public event Action OnTimerStarted;
         public event Action OnTimerEnded;
@@ -64,9 +67,9 @@ namespace SoldByWizards.Maps
                 _timeSinceLastPortalClose = Time.time + _portalCooldown;
             }
 
-            OnTimerEnded?.Invoke();
-
             await _portalController.CloseAsync();
+
+            OnTimerEnded?.Invoke();
 
             // dirtiest gamejam hack of my life
             if (_playerController.transform.position.z > 0)
@@ -76,6 +79,8 @@ namespace SoldByWizards.Maps
 
                 _playerController.Rigidbody.position = _safetyTeleportPoint.position;
                 _playerCamera.transform.rotation = _safetyTeleportPoint.rotation;
+                _tweenManager.Run(1.5f, 0f, 1.5f,
+                    i => _playerTeleportRenderer.material.SetFloat("_Intensity", i), Easer.OutSine);
                 await UniTask.Yield();
             }
 

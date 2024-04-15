@@ -15,7 +15,7 @@ namespace SoldByWizards.UI
         [SerializeField] private TimedMapLoader _timedMapLoader;
 
         [Space, SerializeField] private Image _timerImage;
-        [SerializeField] private TextMeshProUGUI _timerText;
+        [SerializeField] private TextMeshProUGUI[] _timerTexts;
 
         private Tween? activeTween;
 
@@ -39,7 +39,10 @@ namespace SoldByWizards.UI
 
             if (Mathf.Approximately(rounded, _roundedTime)) return;
 
-            _timerText.text = Mathf.RoundToInt(rounded).ToString();
+            foreach (var timerText in _timerTexts)
+            {
+                timerText.text = Mathf.RoundToInt(rounded).ToString();
+            }
 
             var progressA = _roundedTime / _timeLength;
             var progressB = rounded / _timeLength;
@@ -54,7 +57,10 @@ namespace SoldByWizards.UI
             _isRunning = true;
             _roundedTime = Mathf.Ceil(_timedMapLoader.TimeRemaining);
             _timeLength = _roundedTime;
-            _timerText.text = Mathf.RoundToInt(_roundedTime).ToString();
+            foreach (var timerText in _timerTexts)
+            {
+                timerText.text = Mathf.RoundToInt(_roundedTime).ToString();
+            }
             _timerImage.fillAmount = 1;
 
             activeTween?.Cancel();

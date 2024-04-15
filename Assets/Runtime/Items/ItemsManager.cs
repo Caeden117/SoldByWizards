@@ -54,7 +54,7 @@ namespace SoldByWizards.Items
         {
             for (var i = 0; i < MAX_ITEM_COUNT; i++)
             {
-                DropItem(i, _playerController.transform.position);
+                DropItem(i, _playerController.transform.position, Vector3.up);
             }
         }
 
@@ -74,7 +74,7 @@ namespace SoldByWizards.Items
         public void DropItemWithAnimation(int itemIdx)
         {
             // TODO: Portal out animation or something in the hotbar?
-            DropItem(itemIdx, new Vector3(0, -999, 0f));
+            DropItem(itemIdx, new Vector3(0, -999, 0f), Vector3.up);
         }
 
         public void DeleteItem(int itemIdx)
@@ -182,7 +182,7 @@ namespace SoldByWizards.Items
             _heldItemInstances[_selectedSlot].transform.LookAt(ray.origin, Vector3.up);
             var position = ray.GetPoint(raycastHit.distance - _heldItemBounds[_selectedSlot].extents.magnitude);
 
-            DropItem(_selectedSlot, position);
+            DropItem(_selectedSlot, position, raycastHit.normal);
 
             for (int i = 1; i < MAX_ITEM_COUNT; i++)
             {
@@ -196,7 +196,7 @@ namespace SoldByWizards.Items
             SelectItem(0);
         }
 
-        private void DropItem(int itemIdx, Vector3 position)
+        private void DropItem(int itemIdx, Vector3 position, Vector3 normal)
         {
             _heldItems[itemIdx] = null;
 
@@ -207,6 +207,11 @@ namespace SoldByWizards.Items
                     _droppedItems.Add(_heldItemInstances[itemIdx]);
 
                 _heldItemInstances[itemIdx].transform.position = position;
+                Vector3 direction = (position - _playerController.transform.position).normalized;
+                Debug.Log("dir " + direction);
+                Quaternion rotation = Quaternion.LookRotation(normal, direction);
+                Debug.Log("rot " + rotation);
+                _heldItemInstances[itemIdx].transform.rotation = rotation;
                 _heldItemInstances[itemIdx].gameObject.SetActive(true);
                 _heldItemInstances[itemIdx] = null;
             }

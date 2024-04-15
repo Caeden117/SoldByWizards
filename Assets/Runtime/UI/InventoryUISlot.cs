@@ -20,6 +20,7 @@ namespace SoldByWizards.UI
         [SerializeField] private Image _backgroundImage;
         [SerializeField] private TextMeshProUGUI _salePriceText;
         [SerializeField] private Image _itemImage;
+        [SerializeField] private GameObject _warningFlash;
 
         private Tween? _colorTween;
         private Tween? _backgroundTween;
@@ -39,6 +40,8 @@ namespace SoldByWizards.UI
         [PublicAPI]
         public void SetItem(Item item)
         {
+            _warningFlash.SetActive(item);
+
             if (item?.ItemSO != _cachedItem)
             {
                 _cachedItem = item?.ItemSO;
