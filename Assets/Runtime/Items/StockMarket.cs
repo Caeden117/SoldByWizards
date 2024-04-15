@@ -26,7 +26,7 @@ namespace SoldByWizards.Items
                 ? timesSold * item.MultiSalesPenalty
                 : 0.0f;
 
-            return Mathf.Min(baseSale * (stockMarketMultiplier + penalty) * _globalMultiplier, 0.01f);
+            return Mathf.Max(baseSale * (stockMarketMultiplier + penalty) * _globalMultiplier, 0.01f);
         }
 
         public static void OnItemSold(ItemSO item)
