@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bf8ab1a859a4a2b8943b1ff88a1c6f2, type: 3}
-  m_Name: Water Cooler
+  m_Name: Lantern
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 6699809195060818920, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+  ItemPrefab: {fileID: 7506732336653743498, guid: 15c6b3200ee905847a2fef87524b3ef2,
     type: 3}
-  ItemName: Water Cooler
-  ItemDescription: 'M. Bubbles.... mmmphm... '
+  ItemName: Lantern
+  ItemDescription: This lantern is sure to *illuminate* your day!! Haha.. ahaha...
   ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
   BaseSaleValue: 5
-  StockMarketSeed: 3827.595
+  StockMarketSeed: 22759.05
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1

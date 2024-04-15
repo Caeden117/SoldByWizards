@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Maps/Ship.unity
     guid: 4c1ac996369a3e2428722a098a067fdf
+  - enabled: 1
+    path: Assets/Scenes/Maps/Landfill.unity
+    guid: 67db325376970d344aa483ad37c35f85
   m_configObjects: {}

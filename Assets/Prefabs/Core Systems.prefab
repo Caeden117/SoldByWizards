@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _glyphAggregator: {fileID: 0}
-  _allMapSceneIdx: 0100000002000000
+  _allMapSceneIdx: 01000000020000000300000004000000
 --- !u!114 &2724631481037577657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,6 +2605,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba607e7e215314749ae93a892c44c644, type: 2}
   - {fileID: 11400000, guid: 956e7165f63b0e8448b20d843be20eae, type: 2}
   - {fileID: 11400000, guid: f4f858d2df9a1fa4681d1d5badcc5932, type: 2}
+  - {fileID: 11400000, guid: 3b5817d6040bc044db4e6be25ca0c777, type: 2}
   _interactionsManager: {fileID: 4272238469662924679}
   _playerController: {fileID: 5490063951668748881}
   _computerController: {fileID: 6746458872283953923}
