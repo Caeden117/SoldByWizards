@@ -15,8 +15,8 @@ namespace SoldByWizards.UI
         [SerializeField] private bool _scaleParent = false;
         [SerializeField] private float _scaleAmount = 0.5f;
 
-        private bool _isRunning;
-        private bool _firstFrame;
+        private bool _isRunning = false;
+        private bool _firstFrame = true;
 
         private void Start()
         {

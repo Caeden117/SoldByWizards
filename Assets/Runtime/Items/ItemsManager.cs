@@ -208,9 +208,7 @@ namespace SoldByWizards.Items
 
                 _heldItemInstances[itemIdx].transform.position = position;
                 Vector3 direction = (position - _playerController.transform.position).normalized;
-                Debug.Log("dir " + direction);
                 Quaternion rotation = Quaternion.LookRotation(normal, direction);
-                Debug.Log("rot " + rotation);
                 _heldItemInstances[itemIdx].transform.rotation = rotation;
                 _heldItemInstances[itemIdx].gameObject.SetActive(true);
                 _heldItemInstances[itemIdx] = null;

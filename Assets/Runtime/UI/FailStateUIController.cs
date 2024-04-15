@@ -5,6 +5,7 @@ using AuraTween;
 using Cysharp.Threading.Tasks;
 using SoldByWizards.Game;
 using SoldByWizards.Input;
+using SoldByWizards.Items;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -54,6 +55,9 @@ namespace SoldByWizards
             await UniTask.Delay(delay);
             await DisplayText(_textStrings3);
 
+            // Reset stock market
+            StockMarket.GameTime = 0;
+            StockMarket.ResetStockMarket();
             SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
 
