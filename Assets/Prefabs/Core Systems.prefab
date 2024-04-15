@@ -248,8 +248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _computerController: {fileID: 6746458872283953923}
   _itemsManager: {fileID: 6521334697690380257}
-  _baseRentAmount: 50
-  _rentIncreasePerCycle: 25
+  _baseRentAmount: 250
+  _rentIncreasePerCycle: 125
   _secondsPerRentCycle: 300
   _sellCheckTimeRange: {x: 2, y: 5}
 --- !u!1 &1019312459591802331
