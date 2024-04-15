@@ -67,7 +67,13 @@ namespace SoldByWizards.Player.Interactions
                 || Physics.SphereCast(ray, 0.15f, out worldHit, _interactRange, _generalLayerMask))
             {
                 OnWorldInteract?.Invoke(ray, worldHit);
+                return;
             }
+
+            worldHit.distance = _interactRange * 0.5f;
+            worldHit.point = ray.origin + ray.direction * worldHit.distance;
+            worldHit.normal = Vector3.up;
+            OnWorldInteract?.Invoke(ray, worldHit);
         }
     }
 }
