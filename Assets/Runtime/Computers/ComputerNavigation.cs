@@ -3,6 +3,7 @@ using System.Linq;
 using AuraTween;
 using SoldByWizards.Input;
 using SoldByWizards.Items;
+using SoldByWizards.Maps;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,10 +15,13 @@ namespace SoldByWizards.Computers
     {
         [SerializeField] private Computer _computer = null!;
         [SerializeField] private ComputerController _computerController = null!;
+        [SerializeField] private PortalController _portalController = null!;
         [SerializeField] private InputController _inputController = null!;
         [SerializeField] private ListingPageSpamController _listingPageSpamController = null!;
         [SerializeField] private RectTransform _profilePanel = null!;
         [SerializeField] private RectTransform _listingsPanel = null!;
+        [SerializeField] private Canvas _computerCanvas = null!;
+        [SerializeField] private Canvas _batteryCanvas = null!;
         [SerializeField] private Image _listingNotificationImage = null!;
         [SerializeField] private Button _profileButton = null!;
         [SerializeField] private Button _listingsButton = null!;
@@ -93,6 +97,9 @@ namespace SoldByWizards.Computers
                 // re-enable export
                 _inputController.SetInteractionInputState(true);
             }
+
+            _computerCanvas.gameObject.SetActive(listingPageState != ListingPageState.InPortal);
+            _batteryCanvas.gameObject.SetActive(listingPageState == ListingPageState.InPortal);
         }
 
         private void SetListingPanelObjects(ListingPageState listingPageState)
@@ -131,6 +138,12 @@ namespace SoldByWizards.Computers
             _computerController.OnComputerDeselected += OnComputerDeselected;
             _computerController.OnItemsCollected += OnItemsCollected;
             _computerController.OnSpamTypingFinished += OnSpamTypingFinished;
+            _portalController.OnPortalOpen += OnPortalOpen;
+        }
+
+        private void OnPortalOpen()
+        {
+            SetListingPageState(ListingPageState.InPortal);
         }
 
         private void OnSpamTypingFinished()
@@ -146,6 +159,8 @@ namespace SoldByWizards.Computers
             _computerController.OnComputerSelected -= OnComputerSelected;
             _computerController.OnComputerDeselected -= OnComputerDeselected;
             _computerController.OnItemsCollected -= OnItemsCollected;
+            _computerController.OnSpamTypingFinished -= OnSpamTypingFinished;
+            _portalController.OnPortalOpen -= OnPortalOpen;
         }
 
         private void OnItemsCollected(List<Item> items)
