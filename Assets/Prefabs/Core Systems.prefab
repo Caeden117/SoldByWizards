@@ -496,7 +496,7 @@ MonoBehaviour:
   _reviewController: {fileID: 4393250894399690601}
   _baseRentAmount: 350
   _rentIncreasePerCycle: 125
-  _secondsPerRentCycle: 300
+  _secondsPerRentCycle: 240
   _sellCheckTimeRange: {x: 0.5, y: 1.5}
   _chaChingAudioPool: {fileID: 0}
   _itemSellPrefab: {fileID: 8449625780941303018, guid: 4e9ec8ad60f2e5f44b39f064ca30efca,
