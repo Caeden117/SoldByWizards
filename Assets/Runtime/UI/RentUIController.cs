@@ -115,7 +115,9 @@ namespace SoldByWizards.UI
         {
             _moneyText.text = $"${_gameController.CurrentMoney:N2}";
 
-            FlyOutProfitText(salePrice).Forget();
+            FlyOutProfitText(salePrice)
+                .AttachExternalCancellation(this.GetCancellationTokenOnDestroy())
+                .Forget();
         }
 
         private void OnDaySucceeded()
@@ -123,7 +125,9 @@ namespace SoldByWizards.UI
             _moneyText.text = $"${_gameController.CurrentMoney:N2}";
             _rentText.text = $"${_gameController.CurrentRent:N2}";
             Clear();
-            FlyOutRentText(_currentRent).Forget();
+            FlyOutRentText(_currentRent)
+                .AttachExternalCancellation(this.GetCancellationTokenOnDestroy())
+                .Forget();
             _currentRent = _gameController.CurrentRent;
         }
 
@@ -153,7 +157,7 @@ namespace SoldByWizards.UI
 
             await tween;
 
-            Destroy(duplicate);
+            DestroyImmediate(duplicate);
         }
 
         private async UniTask FlyOutRentText(float rent)
@@ -171,7 +175,7 @@ namespace SoldByWizards.UI
 
             await tween;
 
-            Destroy(duplicate);
+            DestroyImmediate(duplicate);
         }
     }
 }
