@@ -17,7 +17,7 @@ MonoBehaviour:
   ItemName: TV
   ItemDescription: A retro relic of the past. Relive content of days past in high-quality
     SD from the comfort of your wide sitting device!
-  ItemIcon: {fileID: 21300000, guid: e39fdc7ee1784aa449dc51d0799eeb4d, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 1cf9431ff57374549974787cbed77bdd, type: 3}
   BaseSaleValue: 5
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
