@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using AuraTween;
@@ -13,7 +13,7 @@ namespace SoldByWizards.UI
 {
     public class InventoryUISlot : MonoBehaviour
     {
-        private const float _animTime = 0.4f;
+        private const float _animTime = 0.1f;
 
         [SerializeField] private TweenManager _tweenManager;
         [Space, SerializeField] private RectTransform _backgroundTransform;

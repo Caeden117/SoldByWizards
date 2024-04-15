@@ -15,7 +15,7 @@ namespace SoldByWizards.Player.Interactions
 
         public event Action<Ray, RaycastHit> OnObjectInteract;
         public event Action<Ray, RaycastHit> OnButtonInteract;
-        public event Action<Ray, RaycastHit> OnInteractWithWorld;
+        public event Action<Ray, RaycastHit> OnWorldInteract;
         public event Action OnInteractKeyPressed;
 
         private void Start() => _inputController.Input.Interactions.AddCallbacks(this);
@@ -36,11 +36,6 @@ namespace SoldByWizards.Player.Interactions
                 return;
             }
 
-            if (Physics.SphereCast(ray, 0.15f, out var worldHit, _interactRange, _generalLayerMask))
-            {
-                OnInteractWithWorld?.Invoke(ray, worldHit);
-            }
-
             OnInteractKeyPressed?.Invoke();
         }
 
@@ -57,6 +52,21 @@ namespace SoldByWizards.Player.Interactions
             {
                 OnButtonInteract?.Invoke(ray, hit);
                 return;
+            }
+        }
+
+        public void OnInteractWithWorld(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+
+            var middlePoint = 0.5f * new Vector2(_raycastCamera.scaledPixelWidth, _raycastCamera.scaledPixelHeight);
+            var ray = _raycastCamera.ScreenPointToRay(middlePoint);
+
+            RaycastHit worldHit;
+            if (Physics.Raycast(ray, out worldHit, _interactRange, _generalLayerMask)
+                || Physics.SphereCast(ray, 0.15f, out worldHit, _interactRange, _generalLayerMask))
+            {
+                OnWorldInteract?.Invoke(ray, worldHit);
             }
         }
     }
