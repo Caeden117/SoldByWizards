@@ -81,10 +81,10 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 511
   m_TransparentLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 511
   m_DefaultStencilState:
     overrideStencilState: 0
     stencilReference: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    passTag: Skybox
+    passTag: Fake Skybox
     Event: 300
     filterSettings:
       RenderQueueType: 0
@@ -129,12 +129,12 @@ MonoBehaviour:
     depthCompareFunction: 4
     enableWrite: 1
     stencilSettings:
-      overrideStencilState: 0
-      stencilReference: 0
-      stencilCompareFunction: 8
-      passOperation: 0
-      failOperation: 0
-      zFailOperation: 0
+      overrideStencilState: 1
+      stencilReference: 11
+      stencilCompareFunction: 3
+      passOperation: 2
+      failOperation: 2
+      zFailOperation: 2
     cameraSettings:
       overrideCamera: 0
       restoreCamera: 1
