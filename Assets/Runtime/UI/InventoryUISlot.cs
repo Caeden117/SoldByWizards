@@ -23,14 +23,17 @@ namespace SoldByWizards.UI
         [SerializeField] private GameObject _warningFlash;
 
         private Color _originalBackgroundColor;
+        private Color _originalTextColor;
 
         private Tween? _colorTween;
+        private Tween? _textTween;
         private Tween? _backgroundTween;
         private ItemSO _cachedItem;
 
         private void Start()
         {
             _originalBackgroundColor = _backgroundImage.color;
+            _originalTextColor = _salePriceText.color;
         }
 
         [PublicAPI]
@@ -42,6 +45,13 @@ namespace SoldByWizards.UI
             _colorTween?.Cancel();
             _colorTween = _tweenManager.Run(startColor, endColor, _animTime,
                 color => _backgroundImage.color = color, Easer.InOutSine);
+
+            var startColor2 = !selected ? Color.black : _originalTextColor;
+            var endColor2 = selected ? Color.black : _originalTextColor;
+
+            _textTween?.Cancel();
+            _textTween = _tweenManager.Run(startColor2, endColor2, _animTime,
+                color => _salePriceText.color = color, Easer.InOutSine);
         }
 
         [PublicAPI]
