@@ -68,5 +68,11 @@ namespace SoldByWizards.Maps
             if (_skyboxMaterial != null)
                 RenderSettings.skybox = _skyboxMaterial;
         }
+
+        private void OnDestroy()
+        {
+            // Reset random hue for editor work
+            Shader.SetGlobalFloat(_randomHue, 0f);
+        }
     }
 }
