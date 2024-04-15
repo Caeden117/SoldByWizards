@@ -72,7 +72,7 @@ namespace SoldByWizards.Maps
             if (_playerController.transform.position.z > 0)
             {
                 _playerController.Stop();
-                _itemsManager.DeleteAllItems();
+                _itemsManager.DeleteAllItems(true);
 
                 _playerController.Rigidbody.position = _safetyTeleportPoint.position;
                 _playerCamera.transform.rotation = _safetyTeleportPoint.rotation;

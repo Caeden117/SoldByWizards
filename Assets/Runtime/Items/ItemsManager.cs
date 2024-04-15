@@ -58,11 +58,16 @@ namespace SoldByWizards.Items
             }
         }
 
-        public void DeleteAllItems()
+        public void DeleteAllItems(bool forceUpdateItems = false)
         {
             for (var i = 0; i < MAX_ITEM_COUNT; i++)
             {
                 DeleteItem(i);
+            }
+
+            if (forceUpdateItems)
+            {
+                OnTimerEnded();
             }
         }
 
