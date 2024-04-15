@@ -156,6 +156,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "InteractWithWorld",
+                    "type": "Button",
+                    "id": "6ac0f418-506c-44f2-8f9e-8a2f2db9934a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -189,6 +198,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "InteractWithButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "647731d9-081f-448e-9df9-6ea4aeb1660b",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InteractWithWorld",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -178,6 +178,15 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InteractWithWorld"",
+                    ""type"": ""Button"",
+                    ""id"": ""6ac0f418-506c-44f2-8f9e-8a2f2db9934a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -211,6 +220,17 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""InteractWithButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""647731d9-081f-448e-9df9-6ea4aeb1660b"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InteractWithWorld"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -403,6 +423,7 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
         m_Interactions_Interact = m_Interactions.FindAction("Interact", throwIfNotFound: true);
         m_Interactions_InteractWithButton = m_Interactions.FindAction("InteractWithButton", throwIfNotFound: true);
+        m_Interactions_InteractWithWorld = m_Interactions.FindAction("InteractWithWorld", throwIfNotFound: true);
         // Glyphs
         m_Glyphs = asset.FindActionMap("Glyphs", throwIfNotFound: true);
         m_Glyphs_Interact = m_Glyphs.FindAction("Interact", throwIfNotFound: true);
@@ -541,12 +562,14 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
     private List<IInteractionsActions> m_InteractionsActionsCallbackInterfaces = new List<IInteractionsActions>();
     private readonly InputAction m_Interactions_Interact;
     private readonly InputAction m_Interactions_InteractWithButton;
+    private readonly InputAction m_Interactions_InteractWithWorld;
     public struct InteractionsActions
     {
         private @WizardInput m_Wrapper;
         public InteractionsActions(@WizardInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Interactions_Interact;
         public InputAction @InteractWithButton => m_Wrapper.m_Interactions_InteractWithButton;
+        public InputAction @InteractWithWorld => m_Wrapper.m_Interactions_InteractWithWorld;
         public InputActionMap Get() { return m_Wrapper.m_Interactions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -562,6 +585,9 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
             @InteractWithButton.started += instance.OnInteractWithButton;
             @InteractWithButton.performed += instance.OnInteractWithButton;
             @InteractWithButton.canceled += instance.OnInteractWithButton;
+            @InteractWithWorld.started += instance.OnInteractWithWorld;
+            @InteractWithWorld.performed += instance.OnInteractWithWorld;
+            @InteractWithWorld.canceled += instance.OnInteractWithWorld;
         }
 
         private void UnregisterCallbacks(IInteractionsActions instance)
@@ -572,6 +598,9 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
             @InteractWithButton.started -= instance.OnInteractWithButton;
             @InteractWithButton.performed -= instance.OnInteractWithButton;
             @InteractWithButton.canceled -= instance.OnInteractWithButton;
+            @InteractWithWorld.started -= instance.OnInteractWithWorld;
+            @InteractWithWorld.performed -= instance.OnInteractWithWorld;
+            @InteractWithWorld.canceled -= instance.OnInteractWithWorld;
         }
 
         public void RemoveCallbacks(IInteractionsActions instance)
@@ -769,6 +798,7 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
     {
         void OnInteract(InputAction.CallbackContext context);
         void OnInteractWithButton(InputAction.CallbackContext context);
+        void OnInteractWithWorld(InputAction.CallbackContext context);
     }
     public interface IGlyphsActions
     {

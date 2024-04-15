@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using SoldByWizards.Player.Interactions;
 using System;
 using System.Collections.Generic;
@@ -104,7 +104,7 @@ namespace SoldByWizards.Items
         private void Start()
         {
             _interactionsManager.OnObjectInteract += OnObjectInteract;
-            _interactionsManager.OnInteractWithWorld += OnInteractWithWorld;
+            _interactionsManager.OnWorldInteract += OnWorldInteract;
             _timedMapLoader.OnTimerEnded += OnTimerEnded;
 
             _inputController.Input.Inventory.AddCallbacks(this);
@@ -117,7 +117,26 @@ namespace SoldByWizards.Items
 
         private void OnObjectInteract(Ray _, RaycastHit raycastHit)
         {
-            if (_heldItemInstances[_selectedSlot] != null || !raycastHit.transform.TryGetComponent<Item>(out var item)) return;
+            if (!raycastHit.transform.TryGetComponent<Item>(out var item)) return;
+
+            int freeSlot = -1;
+            if (_heldItemInstances[_selectedSlot] == null)
+            {
+                freeSlot = _selectedSlot;
+            }
+            else
+            {
+                for (int i = 0; i < MAX_ITEM_COUNT; i++)
+                {
+                    if (_heldItemInstances[i] == null)
+                    {
+                        freeSlot = i;
+                        break;
+                    }
+                }
+            }
+
+            if (freeSlot < 0) return;
 
             var collider = raycastHit.collider;
             var rigidbody = collider.attachedRigidbody;
@@ -133,20 +152,17 @@ namespace SoldByWizards.Items
                 item.SpawnPoint = null;
             }
 
-            _heldItems[_selectedSlot] = item.ItemSO;
-            _heldItemInstances[_selectedSlot] = item;
-            _heldItemBounds[_selectedSlot] = collider.bounds;
-            _heldItemInstances[_selectedSlot].gameObject.SetActive(false);
+            _heldItems[freeSlot] = item.ItemSO;
+            _heldItemInstances[freeSlot] = item;
+            _heldItemBounds[freeSlot] = collider.bounds;
+            _heldItemInstances[freeSlot].gameObject.SetActive(false);
 
             if (_droppedItems.Contains(item))
                 _droppedItems.Remove(item);
 
-            OnItemPickup?.Invoke(_selectedSlot, item);
+            OnItemPickup?.Invoke(freeSlot, item);
 
-            if (_heldItems[(_selectedSlot + 1) % MAX_ITEM_COUNT] == null)
-            {
-                SelectItem(_selectedSlot + 1);
-            }
+            SelectItem(freeSlot);
 
             if (_pickupSoundAudioPool != null)
             {
@@ -154,7 +170,7 @@ namespace SoldByWizards.Items
             }
         }
 
-        private void OnInteractWithWorld(Ray ray, RaycastHit raycastHit)
+        private void OnWorldInteract(Ray ray, RaycastHit raycastHit)
         {
             if (_heldItemInstances[_selectedSlot] == null) return;
 
@@ -163,10 +179,16 @@ namespace SoldByWizards.Items
 
             DropItem(_selectedSlot, position);
 
-            if (_heldItems[(_selectedSlot + 1) % MAX_ITEM_COUNT] != null)
+            for (int i = 1; i < MAX_ITEM_COUNT; i++)
             {
-                SelectItem(_selectedSlot + 1);
+                if (_heldItems[(_selectedSlot + i) % MAX_ITEM_COUNT] != null)
+                {
+                    SelectItem(_selectedSlot + i);
+                    return;
+                }
             }
+
+            SelectItem(0);
         }
 
         private void DropItem(int itemIdx, Vector3 position)
@@ -196,7 +218,7 @@ namespace SoldByWizards.Items
         private void OnDestroy()
         {
             _interactionsManager.OnObjectInteract -= OnObjectInteract;
-            _interactionsManager.OnInteractWithWorld -= OnInteractWithWorld;
+            _interactionsManager.OnWorldInteract -= OnWorldInteract;
             _timedMapLoader.OnTimerEnded -= OnTimerEnded;
         }
 
