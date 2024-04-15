@@ -17,7 +17,7 @@ MonoBehaviour:
   ItemName: Lounging Device
   ItemDescription: Good condition lounging device belonging in some office lobby
     somewhere. Don't mind the smell.
-  ItemIcon: {fileID: 21300000, guid: d7f117d15d380e74195141a7486beb80, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 34cde80409fb156459b7f2571b0bf8b9, type: 3}
   BaseSaleValue: 5
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
@@ -35,3 +35,14 @@ MonoBehaviour:
     - This lounging device instantly broke when I put weight on it. However, for
       those few seconds, it was very comfy.
     - I weigh 7 pounds and this lounging device still broke. How is that even possible?
+  - PossibleStarReviews: {x: 4, y: 5}
+    PossibleTitles:
+    - lounging device
+    PossibleDescriptions:
+    - lounging device
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - GOOD FOR HUSBAND
+    - GOOD
+    PossibleDescriptions:
+    - MY HUSTBAND RICHARD LOVES IT -MARTHA

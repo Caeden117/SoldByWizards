@@ -18,7 +18,7 @@ MonoBehaviour:
   ItemDescription: A recreation of the iconic weapon wielded by Gorgonzola in the
     hit video game series Double Life. *Illuzion is not responsible for any bodily
     harm caused by this item
-  ItemIcon: {fileID: 21300000, guid: b44716bae7519af4aaf3be557b703ef8, type: 3}
+  ItemIcon: {fileID: 21300000, guid: f2eb91c5a3a105c449a26fbd1dccae2f, type: 3}
   BaseSaleValue: 4
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
@@ -46,3 +46,17 @@ MonoBehaviour:
     - Disappointingly small, I can't break into anything with this pathetic memorabilia.
     - Why is this sized like something from Wizh.com? I had higher expectations from
       illuzion.
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Perfect
+    - Perfect smasher
+    PossibleDescriptions:
+    - Perfect for smashing wooden crates!
+    - Great for smashing wooden crates.
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Miffed
+    - Peeved
+    PossibleDescriptions:
+    - If you're from Britain like me you actually need a license to buy this. Coppers
+      took mine away this morning. Proper good product otherwise.

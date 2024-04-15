@@ -16,9 +16,31 @@ MonoBehaviour:
     type: 3}
   ItemName: Lantern
   ItemDescription: This lantern is sure to *illuminate* your day!! Haha.. ahaha...
-  ItemIcon: {fileID: 21300000, guid: 9950f293643222b45a81c06c90b9c8da, type: 3}
+  ItemIcon: {fileID: 21300000, guid: c483a17cfc2bdc545b87d68e2d87f9cd, type: 3}
   BaseSaleValue: 5
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
+  Reviews:
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Liberals
+    - Real man's light
+    PossibleDescriptions:
+    - liberals says you should use "LED" because their "more safe" (FAKE),, I SUPPORT
+      THE OIL INDUSTRY
+    - liberals says you should use "LED" because their "more environmental" (FAKE),,
+      I SUPPORT THE OIL INDUSTRY
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Exploring
+    - Great Illuminator
+    PossibleDescriptions:
+    - This lantern is the perfect tool to use when exploring dark eldritch castles.
+      what was my name again?
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Bad luck
+    PossibleDescriptions:
+    - Bad luck to kill a sea bird. Bad luck to kill a sea bird.

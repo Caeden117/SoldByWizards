@@ -16,7 +16,7 @@ MonoBehaviour:
     type: 3}
   ItemName: Parable Cup
   ItemDescription: Holds enough water to fill an extremely small pool.
-  ItemIcon: {fileID: 21300000, guid: 657b113996f757548a4c6b9f7de75702, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 7b935487d3337c24fb0ca25db0efe93e, type: 3}
   BaseSaleValue: 6
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
@@ -43,3 +43,10 @@ MonoBehaviour:
     PossibleDescriptions:
     - Parable Cups are so expensive... having them break so quickly is unacceptable!!
     - I SAVED UP FOR SO LONG FOR THIS PARABLE CUP, AND IT BROKE INSTANTLY!!!!!! UNACCEPTABLE!!!
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Sweet cup!
+    - Sweet
+    PossibleDescriptions:
+    - Great cup! It even adds a light but nice sweet taste to your water.
+    - Great cup! I love the sweet taste this adds to my water.

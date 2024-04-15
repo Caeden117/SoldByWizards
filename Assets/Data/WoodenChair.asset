@@ -18,7 +18,7 @@ MonoBehaviour:
   ItemDescription: HOLY CRAP! This is a wooden sitting device. It includes many things
     useful for sitting, such as 4 legs and a back. I sure hope the description isn't
     droning on for too long....
-  ItemIcon: {fileID: 21300000, guid: ade860b7188a40e4b91045dc32f16502, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 1a1a32a7c03c3754da5d02e9e864deee, type: 3}
   BaseSaleValue: 4
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
@@ -37,3 +37,15 @@ MonoBehaviour:
       for those few seconds, it was very comfy.
     - I weigh 7 pounds and this wooden sitting device still broke. How is that even
       possible?
+  - PossibleStarReviews: {x: 4, y: 5}
+    PossibleTitles:
+    - wooden sitting device
+    PossibleDescriptions:
+    - wooden sitting device
+  - PossibleStarReviews: {x: 4, y: 5}
+    PossibleTitles:
+    - ANTS??
+    - ANTS
+    - Full of ants
+    PossibleDescriptions:
+    - Full of carpenter ants. Where did you find this thing?

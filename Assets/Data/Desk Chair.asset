@@ -17,7 +17,7 @@ MonoBehaviour:
   ItemName: Sitting Device
   ItemDescription: This sitting device was made to be sat on. It is quite comfortable.
     I would recommend sitting on this device.
-  ItemIcon: {fileID: 21300000, guid: 7e54d496ec8a9bc439fcf6acac5bfced, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 74c926c00e68d554692986b0e67e6527, type: 3}
   BaseSaleValue: 6
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
@@ -35,3 +35,16 @@ MonoBehaviour:
     - This sitting device instantly broke when I put weight on it. However, for those
       few seconds, it was very comfy.
     - I weigh 7 pounds and this sitting device still broke. How is that even possible?
+  - PossibleStarReviews: {x: 4, y: 5}
+    PossibleTitles:
+    - sitting device
+    PossibleDescriptions:
+    - sitting device
+  - PossibleStarReviews: {x: 3, y: 3}
+    PossibleTitles:
+    - WEAK
+    - NOT STRONG
+    - DON'T STAND
+    PossibleDescriptions:
+    - DO NOT STAND ON
+    - DO NOT STAND ON. I repeat, DO NOT STAND ON.

@@ -17,7 +17,7 @@ MonoBehaviour:
   ItemName: Overvalued Rock
   ItemDescription: Once a gemstone with a manufactured market behind it, prices have
     plummeted due to abundant pockets of the ore discovered in Winecraft
-  ItemIcon: {fileID: 21300000, guid: 8cd9e5e07e0db1c49a5ee362f359d9ce, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 3a6285eec7ec6d74dbb4e913c2ad8615, type: 3}
   BaseSaleValue: 4
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
@@ -29,3 +29,19 @@ MonoBehaviour:
     - Overpriced
     PossibleDescriptions:
     - A little overpriced for whats just a rock, but I'll take it. Nice rock.
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - DOGS LOVE IT
+    - GOOD FOR DOGS
+    PossibleDescriptions:
+    - MY DOGS LOVE,, IT -MARTHA
+    - MY DOGJS LOVE,, IT -MARTHA
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Great Rock
+    - Amazing Treasure
+    PossibleDescriptions:
+    - The husk family really outdid themselves with this one. always glad to support
+      mom and pop overvalued rock mines.
+    - The husk family really outdid themselves with this one. always glad to support
+      mom and pop mines.

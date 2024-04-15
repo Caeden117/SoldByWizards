@@ -16,10 +16,27 @@ MonoBehaviour:
     type: 3}
   ItemName: Light Saber
   ItemDescription: These fancy candle lamps are used by wizards all over the dimensions.
-  ItemIcon: {fileID: 21300000, guid: 9f991e10ee5df7a48903ee195fc71955, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 2b8c346f22d6a7f4fa5aad6e69292f14, type: 3}
   BaseSaleValue: 5
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
-  Reviews: []
+  Reviews:
+  - PossibleStarReviews: {x: 2, y: 3}
+    PossibleTitles:
+    - Cheap
+    - Feels Cheap
+    - No weight
+    PossibleDescriptions:
+    - Feels very cheap, not much weight to it at all. Will probably opt for rope
+      or a lead pipe instead.
+    - Feels too cheap, not much weight to itl. Will probably opt for rope or a lead
+      pipe instead.
+  - PossibleStarReviews: {x: 2, y: 3}
+    PossibleTitles:
+    - Ouch
+    - ow
+    PossibleDescriptions:
+    - My head hurts
+    - My head hurts...

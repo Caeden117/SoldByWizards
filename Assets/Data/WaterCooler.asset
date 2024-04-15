@@ -16,7 +16,7 @@ MonoBehaviour:
     type: 3}
   ItemName: Water Cooler
   ItemDescription: 'M. Bubbles.... mmmphm... '
-  ItemIcon: {fileID: 21300000, guid: 2738d9da2521c8d4caa2893e196f45ea, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 1f72516908b64734d828215ccdd8a46c, type: 3}
   BaseSaleValue: 5
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
@@ -29,3 +29,29 @@ MonoBehaviour:
     PossibleDescriptions:
     - The tip of the water cooler jug was so nasty... who would do such unwieldy
       things to a water cooler???
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Great cooler
+    - Perfect fit
+    - Good size
+    PossibleDescriptions:
+    - nozzle is the perfect size.... mmmmfgfhg -m bubz
+  - PossibleStarReviews: {x: 3, y: 4}
+    PossibleTitles:
+    - Fine
+    - Works well
+    PossibleDescriptions:
+    - Works well. Not sure what all the other reviews are talking about though.
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - Soggy
+    - Felt a bit soggy
+    PossibleDescriptions:
+    - There was a crack and it made everything soggy :(
+  - PossibleStarReviews: {x: 1, y: 2}
+    PossibleTitles:
+    - Too warm
+    - Warm
+    PossibleDescriptions:
+    - The water was okay but talk about a lukewarm disappointment. it was not cool
+      at all!

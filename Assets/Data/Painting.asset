@@ -17,7 +17,7 @@ MonoBehaviour:
   ItemName: The Pog
   ItemDescription: High-quality print of the famous emote before it went missing
     from Joe.TV
-  ItemIcon: {fileID: 21300000, guid: 2efe0a765f7df614e866e261c19ff8b3, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 54b3840f4dc53d6428c6bfa1d08298d6, type: 3}
   BaseSaleValue: 6
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
@@ -35,3 +35,17 @@ MonoBehaviour:
     - pogchamp
     PossibleDescriptions:
     - im pogging out of my MIND right now, just like The Pog.
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - Looks off
+    - Weird
+    PossibleDescriptions:
+    - I don't remember it looking like this...
+  - PossibleStarReviews: {x: 1, y: 3}
+    PossibleTitles:
+    - Fooled
+    - Don't get fooled
+    - I was fooled
+    PossibleDescriptions:
+    - Don't get fooled like me, this is not actually the original... This website
+      used to have less scams.
