@@ -185,7 +185,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reviewController: {fileID: 4393250894399690601}
+  _tweenManager: {fileID: 0}
   _reviewSlot: {fileID: 156769956343930380}
+  _notificationDisplayTime: 0
+  _hiddenPosition: 0
+  _visiblePosition: 0
+  _animationDuration: 1
+  _inEase: 0
+  _outEase: 0
+  _popAudioPool: {fileID: 0}
 --- !u!1 &526086975823034202
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3796101c0642209fee9c83ec9a4971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tweenManager: {fileID: 7906262010617632155}
   _computerController: {fileID: 6746458872283953923}
   _itemsManager: {fileID: 6521334697690380257}
   _reviewController: {fileID: 4393250894399690601}
@@ -305,6 +314,9 @@ MonoBehaviour:
   _rentIncreasePerCycle: 125
   _secondsPerRentCycle: 300
   _sellCheckTimeRange: {x: 2, y: 5}
+  _chaChingAudioPool: {fileID: 0}
+  _itemSellPrefab: {fileID: 8449625780941303018, guid: 4e9ec8ad60f2e5f44b39f064ca30efca,
+    type: 3}
 --- !u!1 &1019312459591802331
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +604,8 @@ Transform:
   - {fileID: 8662494213230341615}
   - {fileID: 6206735857199719560}
   - {fileID: 1719263168138084543}
+  - {fileID: 2930414890313348811}
+  - {fileID: 6586415594503976288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1713037241577320803

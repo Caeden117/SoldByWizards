@@ -46,6 +46,7 @@ namespace SoldByWizards.Maps
             _item.ItemSO = itemSO;
             _item.SellPrice = StockMarket.CalculatePriceFor(itemSO);
             _item.SpawnPoint = this;
+            _item.Rigidbody = _item.GetComponentInChildren<Rigidbody>();
         }
 
         public void ClearSpawn() => _item = null;

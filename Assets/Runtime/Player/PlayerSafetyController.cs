@@ -16,7 +16,7 @@ namespace SoldByWizards
             if (_playerController.transform.position.y >= -50) return;
 
             // idiot.
-            _itemsManager.DropAllItems();
+            _itemsManager.DeleteAllItems();
             _playerController.Stop();
             _playerController.Rigidbody.position = _safetyTeleportPoint.position;
             _playerCamera.transform.rotation = _safetyTeleportPoint.rotation;

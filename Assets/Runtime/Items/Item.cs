@@ -11,11 +11,9 @@ namespace SoldByWizards.Items
         [NonSerialized] public bool MarkedForSale = false;
         [NonSerialized] public float SellPrice;
         [NonSerialized] public MapObjectSpawnPoint SpawnPoint;
+        [NonSerialized] public Rigidbody Rigidbody;
 
         // TODO: Create a portal below, do a whole fancy animation
-        public void SellAnimation()
-        {
-            this.gameObject.SetActive(false);
-        }
+        public void SellAnimation() => Rigidbody.excludeLayers = ~0;
     }
 }
