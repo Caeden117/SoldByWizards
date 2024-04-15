@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf8ab1a859a4a2b8943b1ff88a1c6f2, type: 3}
   m_Name: Water Cooler
   m_EditorClassIdentifier: 
-  ItemPrefab: {fileID: 9112170275868957378, guid: 08b67560c5d145045bca20b541149a02,
+  ItemPrefab: {fileID: 6699809195060818920, guid: d11ce8ac1e998e74f8d56602d6ec5360,
     type: 3}
   ItemName: Water Cooler
   ItemDescription: 'M. Bubbles.... mmmphm... '

@@ -1642,74 +1642,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 419b7aae07780ca47a893a24d4cb2570, type: 3}
---- !u!1001 &725893942
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4823095365085818282, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_Name
-      value: Water Cooler
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.8748274
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.3887663
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8281944402158167465, guid: 08b67560c5d145045bca20b541149a02,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 08b67560c5d145045bca20b541149a02, type: 3}
 --- !u!1 &736374192
 GameObject:
   m_ObjectHideFlags: 0
@@ -3274,6 +3206,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db080d125067930458a1f8e4c309040b, type: 3}
+--- !u!1001 &1388529652
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2271960890058667460, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterCooler
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.431
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.545
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259112635800442913, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5519562116030979858, guid: d11ce8ac1e998e74f8d56602d6ec5360,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d11ce8ac1e998e74f8d56602d6ec5360, type: 3}
 --- !u!1 &1445243366
 GameObject:
   m_ObjectHideFlags: 0
@@ -5932,7 +5937,6 @@ SceneRoots:
   - {fileID: 1838739338}
   - {fileID: 1492577696}
   - {fileID: 1113980436}
-  - {fileID: 725893942}
   - {fileID: 1520311064}
   - {fileID: 1666048021}
   - {fileID: 1832126707}
@@ -5955,3 +5959,4 @@ SceneRoots:
   - {fileID: 1507464959}
   - {fileID: 410892534}
   - {fileID: 828507652}
+  - {fileID: 1388529652}
