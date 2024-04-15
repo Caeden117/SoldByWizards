@@ -3628,6 +3628,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Landfill
+  <_skyboxMaterial>k__BackingField: {fileID: 2100000, guid: 50b4e3af9d8b91a449ec359e41467aad,
+    type: 2}
   _guaranteedSpawns: 3
   _additiveItemPool: []
 --- !u!4 &1214255926
