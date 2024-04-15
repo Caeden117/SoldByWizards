@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3840121727201153669}
   - component: {fileID: 6699809195060818920}
   - component: {fileID: 1428810912276719287}
-  - component: {fileID: 5519562116030979858}
+  - component: {fileID: 7503006971271713079}
   m_Layer: 6
   m_Name: Painting
   m_TagString: Untagged
@@ -125,9 +125,9 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!64 &5519562116030979858
-MeshCollider:
+  m_CollisionDetection: 2
+--- !u!65 &7503006971271713079
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -144,7 +144,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7422704889065910882, guid: be8840ae15894964388d19d69b55c340, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.1, y: 0.05, z: 1.1000001}
+  m_Center: {x: 0, y: 0, z: 0.55}
