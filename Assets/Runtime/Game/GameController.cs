@@ -30,6 +30,8 @@ namespace SoldByWizards.Game
         [SerializeField] private Vector2 _sellCheckTimeRange = new Vector2(0f, 1f);
         [SerializeField] private RandomAudioPool? _chaChingAudioPool;
         [SerializeField] private GameObject _itemSellPrefab;
+        [SerializeField] private AudioClip _portalOpenClip = null!;
+        [SerializeField] private AudioClip _portalCloseClip = null!;
 
         public event Action OnDaySucceeded;
         public event Action OnDayFailed;
@@ -162,6 +164,7 @@ namespace SoldByWizards.Game
         {
             var itemPortal = Instantiate(_itemSellPrefab);
             var itemPortalTransform = itemPortal.transform;
+            var itemPortalAudioSource = itemPortal.GetComponentInChildren<AudioSource>();
             var itemPortalMaterial = itemPortal.GetComponentInChildren<MeshRenderer>().material;
 
 
@@ -183,6 +186,7 @@ namespace SoldByWizards.Game
             itemPortalTransform.position = aggregateBounds.Value.center.WithY(0f);
             itemPortalTransform.eulerAngles = Vector3.zero.WithY(item.transform.eulerAngles.y);
 
+            itemPortalAudioSource.PlayOneShot(_portalOpenClip);
             await _tweenManager.Run(0f, 0.75f, 1f,
                 a => itemPortalMaterial.SetFloat("_Intensity", a), Easer.OutBack);
 
@@ -196,6 +200,7 @@ namespace SoldByWizards.Game
             // Create a review
             _reviewController.GenerateAndSendReview(item.ItemSO);
 
+            itemPortalAudioSource.PlayOneShot(_portalCloseClip);
             await _tweenManager.Run(0.75f, 0, 1f,
                 a => itemPortalMaterial.SetFloat("_Intensity", a), Easer.InBack);
 

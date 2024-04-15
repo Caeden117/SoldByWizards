@@ -20,8 +20,17 @@ namespace SoldByWizards.Maps
 
         [SerializeField] private Animator[] _portalAnimators;
 
+        [SerializeField] private AudioSource? _audioSource;
+        [SerializeField] private AudioClip? _portalOpenClip;
+        [SerializeField] private AudioClip? _portalCloseClip;
+
         public async UniTask OpenAsync()
         {
+            if (_audioSource != null && _portalOpenClip != null)
+            {
+                _audioSource.PlayOneShot(_portalOpenClip);
+            }
+
             foreach (var animator in _portalAnimators)
             {
                 animator.gameObject.SetActive(true);
@@ -35,6 +44,11 @@ namespace SoldByWizards.Maps
 
         public async UniTask CloseAsync()
         {
+            if (_audioSource != null && _portalCloseClip != null)
+            {
+                _audioSource.PlayOneShot(_portalCloseClip);
+            }
+
             foreach (var animator in _portalAnimators)
             {
                 animator.Play("ClosePortal");

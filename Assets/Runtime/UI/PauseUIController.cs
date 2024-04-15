@@ -46,7 +46,7 @@ namespace SoldByWizards.UI
 
             if (Paused)
             {
-                PresentPauseMenu(0.5f).Forget();
+                PresentPauseMenu(0.35f).Forget();
                 Time.timeScale = 0f;
                 _inputController.Disable(_inputController.Input.Pause.TogglePause);
                 _cachedCursorLockMode = Cursor.lockState;
@@ -55,7 +55,7 @@ namespace SoldByWizards.UI
             }
             else
             {
-                HidePauseMenu(0.5f).Forget();
+                HidePauseMenu(0.35f).Forget();
                 Time.timeScale = 1f;
                 _inputController.Enable();
                 Cursor.lockState = _cachedCursorLockMode;
@@ -87,15 +87,15 @@ namespace SoldByWizards.UI
             _tweenManager.Run(0, 1, duration, t => _uiTransform.localScale = t * Vector3.one, Easer.OutBack);
         }
 
-        private async UniTask HidePauseMenu(float duration)
+        private UniTask HidePauseMenu(float duration)
         {
             // Settings panel
-            _tweenManager.Run(1, 0, duration, t => _uiTransform.localScale = t * Vector3.one, Easer.InBack);
-
-            await UniTask.Delay(TimeSpan.FromSeconds(0.2f), DelayType.UnscaledDeltaTime);
+            _tweenManager.Run(1, 0, duration + 0.2f, t => _uiTransform.localScale = t * Vector3.one, Easer.InBack);
 
             // Background image
-            _tweenManager.Run(1f, 0, duration + 0.2f, t => _backgroundTransform.localScale = t * Vector3.one, Easer.InBack);
+            _tweenManager.Run(1f, 0, duration, t => _backgroundTransform.localScale = t * Vector3.one, Easer.InBack);
+
+            return UniTask.CompletedTask;
         }
 
         private static float DecibelsToLinear(float decibels) => float.IsInfinity(decibels)
