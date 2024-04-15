@@ -23,3 +23,9 @@ MonoBehaviour:
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
+  Reviews:
+  - PossibleStarReviews: {x: 2, y: 4}
+    PossibleTitles:
+    - Overpriced
+    PossibleDescriptions:
+    - A little overpriced for whats just a rock, but I'll take it. Nice rock.

@@ -22,4 +22,10 @@ MonoBehaviour:
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
-  Reviews: []
+  Reviews:
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - CLEAN YOUR SHIT!!!
+    PossibleDescriptions:
+    - The tip of the water cooler jug was so nasty... who would do such unwieldy
+      things to a water cooler???

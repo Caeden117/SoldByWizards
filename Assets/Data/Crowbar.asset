@@ -24,3 +24,10 @@ MonoBehaviour:
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
+  Reviews:
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - So gross!!
+    PossibleDescriptions:
+    - This source 2007 memorabilia came in such a nasty state... alien guts everywhere,
+      rust all over the place... does someone not care about the classics??

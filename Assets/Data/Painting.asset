@@ -23,3 +23,15 @@ MonoBehaviour:
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
+  Reviews:
+  - PossibleStarReviews: {x: 1, y: 3}
+    PossibleTitles:
+    - clearly a rip off!
+    PossibleDescriptions:
+    - this painting of "The Pog" is clearly an imitation. i now have to spend even
+      more money to get an authentic copy of "The Pog".
+  - PossibleStarReviews: {x: 3, y: 5}
+    PossibleTitles:
+    - pogchamp
+    PossibleDescriptions:
+    - im pogging out of my MIND right now, just like The Pog.

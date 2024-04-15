@@ -22,3 +22,19 @@ MonoBehaviour:
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
+  Reviews:
+  - PossibleStarReviews: {x: 1, y: 3}
+    PossibleTitles:
+    - I oreder a different color!!
+    PossibleDescriptions:
+    - I bought the orange one!!! >:(
+  - PossibleStarReviews: {x: 1, y: 2}
+    PossibleTitles:
+    - Contains led!!
+    PossibleDescriptions:
+    - I bought this cup but it has led in it!! this is very unsafe.
+  - PossibleStarReviews: {x: 1, y: 2}
+    PossibleTitles:
+    - Handle Broke Off immedaitely!! Junk!!
+    PossibleDescriptions:
+    - Parable Cups are so expensive... having them break so quickly is unacceptable!!

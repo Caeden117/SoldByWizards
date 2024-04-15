@@ -24,6 +24,16 @@ MonoBehaviour:
   MultiSalesPenalty: -0.1
   TwoHanded: 0
   Reviews:
+  - PossibleStarReviews: {x: 1, y: 2}
+    PossibleTitles:
+    - television not televisioning
+    PossibleDescriptions:
+    - television machine broke.
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - cracked screen!!
+    PossibleDescriptions:
+    - Who has the audacity to sell a TV with a cracked screen????
   - PossibleStarReviews: {x: 1, y: 1}
     PossibleTitles:
     - Received broken

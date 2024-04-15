@@ -23,3 +23,16 @@ MonoBehaviour:
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
+  Reviews:
+  - PossibleStarReviews: {x: 4, y: 5}
+    PossibleTitles:
+    - pretty good
+    PossibleDescriptions:
+    - just beat up some kids with this intruder whacker. pretty solid, would purchase
+      from the wizards again.
+  - PossibleStarReviews: {x: 1, y: 3}
+    PossibleTitles:
+    - blood stains???
+    PossibleDescriptions:
+    - why did my intruder whacker arrive with a blood stain on it? what have you
+      been doing??
