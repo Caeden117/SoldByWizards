@@ -192,10 +192,6 @@ namespace SoldByWizards.Game
 
             // play sound and show money in rent UI
             OnItemSold?.Invoke(item, item.SellPrice);
-            if (_chaChingAudioPool != null)
-            {
-                _chaChingAudioPool.PlayRandom();
-            }
 
             // Create a review
             _reviewController.GenerateAndSendReview(item.ItemSO);
