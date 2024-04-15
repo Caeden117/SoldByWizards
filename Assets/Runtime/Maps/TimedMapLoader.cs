@@ -64,9 +64,9 @@ namespace SoldByWizards.Maps
                 _timeSinceLastPortalClose = Time.time + _portalCooldown;
             }
 
-            OnTimerEnded?.Invoke();
-
             await _portalController.CloseAsync();
+
+            OnTimerEnded?.Invoke();
 
             // dirtiest gamejam hack of my life
             if (_playerController.transform.position.z > 0)
