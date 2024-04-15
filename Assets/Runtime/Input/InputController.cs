@@ -72,6 +72,7 @@ namespace SoldByWizards.Input
             Input.Player.Enable();
             Input.Pause.Enable();
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = true;
         }
 
         public void DisablePlayerInput(PlayerInputDisableSource source)
