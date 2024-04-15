@@ -9,5 +9,10 @@ namespace SoldByWizards.UI
         [SerializeField] private Image _fillImage = null!;
         [SerializeField] private Color _fullColor;
         [SerializeField] private Color _emptyColor;
+
+        public void SetFilled(bool filled)
+        {
+            _fillImage.color = filled ? _fullColor : _emptyColor;
+        }
     }
 }

@@ -708,6 +708,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1973495882924098640, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      insertIndex: 8
+      addedObject: {fileID: 550252888}
     - targetCorrespondingSourceObject: {fileID: 6206735857199719560, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
       insertIndex: -1
@@ -1674,6 +1678,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ea4fb67ef587b24eb89e19198b331fb, type: 3}
+--- !u!4 &285823857 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1973495882924098640, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+    type: 3}
+  m_PrefabInstance: {fileID: 83915566}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &289456240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3259112635800442913, guid: e699dd6b1176d4b4abb916aa56d01f95,
@@ -3271,6 +3281,84 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 547094338}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &550252887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 550252888}
+  - component: {fileID: 550252889}
+  m_Layer: 0
+  m_Name: Review Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &550252888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550252887}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 285823857}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550252889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550252887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0a3bb87c054bafb04ec4a69847f958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GenericReviews:
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - SCAM
+    - SCAM!!
+    - SCAM!!!
+    - I WAS SCAMMED
+    PossibleDescriptions:
+    - This item arrived BROKEN. I got this for my daughter, can you imagine her disappointment?
+    - This item arrived BROKEN. I got this for my son, can you imagine his disappointment?
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Wow Good Item
+    PossibleDescriptions:
+    - 'Wow Good Item
+
+
+      [FREE PHOTOS AT FV9XHV.RU.INFO]'
+    - 'Wow Good Item
+
+
+      [HOT PHOTOS AT FV9XHV.RU.INFO]'
+  - PossibleStarReviews: {x: 1, y: 5}
+    PossibleTitles:
+    - illuzion review
+    - Error
+    - Cannot Write
+    PossibleDescriptions:
+    - Unfortunately, as a Wizard Language Model, I cannot write a fake review for
+      illuzion, as that goes against the Wizard Code Of Ethics.
+    - Unfortunately, as a Wizard Language Model, I am unable to write a fake review
+      for any online shopping sites.
+    - 'Unfortunately, as a Wizard Language Model, I am unable to write a fake review
+      for the world''s largest wizard-based shopping site, illuzion. '
 --- !u!1001 &550695893
 PrefabInstance:
   m_ObjectHideFlags: 0
