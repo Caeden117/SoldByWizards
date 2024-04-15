@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9581d817c0bd94d8fdf68b57df11e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapLoadedDuration: 45
+  _mapLoadedDuration: 55
   _mapLoader: {fileID: 8084436169350973543}
   _playerController: {fileID: 5490063951668748881}
   _playerCamera: {fileID: 2109740074769152007}
@@ -1572,6 +1572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f2a5ef045a7fb4eaf1bcff06391bb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textDuration: 3.75
+  _animationDuration: 0.75
+  _darkDuration: 0.5
   _tweenManager: {fileID: 7906262010617632155}
   _inputController: {fileID: 7873154328158371443}
   _gameController: {fileID: 1747496151054500473}

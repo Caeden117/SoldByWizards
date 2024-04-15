@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using AuraTween;
@@ -13,8 +13,9 @@ namespace SoldByWizards
 {
     public class FailStateUIController : MonoBehaviour
     {
-        private const float _delay = 5f;
-        private const float _duration = 1f;
+        [SerializeField] private float _textDuration = 5f;
+        [SerializeField] private float _animationDuration = 1f;
+        [SerializeField] private float _darkDuration = 1f;
 
         [SerializeField] private TweenManager _tweenManager;
         [SerializeField] private InputController _inputController;
@@ -28,7 +29,7 @@ namespace SoldByWizards
         private void Start()
         {
             _failText.text = string.Empty;
-            _tweenManager.Run(1f, 0f, _duration, a => _canvasGroup.alpha = a, Easer.InOutSine);
+            _tweenManager.Run(1f, 0f, _animationDuration, a => _canvasGroup.alpha = a, Easer.InOutSine);
 
             _gameController.OnDayFailed += OnDayFailed;
         }
@@ -39,18 +40,18 @@ namespace SoldByWizards
         {
             _inputController.Disable();
 
-            var halfDelay = TimeSpan.FromSeconds(_delay / 2);
+            var delay = TimeSpan.FromSeconds(_darkDuration);
 
-            await UniTask.Delay(halfDelay);
+            await UniTask.Delay(delay);
 
-            await _tweenManager.Run(0f, 1f, _duration, a => _canvasGroup.alpha = a, Easer.InOutSine);
+            await _tweenManager.Run(0f, 1f, _animationDuration, a => _canvasGroup.alpha = a, Easer.InOutSine);
 
-            await UniTask.Delay(halfDelay);
+            await UniTask.Delay(delay);
 
             await DisplayText(_textStrings1);
-            await UniTask.Delay(halfDelay);
+            await UniTask.Delay(delay);
             await DisplayText(_textStrings2);
-            await UniTask.Delay(halfDelay);
+            await UniTask.Delay(delay);
             await DisplayText(_textStrings3);
 
             SceneManager.LoadScene(0, LoadSceneMode.Single);
@@ -64,11 +65,11 @@ namespace SoldByWizards
 
             _failText.text = randomStr;
 
-            await _tweenManager.Run(0f, 1f, _duration, a => _failText.color = Color.white * a, Easer.InOutSine);
+            await _tweenManager.Run(0f, 1f, _animationDuration, a => _failText.color = Color.white * a, Easer.InOutSine);
 
-            await UniTask.Delay(TimeSpan.FromSeconds(_delay));
+            await UniTask.Delay(TimeSpan.FromSeconds(_textDuration));
 
-            await _tweenManager.Run(1f, 0f, _duration, a => _failText.color = Color.white * a, Easer.InOutSine);
+            await _tweenManager.Run(1f, 0f, _animationDuration, a => _failText.color = Color.white * a, Easer.InOutSine);
         }
 
         private void OnDestroy()
