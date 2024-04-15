@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _glyphAggregator: {fileID: 0}
-  _allMapSceneIdx: 0100000002000000
+  _allMapSceneIdx: 01000000020000000300000004000000
 --- !u!114 &2724631481037577657
 MonoBehaviour:
   m_ObjectHideFlags: 0
