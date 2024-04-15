@@ -40,3 +40,11 @@ MonoBehaviour:
     - sitting device
     PossibleDescriptions:
     - sitting device
+  - PossibleStarReviews: {x: 3, y: 3}
+    PossibleTitles:
+    - WEAK
+    - NOT STRONG
+    - DON'T STAND
+    PossibleDescriptions:
+    - DO NOT STAND ON
+    - DO NOT STAND ON. I repeat, DO NOT STAND ON.

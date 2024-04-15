@@ -29,7 +29,7 @@ MonoBehaviour:
     PossibleDescriptions:
     - The tip of the water cooler jug was so nasty... who would do such unwieldy
       things to a water cooler???
-  - PossibleStarReviews: {x: 1, y: 1}
+  - PossibleStarReviews: {x: 5, y: 5}
     PossibleTitles:
     - Great cooler
     - Perfect fit
