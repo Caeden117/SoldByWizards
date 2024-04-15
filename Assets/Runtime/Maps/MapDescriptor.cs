@@ -12,6 +12,9 @@ namespace SoldByWizards.Maps
         [field: SerializeField]
         public string Name { get; private set; }
 
+        [field: SerializeField]
+        public Material? _skyboxMaterial { get; private set; }
+
         [SerializeField] private int _guaranteedSpawns = 3;
         [SerializeField] private ItemSO[] _additiveItemPool;
 
@@ -60,6 +63,10 @@ namespace SoldByWizards.Maps
             {
                 _objectSpawnPoints[i].RandomSpawn();
             }
+
+            // Apply custom skybox, if one exists
+            if (_skyboxMaterial != null)
+                RenderSettings.skybox = _skyboxMaterial;
         }
     }
 }

@@ -3598,6 +3598,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Ship
+  <_skyboxMaterial>k__BackingField: {fileID: 2100000, guid: 84fd9450b7d995942b5fa44a08a62bba,
+    type: 2}
   _guaranteedSpawns: 3
   _additiveItemPool: []
 --- !u!4 &632725786
