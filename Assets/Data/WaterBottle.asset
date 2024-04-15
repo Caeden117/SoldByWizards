@@ -43,3 +43,10 @@ MonoBehaviour:
     PossibleDescriptions:
     - Parable Cups are so expensive... having them break so quickly is unacceptable!!
     - I SAVED UP FOR SO LONG FOR THIS PARABLE CUP, AND IT BROKE INSTANTLY!!!!!! UNACCEPTABLE!!!
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Sweet cup!
+    - Sweet
+    PossibleDescriptions:
+    - Great cup! It even adds a light but nice sweet taste to your water.
+    - Great cup! I love the sweet taste this adds to my water.

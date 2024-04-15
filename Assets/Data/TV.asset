@@ -66,3 +66,20 @@ MonoBehaviour:
       anyways.
     - The TV is good, but it only plays crime movies. Specifically about stealing
       things and reselling them for profit. Not sure what's up with that.
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - Unrealistic
+    - Bad
+    - Annoying
+    PossibleDescriptions:
+    - The way Luke was acting during the movie just doesn't make any sense, also
+      how is Rey able to use a lightsaber with so little training?? No respect for
+      the franchise and lore, very shameful.
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - Seeing things
+    - Weird things
+    PossibleDescriptions:
+    - Ever since this arrived, I keep seeing things out of the corner of my eye in
+      my house. This is a replica, right? I thought we banned the real ones after
+      we found out about the RF dimension.

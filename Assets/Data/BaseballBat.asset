@@ -44,3 +44,10 @@ MonoBehaviour:
     - why did my intruder whacker arrive with a blood stain on it? what have you
       been doing??
     - why is "STOP STEALING FROM US" scribbled in blood on my intruder whacker?
+  - PossibleStarReviews: {x: 1, y: 3}
+    PossibleTitles:
+    - rats
+    - rat whacker
+    - Rats
+    PossibleDescriptions:
+    - Good for rats -Charlie

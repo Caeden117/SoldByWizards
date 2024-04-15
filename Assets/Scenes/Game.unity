@@ -664,7 +664,7 @@ PrefabInstance:
     - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
       propertyPath: GenericReviews.Array.size
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
@@ -688,6 +688,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleStarReviews.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleStarReviews.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[6].PossibleStarReviews.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[6].PossibleStarReviews.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
       propertyPath: GenericReviews.Array.data[3].PossibleTitles.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -695,6 +715,16 @@ PrefabInstance:
         type: 3}
       propertyPath: GenericReviews.Array.data[4].PossibleTitles.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleTitles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[6].PossibleTitles.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
@@ -728,6 +758,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleTitles.Array.data[0]
+      value: 2 Thumbs Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleTitles.Array.data[1]
+      value: Thumbs Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleTitles.Array.data[2]
+      value: Good
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[6].PossibleTitles.Array.data[0]
+      value: Quality
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[6].PossibleTitles.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[6].PossibleTitles.Array.data[2]
+      value: Good
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
       propertyPath: GenericReviews.Array.data[3].PossibleDescriptions.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -735,6 +795,16 @@ PrefabInstance:
         type: 3}
       propertyPath: GenericReviews.Array.data[4].PossibleDescriptions.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleDescriptions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[6].PossibleDescriptions.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
@@ -767,6 +837,32 @@ PrefabInstance:
       propertyPath: GenericReviews.Array.data[4].PossibleDescriptions.Array.data[2]
       value: As a stealing expert, this item was clearly stolen. I will be stealing
         my money back from the seller.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleDescriptions.Array.data[0]
+      value: I give this product 2 thumbs up!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleDescriptions.Array.data[1]
+      value: Two thumbs up!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[5].PossibleDescriptions.Array.data[2]
+      value: As a stealing expert, this item was clearly stolen. I will be stealing
+        my money back from the seller.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[6].PossibleDescriptions.Array.data[0]
+      value: This product is not good... quality!
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393250894399690601, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: GenericReviews.Array.data[6].PossibleDescriptions.Array.data[1]
+      value: Thi
       objectReference: {fileID: 0}
     - target: {fileID: 5340865235092107985, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}

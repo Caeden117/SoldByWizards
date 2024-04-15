@@ -37,3 +37,8 @@ MonoBehaviour:
       for those few seconds, it was very comfy.
     - I weigh 7 pounds and this wooden sitting device still broke. How is that even
       possible?
+  - PossibleStarReviews: {x: 4, y: 5}
+    PossibleTitles:
+    - wooden sitting device
+    PossibleDescriptions:
+    - wooden sitting device

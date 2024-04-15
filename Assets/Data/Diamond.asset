@@ -29,3 +29,19 @@ MonoBehaviour:
     - Overpriced
     PossibleDescriptions:
     - A little overpriced for whats just a rock, but I'll take it. Nice rock.
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - DOGS LOVE IT
+    - GOOD FOR DOGS
+    PossibleDescriptions:
+    - MY DOGS LOVE,, IT -MARTHA
+    - MY DOGJS LOVE,, IT -MARTHA
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Great Rock
+    - Amazing Treasure
+    PossibleDescriptions:
+    - The husk family really outdid themselves with this one. always glad to support
+      mom and pop overvalued rock mines.
+    - The husk family really outdid themselves with this one. always glad to support
+      mom and pop mines.

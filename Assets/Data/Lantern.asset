@@ -22,4 +22,20 @@ MonoBehaviour:
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
-  Reviews: []
+  Reviews:
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Liberals
+    - Real man's light
+    PossibleDescriptions:
+    - liberals says you should use "LED" because their "more safe" (FAKE),, I SUPPORT
+      THE OIL INDUSTRY
+    - liberals says you should use "LED" because their "more environmental" (FAKE),,
+      I SUPPORT THE OIL INDUSTRY
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Exploring
+    - Great Illuminator
+    PossibleDescriptions:
+    - This lantern is the perfect tool to use when exploring dark eldritch castles.
+      what was my name again?

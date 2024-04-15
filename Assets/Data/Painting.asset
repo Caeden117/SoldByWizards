@@ -35,3 +35,17 @@ MonoBehaviour:
     - pogchamp
     PossibleDescriptions:
     - im pogging out of my MIND right now, just like The Pog.
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - Looks off
+    - Weird
+    PossibleDescriptions:
+    - I don't remember it looking like this...
+  - PossibleStarReviews: {x: 1, y: 3}
+    PossibleTitles:
+    - Fooled
+    - Don't get fooled
+    - I was fooled
+    PossibleDescriptions:
+    - Don't get fooled like me, this is not actually the original... This website
+      used to have less scams.
