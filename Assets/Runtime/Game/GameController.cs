@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AuraTween;
 using Cysharp.Threading.Tasks;
 using SoldByWizards.Computers;
 using SoldByWizards.Items;
@@ -19,6 +20,7 @@ namespace SoldByWizards.Game
 
         public float CurrentRent => GetRentForCurrentDay();
 
+        [SerializeField] private TweenManager _tweenManager;
         [SerializeField] private ComputerController _computerController = null!;
         [SerializeField] private ItemsManager _itemsManager = null!;
         [SerializeField] private ReviewController _reviewController = null!;
@@ -27,6 +29,7 @@ namespace SoldByWizards.Game
         [SerializeField] private float _secondsPerRentCycle = 60f;
         [SerializeField] private Vector2 _sellCheckTimeRange = new Vector2(0f, 1f);
         [SerializeField] private RandomAudioPool? _chaChingAudioPool;
+        [SerializeField] private GameObject _itemSellPrefab;
 
         public event Action OnDaySucceeded;
         public event Action OnDayFailed;
@@ -137,22 +140,21 @@ namespace SoldByWizards.Game
 
             OnItemSold?.Invoke(item, item.SellPrice);
 
-            // play sound
-            if (_chaChingAudioPool != null)
-            {
-                _chaChingAudioPool.PlayRandom();
-            }
-
             var hotbarIndex = _itemsManager.ItemHotbarIndex(item);
             if (hotbarIndex != null)
             {
+                // play sound
+                if (_chaChingAudioPool != null)
+                {
+                    _chaChingAudioPool.PlayRandom();
+                }
+
                 // this is a hotbar item.
-                _itemsManager.DropItemWithAnimation(hotbarIndex.Value);
+                _itemsManager.DeleteItem(hotbarIndex.Value);
             }
             else
             {
-                // this is a dropped item.
-                item.SellAnimation();
+                SellItemAsync(item).Forget();
             }
 
             // Update stock market
@@ -160,6 +162,51 @@ namespace SoldByWizards.Game
 
             // Create a review
             _reviewController.GenerateAndSendReview(item.ItemSO);
+        }
+
+        private async UniTask SellItemAsync(Item item)
+        {
+            var itemPortal = Instantiate(_itemSellPrefab);
+            var itemPortalTransform = itemPortal.transform;
+            var itemPortalMaterial = itemPortal.GetComponentInChildren<MeshRenderer>().material;
+
+
+            Bounds? aggregateBounds = null;
+            var colliderComponents = item.GetComponentsInChildren<Collider>();
+            foreach (var collider in colliderComponents)
+            {
+                if (!aggregateBounds.HasValue)
+                {
+                    aggregateBounds = collider.bounds;
+                }
+                else
+                {
+                    aggregateBounds.Value.Encapsulate(collider.bounds);
+                }
+            }
+
+            itemPortalTransform.localScale = aggregateBounds.Value.extents.WithY(0.25f);
+            itemPortalTransform.position = aggregateBounds.Value.center.WithY(0f);
+            itemPortalTransform.eulerAngles = Vector3.zero.WithY(item.transform.eulerAngles.y);
+
+            await _tweenManager.Run(0f, 0.75f, 1f,
+                a => itemPortalMaterial.SetFloat("_Intensity", a), Easer.OutBack);
+
+            item.SellAnimation();
+
+            await UniTask.Delay(1000);
+
+            // play sound
+            if (_chaChingAudioPool != null)
+            {
+                _chaChingAudioPool.PlayRandom();
+            }
+
+            await _tweenManager.Run(0.75f, 0, 1f,
+                a => itemPortalMaterial.SetFloat("_Intensity", a), Easer.InBack);
+
+            Destroy(item.gameObject);
+            Destroy(itemPortal);
         }
     }
 }

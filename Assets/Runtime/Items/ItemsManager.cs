@@ -58,10 +58,35 @@ namespace SoldByWizards.Items
             }
         }
 
+        public void DeleteAllItems()
+        {
+            for (var i = 0; i < MAX_ITEM_COUNT; i++)
+            {
+                DeleteItem(i);
+            }
+        }
+
         public void DropItemWithAnimation(int itemIdx)
         {
             // TODO: Portal out animation or something in the hotbar?
             DropItem(itemIdx, new Vector3(0, -999, 0f));
+        }
+
+        public void DeleteItem(int itemIdx)
+        {
+            _heldItems[itemIdx] = null;
+
+            bool itemExists = _heldItemInstances[itemIdx] != null;
+            if (itemExists)
+            {
+                if (!_droppedItems.Contains(_heldItemInstances[itemIdx]))
+                    _droppedItems.Add(_heldItemInstances[itemIdx]);
+
+                Destroy(_heldItemInstances[itemIdx].gameObject);
+                _heldItemInstances[itemIdx] = null;
+            }
+
+            OnItemDrop?.Invoke(itemIdx, null);
         }
 
         public int? ItemHotbarIndex(Item item)
