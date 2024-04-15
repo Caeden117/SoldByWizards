@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using System;
 using SoldByWizards.Input;
 using UnityEngine;
@@ -111,6 +111,7 @@ namespace SoldByWizards.Glyphs
             var snapPointHit = Physics.Raycast(ray, out var glyphSnapHit, float.MaxValue, _glyphPointLayerMask);
 
             if (!snapPointHit) return;
+            if (glyphSnapHit.transform.GetComponentInParent<GlyphController>() != this) return;
 
             var pointIdx = glyphSnapHit.transform.GetComponent<GlyphPoint>().GlyphID;
 
