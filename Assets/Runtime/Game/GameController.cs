@@ -7,7 +7,6 @@ using SoldByWizards.Items;
 using SoldByWizards.Reviews;
 using SoldByWizards.Util;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace SoldByWizards.Game
 {
@@ -45,6 +44,7 @@ namespace SoldByWizards.Game
         private bool _dayIsProgressing = false;
         private bool _isAlive = true;
 
+        private System.Random _random = new();
         private void Start()
         {
             // Start at day 0
@@ -135,7 +135,7 @@ namespace SoldByWizards.Game
         {
             item.MarkedForSale = true;
 
-            await UniTask.WaitForSeconds(Random.Range(_sellCheckTimeRange.x, _sellCheckTimeRange.y));
+            await UniTask.WaitForSeconds(_random.NextFloatRange(_sellCheckTimeRange.x, _sellCheckTimeRange.y));
 
             _currentMoney += item.SellPrice;
 

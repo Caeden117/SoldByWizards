@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SoldByWizards.Util;
 using UnityEngine;
 
 namespace SoldByWizards
@@ -23,6 +24,7 @@ namespace SoldByWizards
         private Vector3 _offsetPos;
         private Vector3 _offsetEuler;
 
+        private System.Random _random = new();
 
         private void Start()
         {
@@ -47,7 +49,7 @@ namespace SoldByWizards
 
         }
 
-        private void PlayerTookDamage() => _offsetEuler += 5f * Random.Range(-1, 1f) * Vector3.forward;
+        private void PlayerTookDamage() => _offsetEuler += 5f * _random.NextFloatRange(-1, 1f) * Vector3.forward;
 
         private void LateUpdate()
         {

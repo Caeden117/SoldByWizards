@@ -43,6 +43,7 @@ namespace SoldByWizards.Util
         private List<AudioSource> _activeSources = new();
         private ObjectPool<AudioSource> _objectPool = null!;
 
+        private System.Random _random = new();
         public void Play(AudioClip clip)
         {
             var source = _objectPool.Get();
@@ -86,7 +87,7 @@ namespace SoldByWizards.Util
 
         private void PrepareAudioSource(AudioSource source)
         {
-            source.pitch = _pitchBase + Random.Range(-_pitchRandomness, _pitchRandomness);
+            source.pitch = _pitchBase + _random.NextFloatRange(-_pitchRandomness, _pitchRandomness);
             source.volume = _volume;
         }
     }
