@@ -17,9 +17,8 @@ MonoBehaviour:
   ItemName: Intruder Whacker
   ItemDescription: Keep your home safe from ghosts, demons, and others! *Illuzion
     is not responsible for any bodily harm caused by this item
-  ItemIcon: {fileID: 0}
+  ItemIcon: {fileID: 21300000, guid: 7d18de2b7e988d6478c4863878ee3601, type: 3}
   BaseSaleValue: 5
-  StockMarketSeed: 5746.789
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1

@@ -17,9 +17,8 @@ MonoBehaviour:
   ItemName: Sitting Device
   ItemDescription: This sitting device was made to be sat on. It is quite comfortable.
     I would recommend sitting on this device.
-  ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 7e54d496ec8a9bc439fcf6acac5bfced, type: 3}
   BaseSaleValue: 5
-  StockMarketSeed: 3092.129
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1

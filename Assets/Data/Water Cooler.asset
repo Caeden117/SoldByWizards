@@ -16,9 +16,8 @@ MonoBehaviour:
     type: 3}
   ItemName: Water Cooler
   ItemDescription: 'M. Bubbles.... mmmphm... '
-  ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 2738d9da2521c8d4caa2893e196f45ea, type: 3}
   BaseSaleValue: 5
-  StockMarketSeed: 3827.595
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
