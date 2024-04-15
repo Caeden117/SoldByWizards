@@ -35,6 +35,8 @@ namespace SoldByWizards.UI
             _gameController.OnItemSold += OnItemSold;
 
             _currentRent = _gameController.CurrentRent;
+            _moneyText.text = $"${_gameController.CurrentMoney:N2}";
+            _rentText.text = $"${_gameController.CurrentRent:N2}";
 
             _timedMapLoader.OnTimerStarted += OnTimerStarted;
             _timedMapLoader.OnTimerEnded += OnTimerEnded;

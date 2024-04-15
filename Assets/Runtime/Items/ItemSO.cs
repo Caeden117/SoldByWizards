@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace SoldByWizards.Items
 {
@@ -15,10 +16,17 @@ namespace SoldByWizards.Items
 
         [Header("Basic Item Stats")] public float BaseSaleValue = 0.0f;
 
-        [Header("Stock Market")] public float StockMarketSeed = (float)(rng.NextDouble() * short.MaxValue);
+        [Header("Stock Market")]
         public float StockMarketLowModifier = 0.3f;
         public float StockMarketHighModifier = 3.0f;
         public float MultiSalesPenalty = -0.1f;
+
+        public float StockMarketSeed { get; private set; } = (float)(rng.NextDouble() * short.MaxValue);
+
+        public void ResetSeed()
+        {
+            StockMarketSeed = (float)(rng.NextDouble() * short.MaxValue);
+        }
 
         public bool TwoHanded = false;
     }

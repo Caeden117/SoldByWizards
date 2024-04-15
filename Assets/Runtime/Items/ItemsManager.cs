@@ -83,6 +83,11 @@ namespace SoldByWizards.Items
             _timedMapLoader.OnTimerEnded += OnTimerEnded;
 
             _inputController.Input.Inventory.AddCallbacks(this);
+
+            foreach (var item in GlobalObjectPool)
+            {
+                item.ResetSeed();
+            }
         }
 
         private void OnObjectInteract(Ray _, RaycastHit raycastHit)

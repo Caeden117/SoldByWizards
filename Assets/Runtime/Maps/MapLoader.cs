@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using SoldByWizards.Glyphs;
+using SoldByWizards.Items;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
@@ -34,6 +35,10 @@ namespace SoldByWizards.Maps
         public async UniTask UnloadMap()
         {
             if (_loadedMap == default || !_loadedMap.isLoaded) return;
+
+            // Progress stock market, reset penalties from selling items
+            StockMarket.GameTime += 0.1f;
+            StockMarket.ResetStockMarket();
 
             await SceneManager.UnloadSceneAsync(_loadedMap);
 

@@ -6,6 +6,8 @@ namespace SoldByWizards.Items
 {
     public static class StockMarket
     {
+        private const float _globalMultiplier = 4;
+
         public static float GameTime = 0;
 
         private static Dictionary<ItemSO, int> _timesSold = new();
@@ -24,7 +26,7 @@ namespace SoldByWizards.Items
                 ? timesSold * item.MultiSalesPenalty
                 : 0.0f;
 
-            return baseSale * (stockMarketMultiplier + penalty);
+            return baseSale * (stockMarketMultiplier + penalty) * _globalMultiplier;
         }
 
         public static void OnItemSold(ItemSO item)
