@@ -32,6 +32,7 @@ namespace SoldByWizards.Computers
         private bool _receiveKeyboardInput = false;
         private bool _selected = false;
         private List<Item> _currentItems = new();
+        private int _currentCharacterMultiplier;
 
         // call when coming back from a teleport
         public void CreateListings(List<Item> items)
@@ -94,6 +95,7 @@ namespace SoldByWizards.Computers
 
         private void OnComputerSelected(Computer computer)
         {
+            _currentCharacterMultiplier = _characterMultiplier;
             _selected = true;
         }
 
@@ -138,7 +140,7 @@ namespace SoldByWizards.Computers
             if (!_receiveKeyboardInput || ctrl.device is not Keyboard || !_selected)
                 return;
 
-            _totalCharactersTyped += _characterMultiplier;
+            _totalCharactersTyped += _currentCharacterMultiplier;
             SetTotalTextTyped(_totalCharactersTyped);
             if (_keyboardSoundAudioPool != null)
             {
@@ -169,6 +171,8 @@ namespace SoldByWizards.Computers
 
                 if (itemListing.Saturated)
                 {
+                    _currentCharacterMultiplier++;
+
                     if (_currentItem + 1 == _spawnedItemListings.Count)
                     {
                         // final. break, we are DONE!
