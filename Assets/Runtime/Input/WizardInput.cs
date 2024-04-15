@@ -410,6 +410,56 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Computer"",
+            ""id"": ""eb1d0e3f-658b-43c2-92f6-9a258532a000"",
+            ""actions"": [
+                {
+                    ""name"": ""ToggleComputer"",
+                    ""type"": ""Button"",
+                    ""id"": ""03160d73-f874-481b-94dd-4c7732b41f82"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5aded22d-d074-4080-9f06-6e5fe2f2769b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleComputer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b644e468-1a68-4220-b314-15141fa9b52d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleComputer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a97efd6e-4528-4f58-8420-eadc1d7d2e37"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleComputer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -437,6 +487,9 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         // Pause
         m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
         m_Pause_TogglePause = m_Pause.FindAction("Toggle Pause", throwIfNotFound: true);
+        // Computer
+        m_Computer = asset.FindActionMap("Computer", throwIfNotFound: true);
+        m_Computer_ToggleComputer = m_Computer.FindAction("ToggleComputer", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -788,6 +841,52 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         }
     }
     public PauseActions @Pause => new PauseActions(this);
+
+    // Computer
+    private readonly InputActionMap m_Computer;
+    private List<IComputerActions> m_ComputerActionsCallbackInterfaces = new List<IComputerActions>();
+    private readonly InputAction m_Computer_ToggleComputer;
+    public struct ComputerActions
+    {
+        private @WizardInput m_Wrapper;
+        public ComputerActions(@WizardInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ToggleComputer => m_Wrapper.m_Computer_ToggleComputer;
+        public InputActionMap Get() { return m_Wrapper.m_Computer; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ComputerActions set) { return set.Get(); }
+        public void AddCallbacks(IComputerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ComputerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ComputerActionsCallbackInterfaces.Add(instance);
+            @ToggleComputer.started += instance.OnToggleComputer;
+            @ToggleComputer.performed += instance.OnToggleComputer;
+            @ToggleComputer.canceled += instance.OnToggleComputer;
+        }
+
+        private void UnregisterCallbacks(IComputerActions instance)
+        {
+            @ToggleComputer.started -= instance.OnToggleComputer;
+            @ToggleComputer.performed -= instance.OnToggleComputer;
+            @ToggleComputer.canceled -= instance.OnToggleComputer;
+        }
+
+        public void RemoveCallbacks(IComputerActions instance)
+        {
+            if (m_Wrapper.m_ComputerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IComputerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ComputerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ComputerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ComputerActions @Computer => new ComputerActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -815,5 +914,9 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
     public interface IPauseActions
     {
         void OnTogglePause(InputAction.CallbackContext context);
+    }
+    public interface IComputerActions
+    {
+        void OnToggleComputer(InputAction.CallbackContext context);
     }
 }

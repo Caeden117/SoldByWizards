@@ -5,17 +5,19 @@ using SoldByWizards.Input;
 using SoldByWizards.Player;
 using SoldByWizards.Player.Interactions;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SoldByWizards.Computers
 {
     // handles tabbing in/out of the computer
-    public class ComputersManager : MonoBehaviour
+    public class ComputersManager : MonoBehaviour, WizardInput.IComputerActions
     {
         [SerializeField] private InteractionsManager _interactionsManager = null!;
         [SerializeField] private InputController _inputController = null!;
         [SerializeField] private PlayerController _playerController = null!;
         [SerializeField] private TweenManager _tweenManager = null!;
         [SerializeField] private ComputerController _computerController = null!;
+        [SerializeField] private ListingPageSpamController _listingPageSpamController = null!;
 
         private Computer? _activeComputer;
 
@@ -28,12 +30,18 @@ namespace SoldByWizards.Computers
         private void Start()
         {
             _interactionsManager.OnObjectInteract += OnObjectInteract;
-            _interactionsManager.OnInteractKeyPressed += OnInteractKeyPressed;
+            _inputController.Input.Computer.AddCallbacks(this);
+        }
+
+        private void OnDestroy()
+        {
+            _interactionsManager.OnObjectInteract -= OnObjectInteract;
+            _inputController.Input.Computer.RemoveCallbacks(this);
         }
 
         private void OnInteractKeyPressed()
         {
-            if (_activeComputer == null || _transitioning)
+            if (_activeComputer == null || _transitioning || _listingPageSpamController.CurrentlyTyping)
                 return;
 
             var computer = _activeComputer;
@@ -112,10 +120,12 @@ namespace SoldByWizards.Computers
             }, _animationEase.ToProcedure());
         }
 
-        private void OnDestroy()
+        public void OnToggleComputer(InputAction.CallbackContext context)
         {
-            _interactionsManager.OnObjectInteract -= OnObjectInteract;
-            _interactionsManager.OnInteractKeyPressed -= OnInteractKeyPressed;
+            if (!context.performed)
+                return;
+
+            OnInteractKeyPressed();
         }
     }
 }

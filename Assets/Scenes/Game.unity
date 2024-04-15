@@ -501,6 +501,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 840331921987958783, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: _listingPageSpamController
+      value: 
+      objectReference: {fileID: 1996036865}
     - target: {fileID: 1432855322688375745, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
       propertyPath: m_Name
@@ -14221,6 +14226,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1922323907}
   m_LocalEulerAnglesHint: {x: -90, y: -60, z: 0}
+--- !u!114 &1996036865 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4401291164558697044, guid: da4798b4276cec34c973864b2add5adf,
+    type: 3}
+  m_PrefabInstance: {fileID: 540533225}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05f653645e54bafa7b6e16f25b48887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1997848037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3259112635800442913, guid: e699dd6b1176d4b4abb916aa56d01f95,

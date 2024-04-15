@@ -13,6 +13,8 @@ namespace SoldByWizards.Computers
 {
     public class ListingPageSpamController : MonoBehaviour
     {
+        public bool CurrentlyTyping => _receiveKeyboardInput;
+
         [SerializeField] private Computer _computer = null!;
         [SerializeField] private ComputerController _computerController = null!;
         [SerializeField] private TweenManager _tweenManager = null!;
