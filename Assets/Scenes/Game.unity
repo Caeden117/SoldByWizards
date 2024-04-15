@@ -553,11 +553,6 @@ PrefabInstance:
       objectReference: {fileID: 1925426600}
     - target: {fileID: 2724631481037577657, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
-      propertyPath: _mapLoadedDuration
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2724631481037577657, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
-        type: 3}
       propertyPath: _safetyTeleportPoint
       value: 
       objectReference: {fileID: 1973257553}
@@ -868,6 +863,11 @@ PrefabInstance:
         type: 3}
       propertyPath: GenericReviews.Array.data[6].PossibleDescriptions.Array.data[1]
       value: Thi
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859032534457770184, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5340865235092107985, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
