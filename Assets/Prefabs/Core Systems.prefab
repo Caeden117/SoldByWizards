@@ -410,6 +410,8 @@ MonoBehaviour:
   _chaChingAudioPool: {fileID: 0}
   _itemSellPrefab: {fileID: 8449625780941303018, guid: 4e9ec8ad60f2e5f44b39f064ca30efca,
     type: 3}
+  _portalOpenClip: {fileID: 0}
+  _portalCloseClip: {fileID: 0}
 --- !u!1 &1019312459591802331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,6 +2701,9 @@ MonoBehaviour:
   _portalAnimators:
   - {fileID: 0}
   - {fileID: 0}
+  _audioSource: {fileID: 0}
+  _portalOpenClip: {fileID: 0}
+  _portalCloseClip: {fileID: 0}
 --- !u!1 &5657014916433047726
 GameObject:
   m_ObjectHideFlags: 0
@@ -3080,7 +3085,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1513778374692412885}
-  - component: {fileID: 3423832536229908431}
   m_Layer: 5
   m_Name: Item Slot
   m_TagString: Untagged
@@ -3112,24 +3116,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3423832536229908431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7706283352605933477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fe3ceb5ff874fa46b7e09bf8a82b334, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tweenManager: {fileID: 7906262010617632155}
-  _backgroundTransform: {fileID: 7023431247590772885}
-  _backgroundImage: {fileID: 5667959684050800757}
-  _salePriceText: {fileID: 0}
-  _itemImage: {fileID: 0}
-  _warningFlash: {fileID: 0}
 --- !u!1 &7892369088075716639
 GameObject:
   m_ObjectHideFlags: 0
