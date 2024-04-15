@@ -90,6 +90,8 @@ MonoBehaviour:
   _currentlyListingPanel: {fileID: 6743212601757771550}
   _itemsToSellTitleText: {fileID: 4041253639829933322}
   _itemsToSellText: {fileID: 5629259697739945949}
+  _uiCanvasGroup: {fileID: 0}
+  _tweenManager: {fileID: 0}
 --- !u!1 &139662223569341967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,13 +2311,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2895299137408386230}
+  - {fileID: 2274695262378959166}
+  - {fileID: 5328961042640965834}
   - {fileID: 3841371129037677404}
   - {fileID: 15548333319414715}
   - {fileID: 5196626451782341169}
   - {fileID: 4204658898497831401}
   - {fileID: 8536833318683692897}
-  - {fileID: 2274695262378959166}
-  - {fileID: 5328961042640965834}
   - {fileID: 8739720781633164107}
   m_Father: {fileID: 7486025440134000794}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
