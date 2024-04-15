@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using SoldByWizards.Computers;
 using SoldByWizards.Items;
+using SoldByWizards.Reviews;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,6 +20,7 @@ namespace SoldByWizards.Game
 
         [SerializeField] private ComputerController _computerController = null!;
         [SerializeField] private ItemsManager _itemsManager = null!;
+        [SerializeField] private ReviewController _reviewController = null!;
         [SerializeField] private float _baseRentAmount = 50f;
         [SerializeField] private float _rentIncreasePerCycle = 25f; // TODO: make into curve
         [SerializeField] private float _secondsPerRentCycle = 60f;
@@ -145,6 +147,9 @@ namespace SoldByWizards.Game
 
             // Update stock market
             StockMarket.OnItemSold(item.ItemSO);
+
+            // Create a review
+            _reviewController.GenerateAndSendReview(item.ItemSO);
         }
     }
 }

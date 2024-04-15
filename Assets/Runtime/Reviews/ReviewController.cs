@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SoldByWizards.Items;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace SoldByWizards.Reviews
 {
     public class ReviewController : MonoBehaviour
     {
+        public event Action<GeneratedReview>? OnReviewGenerated;
+
         public List<Review> GenericReviews = new();
         private System.Random _random = new();
 
@@ -22,6 +25,12 @@ namespace SoldByWizards.Reviews
             var description = review.PossibleDescriptions[_random.Next(0, review.PossibleDescriptions.Count)];
 
             return new GeneratedReview(starValue, title, description, item);
+        }
+
+        public void GenerateAndSendReview(ItemSO item)
+        {
+            var review = GenerateReview(item);
+            OnReviewGenerated?.Invoke(review);
         }
     }
 }

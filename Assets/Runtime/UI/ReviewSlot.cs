@@ -8,6 +8,7 @@ namespace SoldByWizards.UI
 {
     public class ReviewSlot : MonoBehaviour
     {
+        public RectTransform RectTransform = null!;
         [SerializeField] private TextMeshProUGUI _titleText = null!;
         [SerializeField] private TextMeshProUGUI _descriptionText = null!;
         [SerializeField] private ReviewStar[] _stars = new ReviewStar[5];         // should always have 5 entries
