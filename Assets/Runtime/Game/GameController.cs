@@ -138,8 +138,6 @@ namespace SoldByWizards.Game
         {
             _currentMoney += item.SellPrice;
 
-            OnItemSold?.Invoke(item, item.SellPrice);
-
             var hotbarIndex = _itemsManager.ItemHotbarIndex(item);
             if (hotbarIndex != null)
             {
@@ -159,9 +157,6 @@ namespace SoldByWizards.Game
 
             // Update stock market
             StockMarket.OnItemSold(item.ItemSO);
-
-            // Create a review
-            _reviewController.GenerateAndSendReview(item.ItemSO);
         }
 
         private async UniTask SellItemAsync(Item item)
@@ -196,11 +191,15 @@ namespace SoldByWizards.Game
 
             await UniTask.Delay(1000);
 
-            // play sound
+            // play sound and show money in rent UI
+            OnItemSold?.Invoke(item, item.SellPrice);
             if (_chaChingAudioPool != null)
             {
                 _chaChingAudioPool.PlayRandom();
             }
+
+            // Create a review
+            _reviewController.GenerateAndSendReview(item.ItemSO);
 
             await _tweenManager.Run(0.75f, 0, 1f,
                 a => itemPortalMaterial.SetFloat("_Intensity", a), Easer.InBack);

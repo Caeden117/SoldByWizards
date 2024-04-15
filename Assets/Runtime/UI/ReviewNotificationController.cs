@@ -39,7 +39,7 @@ namespace SoldByWizards.UI
             _goingThroughQueue = true;
 
             // wait a little before starting
-            await UniTask.Delay(2000);
+            // await UniTask.Delay(2000);
 
             while (_reviewQueue.TryDequeue(out var generatedReview))
             {
