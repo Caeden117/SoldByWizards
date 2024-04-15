@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AuraTween;
+using Cysharp.Threading.Tasks;
 using SoldByWizards.Input;
 using SoldByWizards.Items;
+using SoldByWizards.Maps;
+using SoldByWizards.Util;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,10 +17,13 @@ namespace SoldByWizards.Computers
     {
         [SerializeField] private Computer _computer = null!;
         [SerializeField] private ComputerController _computerController = null!;
+        [SerializeField] private PortalController _portalController = null!;
         [SerializeField] private InputController _inputController = null!;
         [SerializeField] private ListingPageSpamController _listingPageSpamController = null!;
         [SerializeField] private RectTransform _profilePanel = null!;
         [SerializeField] private RectTransform _listingsPanel = null!;
+        [SerializeField] private Canvas _computerCanvas = null!;
+        [SerializeField] private Canvas _batteryCanvas = null!;
         [SerializeField] private Image _listingNotificationImage = null!;
         [SerializeField] private Button _profileButton = null!;
         [SerializeField] private Button _listingsButton = null!;
@@ -28,6 +34,12 @@ namespace SoldByWizards.Computers
         [SerializeField] private TextMeshProUGUI _itemsToSellText = null!;
         [SerializeField] private CanvasGroup _uiCanvasGroup = null!;
         [SerializeField] private TweenManager _tweenManager = null!;
+        [SerializeField] private RandomAudioPool? _popSoundAudioPool;
+        [SerializeField] private List<TextMeshProUGUI> _typeText = new();
+        [SerializeField] private float _typeTextStartPosition;
+        [SerializeField] private float _typeTextEndPosition;
+        [SerializeField] private float _typeAnimationLength;
+        [SerializeField] private Ease _typeAnimationEase = Ease.Linear;
 
         private List<Item> _itemsWaitingForSale = new();
         private ComputerPage _activePage = ComputerPage.Profile;
@@ -93,6 +105,15 @@ namespace SoldByWizards.Computers
                 // re-enable export
                 _inputController.SetInteractionInputState(true);
             }
+
+            _computerCanvas.gameObject.SetActive(listingPageState != ListingPageState.InPortal);
+            _batteryCanvas.gameObject.SetActive(listingPageState == ListingPageState.InPortal);
+
+            if (listingPageState == ListingPageState.CurrentlyListing)
+            {
+                TypePromptAnimation().Forget();
+            }
+
         }
 
         private void SetListingPanelObjects(ListingPageState listingPageState)
@@ -131,6 +152,12 @@ namespace SoldByWizards.Computers
             _computerController.OnComputerDeselected += OnComputerDeselected;
             _computerController.OnItemsCollected += OnItemsCollected;
             _computerController.OnSpamTypingFinished += OnSpamTypingFinished;
+            _portalController.OnPortalOpen += OnPortalOpen;
+        }
+
+        private void OnPortalOpen()
+        {
+            SetListingPageState(ListingPageState.InPortal);
         }
 
         private void OnSpamTypingFinished()
@@ -146,6 +173,8 @@ namespace SoldByWizards.Computers
             _computerController.OnComputerSelected -= OnComputerSelected;
             _computerController.OnComputerDeselected -= OnComputerDeselected;
             _computerController.OnItemsCollected -= OnItemsCollected;
+            _computerController.OnSpamTypingFinished -= OnSpamTypingFinished;
+            _portalController.OnPortalOpen -= OnPortalOpen;
         }
 
         private void OnItemsCollected(List<Item> items)
@@ -177,6 +206,60 @@ namespace SoldByWizards.Computers
             {
                 _tweenManager.Run(0f, 1f, 0.5f, a => _uiCanvasGroup.alpha = a, Easer.InOutSine);
             }
+        }
+
+        public async UniTask TypePromptAnimation()
+        {
+            for (int i = 0; i < _typeText.Count; i++)
+            {
+                _typeText[i].rectTransform.anchoredPosition = new Vector2(_typeTextStartPosition, _typeText[i].rectTransform.anchoredPosition.y);
+                _typeText[i].gameObject.SetActive(true);
+                await LerpTypeText(i);
+            }
+
+            await UniTask.WaitForSeconds(2f);
+
+            for (int i = 0; i < _typeText.Count; i++)
+            {
+                LerpTypeTextBackwards(i).Forget();
+            }
+
+            // outro, and set inactive again
+            await UniTask.WaitForSeconds(_typeAnimationLength);
+            for (int i = 0; i < _typeText.Count; i++)
+            {
+                _typeText[i].gameObject.SetActive(false);
+            }
+        }
+
+        public async UniTask LerpTypeText(int index)
+        {
+            // pop sound
+            if (_popSoundAudioPool != null)
+            {
+                _popSoundAudioPool.PlayRandom();
+            }
+
+            var typeText = _typeText[index];
+
+            var yPos = typeText.rectTransform.anchoredPosition.y;
+
+            await _tweenManager.Run(_typeTextStartPosition, _typeTextEndPosition, _typeAnimationLength, (value) =>
+            {
+                typeText.rectTransform.anchoredPosition = new Vector2(value, yPos);
+            }, _typeAnimationEase.ToProcedure());
+        }
+
+        public async UniTask LerpTypeTextBackwards(int index)
+        {
+            var typeText = _typeText[index];
+
+            var yPos = typeText.rectTransform.anchoredPosition.y;
+
+            await _tweenManager.Run(_typeTextEndPosition, _typeTextStartPosition, _typeAnimationLength, (value) =>
+            {
+                typeText.rectTransform.anchoredPosition = new Vector2(value, yPos);
+            }, _typeAnimationEase.ToProcedure());
         }
     }
 }
