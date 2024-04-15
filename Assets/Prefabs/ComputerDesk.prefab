@@ -78,10 +78,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _computer: {fileID: 6579891609109458509}
   _computerController: {fileID: 0}
+  _portalController: {fileID: 0}
   _inputController: {fileID: 0}
   _listingPageSpamController: {fileID: 4401291164558697044}
   _profilePanel: {fileID: 2274695262378959166}
   _listingsPanel: {fileID: 5328961042640965834}
+  _computerCanvas: {fileID: 0}
+  _batteryCanvas: {fileID: 0}
   _listingNotificationImage: {fileID: 6256432047545471407}
   _profileButton: {fileID: 2285385944611450136}
   _listingsButton: {fileID: 7388232949873557238}
@@ -776,13 +779,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838562479319673296}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: -69.240166, z: 570.4059}
+  m_LocalScale: {x: 1824.3113, y: 1648.5732, z: 1357.488}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 360348343122686920}
-  m_Father: {fileID: 7486025440134000794}
+  m_Father: {fileID: 4154173828586134328}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856748627839343030
 GameObject:
@@ -2310,6 +2313,7 @@ RectTransform:
   m_LocalScale: {x: 0.0005481521, y: 0.0006065851, z: 0.00073665474}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2652659402101377473}
   - {fileID: 2895299137408386230}
   - {fileID: 2274695262378959166}
   - {fileID: 5328961042640965834}
@@ -2426,7 +2430,6 @@ Transform:
   - {fileID: 6349986030454223731}
   - {fileID: 4154173828586134328}
   - {fileID: 688653241024257822}
-  - {fileID: 2652659402101377473}
   - {fileID: 4669234650074550564}
   - {fileID: 5834758203954910862}
   m_Father: {fileID: 9142572991662589912}
