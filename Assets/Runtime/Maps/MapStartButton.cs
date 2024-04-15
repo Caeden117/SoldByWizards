@@ -1,4 +1,6 @@
+﻿using System;
 using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 using SoldByWizards.Player.Interactions;
 using SoldByWizards.Util;
 using UnityEngine;
@@ -7,6 +9,8 @@ namespace SoldByWizards.Maps
 {
     public class MapStartButton : MonoBehaviour
     {
+        private MeshRenderer _meshRenderer;
+
         [SerializeField] private InteractionsManager _interactionsManager;
         [SerializeField] private TimedMapLoader _timedMapLoader;
 
@@ -14,12 +18,22 @@ namespace SoldByWizards.Maps
 
         private UniTask? _mapTask;
 
-        private void Start() => _interactionsManager.OnObjectInteract += OnObjectInteract;
+        private void Start()
+        {
+            _interactionsManager.OnButtonInteract += OnButtonInteract;
+            _meshRenderer = GetComponent<MeshRenderer>();
+        }
 
-        private void OnObjectInteract(Ray _, RaycastHit raycastHit)
+        private void OnButtonInteract(Ray _, RaycastHit raycastHit)
         {
             if (!raycastHit.transform.GetComponent<MapStartButton>()) return;
 
+            ActivateButton();
+        }
+
+        [PublicAPI]
+        public void ActivateButton()
+        {
             if (_mapTask is { Status: UniTaskStatus.Pending })
             {
                 _recyclableCancellationToken.Cancel();
@@ -30,6 +44,6 @@ namespace SoldByWizards.Maps
             _mapTask = _timedMapLoader.LoadMapOnTimer(_recyclableCancellationToken.Token);
         }
 
-        private void OnDestroy() => _interactionsManager.OnObjectInteract -= OnObjectInteract;
+        private void OnDestroy() => _interactionsManager.OnButtonInteract -= OnButtonInteract;
     }
 }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -80,6 +80,8 @@ namespace SoldByWizards.Maps
             }
 
             await _mapLoader.UnloadMap();
+
+            _glyphAggregator.ResetGlyphDrawingStage();
         }
     }
 }

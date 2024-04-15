@@ -169,6 +169,15 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InteractWithButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""dc0267a8-b424-47b2-b627-e22451c6e4a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -180,6 +189,28 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4b81ad0-059b-4ca6-b096-a311a6cade50"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InteractWithButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""35a53910-2aa9-4922-b236-9f5d087dfbc0"",
+                    ""path"": ""*/{PrimaryAction}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InteractWithButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -371,6 +402,7 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
         // Interactions
         m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
         m_Interactions_Interact = m_Interactions.FindAction("Interact", throwIfNotFound: true);
+        m_Interactions_InteractWithButton = m_Interactions.FindAction("InteractWithButton", throwIfNotFound: true);
         // Glyphs
         m_Glyphs = asset.FindActionMap("Glyphs", throwIfNotFound: true);
         m_Glyphs_Interact = m_Glyphs.FindAction("Interact", throwIfNotFound: true);
@@ -508,11 +540,13 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Interactions;
     private List<IInteractionsActions> m_InteractionsActionsCallbackInterfaces = new List<IInteractionsActions>();
     private readonly InputAction m_Interactions_Interact;
+    private readonly InputAction m_Interactions_InteractWithButton;
     public struct InteractionsActions
     {
         private @WizardInput m_Wrapper;
         public InteractionsActions(@WizardInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Interactions_Interact;
+        public InputAction @InteractWithButton => m_Wrapper.m_Interactions_InteractWithButton;
         public InputActionMap Get() { return m_Wrapper.m_Interactions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -525,6 +559,9 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @InteractWithButton.started += instance.OnInteractWithButton;
+            @InteractWithButton.performed += instance.OnInteractWithButton;
+            @InteractWithButton.canceled += instance.OnInteractWithButton;
         }
 
         private void UnregisterCallbacks(IInteractionsActions instance)
@@ -532,6 +569,9 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @InteractWithButton.started -= instance.OnInteractWithButton;
+            @InteractWithButton.performed -= instance.OnInteractWithButton;
+            @InteractWithButton.canceled -= instance.OnInteractWithButton;
         }
 
         public void RemoveCallbacks(IInteractionsActions instance)
@@ -728,6 +768,7 @@ public partial class @WizardInput: IInputActionCollection2, IDisposable
     public interface IInteractionsActions
     {
         void OnInteract(InputAction.CallbackContext context);
+        void OnInteractWithButton(InputAction.CallbackContext context);
     }
     public interface IGlyphsActions
     {
