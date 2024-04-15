@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bf8ab1a859a4a2b8943b1ff88a1c6f2, type: 3}
-  m_Name: Water Cooler
+  m_Name: WaterCooler
   m_EditorClassIdentifier: 
   ItemPrefab: {fileID: 6699809195060818920, guid: d11ce8ac1e998e74f8d56602d6ec5360,
     type: 3}
