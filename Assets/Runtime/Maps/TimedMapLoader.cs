@@ -66,6 +66,8 @@ namespace SoldByWizards.Maps
 
             OnTimerEnded?.Invoke();
 
+            await _portalController.CloseAsync();
+
             // dirtiest gamejam hack of my life
             if (_playerController.transform.position.z > 0)
             {
@@ -76,8 +78,6 @@ namespace SoldByWizards.Maps
                 _playerCamera.transform.rotation = _safetyTeleportPoint.rotation;
                 await UniTask.Yield();
             }
-
-            await _portalController.CloseAsync();
 
             await _mapLoader.UnloadMap();
         }
