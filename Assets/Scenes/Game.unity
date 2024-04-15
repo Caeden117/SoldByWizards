@@ -488,6 +488,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1747496151054500473, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
+      propertyPath: _portalOpenClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 33cfe743002be174b9b2d61f0809d724, type: 3}
+    - target: {fileID: 1747496151054500473, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: _portalCloseClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7eb7c1b71b3b55a498cd64ad26573fec, type: 3}
+    - target: {fileID: 1747496151054500473, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
       propertyPath: _chaChingAudioPool
       value: 
       objectReference: {fileID: 1395200565}
