@@ -41,15 +41,12 @@ namespace SoldByWizards.Game
         private float _currentRent;
         private float _timeElapsed = 0f;
         private bool _dayIsProgressing = false;
-        private List<Item> _itemsToSell = new();
         private bool _isAlive = true;
 
         private void Start()
         {
             // Start at day 0
             _dayIsProgressing = true;
-
-            SellLoop().AttachExternalCancellation(this.GetCancellationTokenOnDestroy()).Forget();
         }
 
         private void Update()
@@ -108,34 +105,36 @@ namespace SoldByWizards.Game
 
         private void OnItemsListedForSell(List<Item> items)
         {
-            foreach (var item in items)
-            {
-                if (item == null)
-                    continue;
+            SellAllItems(items)
+                .AttachExternalCancellation(this.GetCancellationTokenOnDestroy())
+                .Forget();
+        }
 
-                item.MarkedForSale = true;
-                _itemsToSell.Add(item);
+        private async UniTask SellAllItems(List<Item> items)
+        {
+            UniTask[] tasks = new UniTask[items.Count];
+
+            for (var i = 0; i < items.Count; i++)
+            {
+                tasks[i] = DelayThenSellItem(items[i])
+                    .AttachExternalCancellation(this.GetCancellationTokenOnDestroy());
+            }
+
+            await UniTask.WhenAll(tasks);
+
+            // play sound
+            if (_chaChingAudioPool != null)
+            {
+                _chaChingAudioPool.PlayRandom();
             }
         }
 
-        private async UniTask SellLoop()
+        private async UniTask DelayThenSellItem(Item item)
         {
-            while (_isAlive)
-            {
-                await UniTask.WaitForSeconds(Random.Range(_sellCheckTimeRange.x, _sellCheckTimeRange.y));
+            item.MarkedForSale = true;
 
-                if (_itemsToSell.Count == 0)
-                    continue;
+            await UniTask.WaitForSeconds(Random.Range(_sellCheckTimeRange.x, _sellCheckTimeRange.y));
 
-                // pick a random item to sell
-                var itemToSell = _itemsToSell[Random.Range(0, _itemsToSell.Count)];
-                _itemsToSell.Remove(itemToSell);
-                SellItem(itemToSell);
-            }
-        }
-
-        private void SellItem(Item item)
-        {
             _currentMoney += item.SellPrice;
 
             var hotbarIndex = _itemsManager.ItemHotbarIndex(item);
@@ -143,10 +142,6 @@ namespace SoldByWizards.Game
             {
                 // play sound and show money in rent UI
                 OnItemSold?.Invoke(item, item.SellPrice);
-                if (_chaChingAudioPool != null)
-                {
-                    _chaChingAudioPool.PlayRandom();
-                }
 
                 // Create a review
                 _reviewController.GenerateAndSendReview(item.ItemSO);
@@ -156,14 +151,14 @@ namespace SoldByWizards.Game
             }
             else
             {
-                SellItemAsync(item).Forget();
+                await SellItemAnimation(item);
             }
 
             // Update stock market
             StockMarket.OnItemSold(item.ItemSO);
         }
 
-        private async UniTask SellItemAsync(Item item)
+        private async UniTask SellItemAnimation(Item item)
         {
             var itemPortal = Instantiate(_itemSellPrefab);
             var itemPortalTransform = itemPortal.transform;
