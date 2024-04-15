@@ -16,6 +16,7 @@ namespace SoldByWizards.UI
         [SerializeField] private float _scaleAmount = 0.5f;
 
         private bool _isRunning;
+        private bool _firstFrame;
 
         private void Start()
         {
@@ -23,19 +24,33 @@ namespace SoldByWizards.UI
             _timedMapLoader.OnTimerEnded += OnTimerEnded;
         }
 
-        private void OnTimerStarted() => _isRunning = true;
+        private void OnTimerStarted() => _isRunning = !(_firstFrame = false);
 
-        private void OnTimerEnded()=> _isRunning = false;
+        private void OnTimerEnded()
+        {
+            _firstFrame = _isRunning = false;
+
+            if (_scaleParent)
+                transform.parent.localScale = Vector3.one;
+            else
+                transform.localScale = Vector3.one;
+        }
 
         private void Update()
         {
             if (!(_isRunning && _playerController.transform.position.z > 0))
             {
                 _targetGraphic.color = _alphaColor;
+
+                if (_firstFrame) return;
+
                 if (_scaleParent)
                     transform.parent.localScale = Vector3.one;
                 else
                     transform.localScale = Vector3.one;
+
+                _firstFrame = true;
+
                 return;
             }
 
