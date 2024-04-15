@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: Grass
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -35,7 +35,7 @@ MonoBehaviour:
       stencilReference: 11
       stencilCompareFunction: 3
       passOperation: 1
-      failOperation: 1
+      failOperation: 0
       zFailOperation: 1
     cameraSettings:
       overrideCamera: 0
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: Fake Skybox
-    Event: 300
+    Event: 500
     filterSettings:
       RenderQueueType: 0
       LayerMask:
@@ -76,9 +76,9 @@ MonoBehaviour:
       overrideStencilState: 1
       stencilReference: 11
       stencilCompareFunction: 3
-      passOperation: 2
-      failOperation: 2
-      zFailOperation: 2
+      passOperation: 0
+      failOperation: 0
+      zFailOperation: 0
     cameraSettings:
       overrideCamera: 0
       restoreCamera: 1
@@ -138,9 +138,9 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
   - {fileID: -9217128219535338279}
-  - {fileID: -6656578587512248037}
   - {fileID: 8579359034980639421}
-  m_RendererFeatureMap: adc0de57c6d2eee5d9145e01b82e16801b69dcef0a159fa3bd228f4096011077
+  - {fileID: -6656578587512248037}
+  m_RendererFeatureMap: adc0de57c6d2eee5d9145e01b82e1680bd228f40960110771b69dcef0a159fa3
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -193,17 +193,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
-  m_Name: RenderObjects
+  m_Name: Trash
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    passTag: RenderObjects
+    passTag: Trash
     Event: 300
     filterSettings:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 2048
+        m_Bits: 4096
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 12
@@ -215,10 +215,10 @@ MonoBehaviour:
     enableWrite: 0
     stencilSettings:
       overrideStencilState: 1
-      stencilReference: 5
+      stencilReference: 12
       stencilCompareFunction: 3
-      passOperation: 2
-      failOperation: 1
+      passOperation: 0
+      failOperation: 0
       zFailOperation: 2
     cameraSettings:
       overrideCamera: 0
