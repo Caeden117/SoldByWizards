@@ -3569,6 +3569,8 @@ MonoBehaviour:
   _moneyText: {fileID: 8312234375674508465}
   _rentText: {fileID: 8703202728411797839}
   _barLength: 575
+  _spanColorCurrent: {r: 0.105882354, g: 0.1254902, b: 0.2, a: 1}
+  _spanColorPreview: {r: 0.53333336, g: 0.53333336, b: 0.8, a: 1}
 --- !u!1 &9152549451832393673
 GameObject:
   m_ObjectHideFlags: 0

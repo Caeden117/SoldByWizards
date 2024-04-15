@@ -21,6 +21,9 @@ namespace SoldByWizards.UI
         [SerializeField] private TextMeshProUGUI _rentText = null!;
         [SerializeField] private float _barLength = 600f;
 
+        [SerializeField] private Color _spanColorCurrent = Color.white;
+        [SerializeField] private Color _spanColorPreview = Color.white;
+
         private float _currentXPosition = 0f;
         private float? _currentSpanXPosition;
         private float _currentRent;
@@ -97,13 +100,14 @@ namespace SoldByWizards.UI
         {
             _currentSpan = CreateSpan(_currentXPosition, 0f);
             _currentSpanXPosition = _currentXPosition;
+            _currentSpan.Image.color = _spanColorCurrent;
 
             var expectedWidth = _barLength * (_timedMapLoader.MapLoadedDuration / _gameController.SecondsPerRentCycle);
             if (expectedWidth > _barLength - _currentXPosition)
                 expectedWidth = _barLength - _currentXPosition;
 
             _previewSpan = CreateSpan(_currentXPosition, expectedWidth);
-            _previewSpan.Image.color = Color.blue;
+            _previewSpan.Image.color = _spanColorPreview;
         }
 
         // end span

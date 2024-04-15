@@ -1,4 +1,5 @@
-﻿using SoldByWizards.Editor;
+﻿#if UNITY_EDITOR
+using SoldByWizards.Editor;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,3 +21,4 @@ public class EditorCameraThingInspector : Editor
         }
     }
 }
+#endif
