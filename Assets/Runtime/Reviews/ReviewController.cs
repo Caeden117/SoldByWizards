@@ -18,6 +18,14 @@ namespace SoldByWizards.Reviews
             // TODO: Per item reviews
             var review = GenericReviews[_random.Next(0, GenericReviews.Count)];
 
+            // 66% chance for item review, adjust if needed
+            bool useItemReviews = (item.Reviews.Count > 0 ? _random.Next(0, 3) : 0) == 2;
+            if (useItemReviews)
+            {
+                var index = _random.Next(0, item.Reviews.Count);
+                review = item.Reviews[index];
+            }
+
             // pick a random star value
             var starValue = _random.Next(review.PossibleStarReviews.x, review.PossibleStarReviews.y + 1);
             // get a random title/desc
