@@ -600,6 +600,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core Systems
       objectReference: {fileID: 0}
+    - target: {fileID: 1747496151054500473, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
+        type: 3}
+      propertyPath: _chaChingAudioPool
+      value: 
+      objectReference: {fileID: 1395200565}
     - target: {fileID: 1934975083815550673, guid: 2165e2b3ca89bc94d8282cb6f84f551c,
         type: 3}
       propertyPath: m_AnchorMax.y

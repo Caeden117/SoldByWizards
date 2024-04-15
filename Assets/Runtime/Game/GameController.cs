@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using SoldByWizards.Computers;
 using SoldByWizards.Items;
 using SoldByWizards.Reviews;
+using SoldByWizards.Util;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,6 +26,7 @@ namespace SoldByWizards.Game
         [SerializeField] private float _rentIncreasePerCycle = 25f; // TODO: make into curve
         [SerializeField] private float _secondsPerRentCycle = 60f;
         [SerializeField] private Vector2 _sellCheckTimeRange = new Vector2(0f, 1f);
+        [SerializeField] private RandomAudioPool? _chaChingAudioPool;
 
         public event Action OnDaySucceeded;
         public event Action OnDayFailed;
@@ -132,8 +134,13 @@ namespace SoldByWizards.Game
 
             OnItemSold?.Invoke(item, item.SellPrice);
 
-            var hotbarIndex = _itemsManager.ItemHotbarIndex(item);
+            // play sound
+            if (_chaChingAudioPool != null)
+            {
+                _chaChingAudioPool.PlayRandom();
+            }
 
+            var hotbarIndex = _itemsManager.ItemHotbarIndex(item);
             if (hotbarIndex != null)
             {
                 // this is a hotbar item.

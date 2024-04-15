@@ -38,6 +38,9 @@ namespace SoldByWizards.UI
         {
             _goingThroughQueue = true;
 
+            // wait a little before starting
+            await UniTask.Delay(2000);
+
             while (_reviewQueue.TryDequeue(out var generatedReview))
             {
                 _reviewSlot.SetReview(generatedReview);
@@ -45,7 +48,7 @@ namespace SoldByWizards.UI
                 {
                     _popAudioPool.PlayRandom();
                 }
-                
+
                 await MakeNotificationVisible();
 
                 await UniTask.WaitForSeconds(_notificationDisplayTime);
