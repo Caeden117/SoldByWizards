@@ -18,7 +18,7 @@ namespace SoldByWizards.Items
         private const int MAX_ITEM_COUNT = 4;
 
         public ItemSO[] GlobalObjectPool;
-        
+
         [Space, SerializeField] private InteractionsManager _interactionsManager = null!;
         [SerializeField] private PlayerController _playerController = null!;
         [SerializeField] private ComputerController _computerController = null!;
@@ -211,7 +211,7 @@ namespace SoldByWizards.Items
 
             if (direction == 0) return;
 
-            SelectItem(_selectedSlot + direction);
+            SelectItem(_selectedSlot - direction);
         }
 
         public void OnInventorySlot1(InputAction.CallbackContext context) => SelectItem(0);
