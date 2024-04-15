@@ -72,6 +72,8 @@ MonoBehaviour:
   _timedMapLoader: {fileID: 0}
   _playerController: {fileID: 0}
   _targetGraphic: {fileID: 419633980485934329}
+  _scaleParent: 0
+  _scaleAmount: 0.25
 --- !u!1 &3002386439516068817
 GameObject:
   m_ObjectHideFlags: 0
