@@ -18,9 +18,8 @@ MonoBehaviour:
   ItemDescription: HOLY CRAP! This is a wooden sitting device. It includes many things
     useful for sitting, such as 4 legs and a back. I sure hope the description isn't
     droning on for too long....
-  ItemIcon: {fileID: 21300000, guid: baf93f117cec5324cbddafaa003a2224, type: 3}
+  ItemIcon: {fileID: 21300000, guid: ade860b7188a40e4b91045dc32f16502, type: 3}
   BaseSaleValue: 5
-  StockMarketSeed: 3473.61
   StockMarketLowModifier: 0.3
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
