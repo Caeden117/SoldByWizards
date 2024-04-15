@@ -313,7 +313,7 @@ MonoBehaviour:
   _baseRentAmount: 350
   _rentIncreasePerCycle: 125
   _secondsPerRentCycle: 300
-  _sellCheckTimeRange: {x: 2, y: 5}
+  _sellCheckTimeRange: {x: 0.5, y: 1.5}
   _chaChingAudioPool: {fileID: 0}
   _itemSellPrefab: {fileID: 8449625780941303018, guid: 4e9ec8ad60f2e5f44b39f064ca30efca,
     type: 3}

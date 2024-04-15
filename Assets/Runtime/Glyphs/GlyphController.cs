@@ -12,13 +12,14 @@ namespace SoldByWizards.Glyphs
         [SerializeField] private Camera _raycastCamera;
         [Space, SerializeField] private LineRenderer _glyphLineRenderer;
         [SerializeField] private GlyphPoint[] _points;
+        [SerializeField] private LineRenderer _glyphTutorialLineRenderer;
         [SerializeField] private LayerMask _glyphLayerMask;
         [SerializeField] private LayerMask _glyphPointLayerMask;
 
         private int[] _selectedPoints = new int[4];
         private int _numPoints = 0;
 
-        private bool _isDrawing;
+        public bool IsDrawing { get; private set; }
         private Vector3 _currentGlyphPosition;
 
         [PublicAPI]
@@ -76,7 +77,7 @@ namespace SoldByWizards.Glyphs
                 if (!raycastHit || glyphHit.transform.GetComponentInParent<GlyphController>() != this) return;
 
                 _numPoints = 0;
-                _isDrawing = true;
+                IsDrawing = true;
             }
             else if (context.canceled)
             {
@@ -94,7 +95,8 @@ namespace SoldByWizards.Glyphs
 
         private void Update()
         {
-            if (!_isDrawing) return;
+            _glyphTutorialLineRenderer.enabled = !IsDrawing;
+            if (!IsDrawing) return;
 
             var middlePoint = 0.5f * new Vector2(_raycastCamera.scaledPixelWidth, _raycastCamera.scaledPixelHeight);
             var ray = _raycastCamera.ScreenPointToRay(middlePoint);
@@ -138,15 +140,19 @@ namespace SoldByWizards.Glyphs
 
         private void CancelDraw()
         {
-            if (_isDrawing && IsValidGlyph) OnGlyphFinish.Invoke();
-            _isDrawing = false;
+            if (IsDrawing && IsValidGlyph)
+            {
+                OnGlyphFinish.Invoke();
+                _glyphTutorialLineRenderer.gameObject.SetActive(false);
+            }
+            IsDrawing = false;
             if (!IsValidGlyph) _numPoints = 0;
             ApplyPointsToLineRenderer();
         }
 
         private void ApplyPointsToLineRenderer()
         {
-            var points = new Vector3 [_numPoints + (_isDrawing ? 2 : 0)];
+            var points = new Vector3 [_numPoints + (IsDrawing ? 2 : 0)];
 
             for (var i = 0; i < _numPoints; i++)
             {
@@ -154,7 +160,7 @@ namespace SoldByWizards.Glyphs
                     .InverseTransformPoint(_points[_selectedPoints[i]].transform.position).WithZ(0);
             }
 
-            if (_isDrawing)
+            if (IsDrawing)
             {
                 points[^2] = _currentGlyphPosition;
                 points[^1] = _currentGlyphPosition;
