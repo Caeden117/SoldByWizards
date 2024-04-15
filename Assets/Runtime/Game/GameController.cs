@@ -141,11 +141,15 @@ namespace SoldByWizards.Game
             var hotbarIndex = _itemsManager.ItemHotbarIndex(item);
             if (hotbarIndex != null)
             {
-                // play sound
+                // play sound and show money in rent UI
+                OnItemSold?.Invoke(item, item.SellPrice);
                 if (_chaChingAudioPool != null)
                 {
                     _chaChingAudioPool.PlayRandom();
                 }
+
+                // Create a review
+                _reviewController.GenerateAndSendReview(item.ItemSO);
 
                 // this is a hotbar item.
                 _itemsManager.DeleteItem(hotbarIndex.Value);
