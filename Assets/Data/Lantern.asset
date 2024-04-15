@@ -44,3 +44,15 @@ MonoBehaviour:
     - Bad luck
     PossibleDescriptions:
     - Bad luck to kill a sea bird. Bad luck to kill a sea bird.
+  - PossibleStarReviews: {x: 2, y: 3}
+    PossibleTitles:
+    - Okay...
+    PossibleDescriptions:
+    - it's okay for now, but i hope it turns into a light saber soon. it should be
+      around the right level
+  - PossibleStarReviews: {x: 4, y: 5}
+    PossibleTitles:
+    - Baller!!
+    PossibleDescriptions:
+    - Yes it IS a big baller move to light your cigarette using this oil lantern
+      while driving.

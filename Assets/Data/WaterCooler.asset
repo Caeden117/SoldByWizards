@@ -55,3 +55,18 @@ MonoBehaviour:
     PossibleDescriptions:
     - The water was okay but talk about a lukewarm disappointment. it was not cool
       at all!
+  - PossibleStarReviews: {x: 3, y: 5}
+    PossibleTitles:
+    - God forbid women have hobbies
+    PossibleDescriptions:
+    - <No further comment.>
+  - PossibleStarReviews: {x: 0, y: 1}
+    PossibleTitles:
+    - MOLD!?!?
+    PossibleDescriptions:
+    - Is that... mold?
+  - PossibleStarReviews: {x: 4, y: 5}
+    PossibleTitles:
+    - REFRESHING
+    PossibleDescriptions:
+    - SO REFRESHING - MARTHA

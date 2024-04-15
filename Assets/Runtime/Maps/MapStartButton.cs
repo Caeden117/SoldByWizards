@@ -36,6 +36,8 @@ namespace SoldByWizards.Maps
         {
             if (_mapTask is { Status: UniTaskStatus.Pending })
             {
+                if (_timedMapLoader.TimeElapsed == 0) return;
+
                 _recyclableCancellationToken.Cancel();
                 _mapTask = null;
                 return;

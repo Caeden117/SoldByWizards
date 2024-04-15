@@ -64,3 +64,18 @@ MonoBehaviour:
     PossibleDescriptions:
     - "\rYou can stand on this one"
     - This one actually supports my weight, and I can stand on it! FINALLY!
+  - PossibleStarReviews: {x: 0, y: 1}
+    PossibleTitles:
+    - BACK
+    - DO NOT LIKE
+    - HUSBAND DOES NOT LIKE
+    PossibleDescriptions:
+    - MY HUSBANDS BACK DID NOT LIKE THIS CHAIR -MARTHA
+  - PossibleStarReviews: {x: 0, y: 1}
+    PossibleTitles:
+    - CEDAR???
+    - HATE CEDAR!
+    - I HATE THIS!!
+    PossibleDescriptions:
+    - the description said this was solid oak, but this tastes like CEDAR. I AHTE
+      CEDAR!!
