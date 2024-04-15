@@ -20,11 +20,11 @@ namespace SoldByWizards.Maps
 
         private void Start()
         {
-            _interactionsManager.OnObjectInteract += OnObjectInteract;
+            _interactionsManager.OnButtonInteract += OnButtonInteract;
             _meshRenderer = GetComponent<MeshRenderer>();
         }
 
-        private void OnObjectInteract(Ray _, RaycastHit raycastHit)
+        private void OnButtonInteract(Ray _, RaycastHit raycastHit)
         {
             if (!raycastHit.transform.GetComponent<MapStartButton>()) return;
 
@@ -44,6 +44,6 @@ namespace SoldByWizards.Maps
             _mapTask = _timedMapLoader.LoadMapOnTimer(_recyclableCancellationToken.Token);
         }
 
-        private void OnDestroy() => _interactionsManager.OnObjectInteract -= OnObjectInteract;
+        private void OnDestroy() => _interactionsManager.OnButtonInteract -= OnButtonInteract;
     }
 }

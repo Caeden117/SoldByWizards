@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using SoldByWizards.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,6 +14,7 @@ namespace SoldByWizards.Player.Interactions
         [SerializeField] private LayerMask _generalLayerMask;
 
         public event Action<Ray, RaycastHit> OnObjectInteract;
+        public event Action<Ray, RaycastHit> OnButtonInteract;
         public event Action<Ray, RaycastHit> OnInteractWithWorld;
         public event Action OnInteractKeyPressed;
 
@@ -26,7 +27,9 @@ namespace SoldByWizards.Player.Interactions
             var middlePoint = 0.5f * new Vector2(_raycastCamera.scaledPixelWidth, _raycastCamera.scaledPixelHeight);
             var ray = _raycastCamera.ScreenPointToRay(middlePoint);
 
-            if (Physics.SphereCast(ray, 0.15f, out var hit, _interactRange, _interactionLayerMask))
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, _interactRange, _interactionLayerMask)
+                || Physics.SphereCast(ray, 0.25f, out hit, _interactRange, _interactionLayerMask))
             {
                 OnObjectInteract?.Invoke(ray, hit);
                 OnInteractKeyPressed?.Invoke();
@@ -39,6 +42,22 @@ namespace SoldByWizards.Player.Interactions
             }
 
             OnInteractKeyPressed?.Invoke();
+        }
+
+        public void OnInteractWithButton(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+
+            var middlePoint = 0.5f * new Vector2(_raycastCamera.scaledPixelWidth, _raycastCamera.scaledPixelHeight);
+            var ray = _raycastCamera.ScreenPointToRay(middlePoint);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, _interactRange, _interactionLayerMask)
+                || Physics.SphereCast(ray, 0.25f, out hit, _interactRange, _interactionLayerMask))
+            {
+                OnButtonInteract?.Invoke(ray, hit);
+                return;
+            }
         }
     }
 }
