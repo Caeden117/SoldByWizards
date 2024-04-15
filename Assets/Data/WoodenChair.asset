@@ -49,3 +49,18 @@ MonoBehaviour:
     - Full of ants
     PossibleDescriptions:
     - Full of carpenter ants. Where did you find this thing?
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - Important
+    PossibleDescriptions:
+    - It's five to ten years from now. You're sitting in a restaurant, enjoying a
+      lovely meal, when I walk in, without my wife and children (for whatever reason,
+      they haven't accompanied me)
+  - PossibleStarReviews: {x: 5, y: 5}
+    PossibleTitles:
+    - STANDING
+    - Perfect for standing
+    - Supports my weight
+    PossibleDescriptions:
+    - "\rYou can stand on this one"
+    - This one actually supports my weight, and I can stand on it! FINALLY!

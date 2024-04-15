@@ -40,3 +40,12 @@ MonoBehaviour:
     PossibleDescriptions:
     - My head hurts
     - My head hurts...
+  - PossibleStarReviews: {x: 2, y: 3}
+    PossibleTitles:
+    - Inspiring item!
+    - Makes me wanna dance
+    - Feel like dancing
+    PossibleDescriptions:
+    - I have a sudden urge to break out into spontaneous ballroom dancing.
+    - Great item, I now have a sudden urge to break out into spontaneous ballroom
+      dancing.
