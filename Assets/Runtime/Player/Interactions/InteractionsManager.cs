@@ -26,14 +26,14 @@ namespace SoldByWizards.Player.Interactions
             var middlePoint = 0.5f * new Vector2(_raycastCamera.scaledPixelWidth, _raycastCamera.scaledPixelHeight);
             var ray = _raycastCamera.ScreenPointToRay(middlePoint);
 
-            if (Physics.Raycast(ray, out var hit, _interactRange, _interactionLayerMask))
+            if (Physics.SphereCast(ray, 0.15f, out var hit, _interactRange, _interactionLayerMask))
             {
                 OnObjectInteract?.Invoke(ray, hit);
                 OnInteractKeyPressed?.Invoke();
                 return;
             }
 
-            if (Physics.Raycast(ray, out var worldHit, _interactRange, _generalLayerMask))
+            if (Physics.SphereCast(ray, 0.15f, out var worldHit, _interactRange, _generalLayerMask))
             {
                 OnInteractWithWorld?.Invoke(ray, worldHit);
             }
