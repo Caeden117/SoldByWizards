@@ -33,3 +33,10 @@ MonoBehaviour:
       or a lead pipe instead.
     - Feels too cheap, not much weight to itl. Will probably opt for rope or a lead
       pipe instead.
+  - PossibleStarReviews: {x: 2, y: 3}
+    PossibleTitles:
+    - Ouch
+    - ow
+    PossibleDescriptions:
+    - My head hurts
+    - My head hurts...

@@ -36,3 +36,22 @@ MonoBehaviour:
     - Good size
     PossibleDescriptions:
     - nozzle is the perfect size.... mmmmfgfhg -m bubz
+  - PossibleStarReviews: {x: 3, y: 4}
+    PossibleTitles:
+    - Fine
+    - Works well
+    PossibleDescriptions:
+    - Works well. Not sure what all the other reviews are talking about though.
+  - PossibleStarReviews: {x: 1, y: 1}
+    PossibleTitles:
+    - Soggy
+    - Felt a bit soggy
+    PossibleDescriptions:
+    - There was a crack and it made everything soggy :(
+  - PossibleStarReviews: {x: 1, y: 2}
+    PossibleTitles:
+    - Too warm
+    - Warm
+    PossibleDescriptions:
+    - The water was okay but talk about a lukewarm disappointment. it was not cool
+      at all!

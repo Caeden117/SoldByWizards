@@ -42,3 +42,10 @@ MonoBehaviour:
     - wooden sitting device
     PossibleDescriptions:
     - wooden sitting device
+  - PossibleStarReviews: {x: 4, y: 5}
+    PossibleTitles:
+    - ANTS??
+    - ANTS
+    - Full of ants
+    PossibleDescriptions:
+    - Full of carpenter ants. Where did you find this thing?
