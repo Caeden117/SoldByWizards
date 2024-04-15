@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using SoldByWizards.Reviews;
 using UnityEngine;
 
 namespace SoldByWizards.Items
@@ -29,5 +31,6 @@ namespace SoldByWizards.Items
         }
 
         public bool TwoHanded = false;
+        public List<Review> Reviews = new();
     }
 }
