@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf8ab1a859a4a2b8943b1ff88a1c6f2, type: 3}
+  m_Name: WaterBottle
+  m_EditorClassIdentifier: 
+  ItemPrefab: {fileID: 6699809195060818920, guid: 419b7aae07780ca47a893a24d4cb2570,
+    type: 3}
+  ItemName: Parable Cup
+  ItemDescription: Holds enough water to fill an extremely small pool.
+  ItemIcon: {fileID: 0}
+  BaseSaleValue: 5
+  StockMarketSeed: 10420.615
+  StockMarketLowModifier: 0.3
+  StockMarketHighModifier: 3
+  MultiSalesPenalty: -0.1
+  TwoHanded: 0

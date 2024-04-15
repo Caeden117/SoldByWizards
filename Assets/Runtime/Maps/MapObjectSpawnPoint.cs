@@ -7,10 +7,14 @@ namespace SoldByWizards.Maps
 {
     public class MapObjectSpawnPoint : MonoBehaviour
     {
-        [SerializeField] private float _spawnChance = 0.75f;
-        [SerializeField] private ItemSO[] _itemPrefabs;
+        [field: SerializeField] public bool UseGlobalObjectPool { get; private set; } = true;
 
+        [SerializeField] private float _spawnChance = 0.75f;
+
+        private ItemSO[] _itemPrefabs;
         private Item _item = null!;
+
+        public void SetSpawnPool(ItemSO[] itemPool) => _itemPrefabs = itemPool;
 
         public void RandomSpawn()
         {
@@ -36,7 +40,8 @@ namespace SoldByWizards.Maps
 
             _item = Instantiate(itemSO.ItemPrefab, t.position, t.rotation);
 
-            _item.transform.localEulerAngles = _item.transform.localEulerAngles.WithY(Random.Range(0f, 360f));
+            var itemTransform = _item.transform;
+            itemTransform.localEulerAngles = itemTransform.localEulerAngles.WithY(Random.Range(0f, 360f));
 
             _item.ItemSO = itemSO;
             _item.SellPrice = StockMarket.CalculatePriceFor(itemSO);

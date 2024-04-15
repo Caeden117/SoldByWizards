@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AuraTween;
 using SoldByWizards.Input;
 using SoldByWizards.Items;
 using TMPro;
@@ -25,7 +26,8 @@ namespace SoldByWizards.Computers
         [SerializeField] private RectTransform _currentlyListingPanel = null!;
         [SerializeField] private TextMeshProUGUI _itemsToSellTitleText = null!;
         [SerializeField] private TextMeshProUGUI _itemsToSellText = null!;
-        [SerializeField] private RectTransform? _crosshair;
+        [SerializeField] private CanvasGroup _uiCanvasGroup = null!;
+        [SerializeField] private TweenManager _tweenManager = null!;
 
         private List<Item> _itemsWaitingForSale = new();
         private ComputerPage _activePage = ComputerPage.Profile;
@@ -162,18 +164,18 @@ namespace SoldByWizards.Computers
         private void OnComputerSelected(Computer computer)
         {
             _selected = true;
-            if (_crosshair != null)
+            if (_uiCanvasGroup != null)
             {
-                _crosshair.gameObject.SetActive(false);
+                _tweenManager.Run(1f, 0f, 0.5f, a => _uiCanvasGroup.alpha = a, Easer.InOutSine);
             }
         }
 
         private void OnComputerDeselected(Computer computer)
         {
             _selected = false;
-            if (_crosshair != null)
+            if (_uiCanvasGroup != null)
             {
-                _crosshair.gameObject.SetActive(true);
+                _tweenManager.Run(0f, 1f, 0.5f, a => _uiCanvasGroup.alpha = a, Easer.InOutSine);
             }
         }
     }
