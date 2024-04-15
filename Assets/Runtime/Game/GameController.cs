@@ -74,6 +74,9 @@ namespace SoldByWizards.Game
                 _dayIsProgressing = true;
                 _currentDay += 1;
 
+                // Reset stock market penalties
+                StockMarket.ResetStockMarket();
+
                 // minus rent from money
                 _currentMoney -= rent;
 
