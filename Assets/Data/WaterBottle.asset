@@ -28,13 +28,18 @@ MonoBehaviour:
     - I oreder a different color!!
     PossibleDescriptions:
     - I bought the orange one!!! >:(
+    - I bought the blue one!!! >:(
+    - I bought the green one!!! >:(
   - PossibleStarReviews: {x: 1, y: 2}
     PossibleTitles:
     - Contains led!!
+    - CONTAINS LED
     PossibleDescriptions:
     - I bought this cup but it has led in it!! this is very unsafe.
+    - this cup has led in it. thumbs DOWN
   - PossibleStarReviews: {x: 1, y: 2}
     PossibleTitles:
     - Handle Broke Off immedaitely!! Junk!!
     PossibleDescriptions:
     - Parable Cups are so expensive... having them break so quickly is unacceptable!!
+    - I SAVED UP FOR SO LONG FOR THIS PARABLE CUP, AND IT BROKE INSTANTLY!!!!!! UNACCEPTABLE!!!

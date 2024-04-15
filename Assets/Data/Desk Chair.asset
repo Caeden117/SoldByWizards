@@ -23,3 +23,15 @@ MonoBehaviour:
   StockMarketHighModifier: 3
   MultiSalesPenalty: -0.1
   TwoHanded: 0
+  Reviews:
+  - PossibleStarReviews: {x: 2, y: 3}
+    PossibleTitles:
+    - Immediately broke
+    - Dangerous
+    - Unstable
+    PossibleDescriptions:
+    - This sitting device broke the first time I sat on it. The seller should be
+      banned or somebody will get hurt
+    - This sitting device instantly broke when I put weight on it. However, for those
+      few seconds, it was very comfy.
+    - I weigh 7 pounds and this sitting device still broke. How is that even possible?

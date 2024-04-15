@@ -27,12 +27,20 @@ MonoBehaviour:
   - PossibleStarReviews: {x: 4, y: 5}
     PossibleTitles:
     - pretty good
+    - solid
+    - good
     PossibleDescriptions:
     - just beat up some kids with this intruder whacker. pretty solid, would purchase
       from the wizards again.
+    - good for beating up neighborhood children, would purchase again
+    - good for beating up neighborhood children
   - PossibleStarReviews: {x: 1, y: 3}
     PossibleTitles:
     - blood stains???
+    - BLOOD??
+    - blood...
+    - blood...?
     PossibleDescriptions:
     - why did my intruder whacker arrive with a blood stain on it? what have you
       been doing??
+    - why is "STOP STEALING FROM US" scribbled in blood on my intruder whacker?

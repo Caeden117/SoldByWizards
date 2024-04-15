@@ -28,6 +28,21 @@ MonoBehaviour:
   - PossibleStarReviews: {x: 1, y: 1}
     PossibleTitles:
     - So gross!!
+    - GROSS
+    - really gross...
     PossibleDescriptions:
     - This source 2007 memorabilia came in such a nasty state... alien guts everywhere,
       rust all over the place... does someone not care about the classics??
+    - There were bugs crawling ALL OVER my source 2007 memorabilia. Gorgonzola would
+      be disappointed
+  - PossibleStarReviews: {x: 1, y: 2}
+    PossibleTitles:
+    - Too small
+    - Size not correct
+    - Misleading size
+    - Misleading photos
+    PossibleDescriptions:
+    - The photos were misleading, this is actually only about 2 inches tall.
+    - Disappointingly small, I can't break into anything with this pathetic memorabilia.
+    - Why is this sized like something from Wizh.com? I had higher expectations from
+      illuzion.
