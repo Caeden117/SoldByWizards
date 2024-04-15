@@ -137,6 +137,11 @@ namespace SoldByWizards.Items
             var position = ray.GetPoint(raycastHit.distance - _heldItemBounds[_selectedSlot].extents.magnitude);
 
             DropItem(_selectedSlot, position);
+
+            if (_heldItems[(_selectedSlot + 1) % MAX_ITEM_COUNT] != null)
+            {
+                SelectItem(_selectedSlot + 1);
+            }
         }
 
         private void DropItem(int itemIdx, Vector3 position)

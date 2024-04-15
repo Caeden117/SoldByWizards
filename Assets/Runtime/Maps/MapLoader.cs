@@ -36,9 +36,8 @@ namespace SoldByWizards.Maps
         {
             if (_loadedMap == default || !_loadedMap.isLoaded) return;
 
-            // Progress stock market, reset penalties from selling items
+            // Progress stock market
             StockMarket.GameTime += 0.1f;
-            StockMarket.ResetStockMarket();
 
             await SceneManager.UnloadSceneAsync(_loadedMap);
 

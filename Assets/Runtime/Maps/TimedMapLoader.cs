@@ -22,6 +22,7 @@ namespace SoldByWizards.Maps
         [SerializeField] private GlyphAggregator _glyphAggregator;
         [SerializeField] private Transform _safetyTeleportPoint;
         [SerializeField] private ItemsManager _itemsManager;
+        [SerializeField] private PortalController _portalController;
         [SerializeField] private float _portalCooldown = 0.5f;
 
         public event Action OnTimerStarted;
@@ -40,6 +41,8 @@ namespace SoldByWizards.Maps
         public async UniTask LoadMapOnTimer(CancellationToken token = default)
         {
             if (Time.time - _timeSinceLastPortalClose < _portalCooldown) return;
+
+            await _portalController.OpenAsync();
 
             _timer = 0;
             _timeSinceLastPortalClose = Time.time + _mapLoadedDuration + _portalCooldown;
@@ -73,6 +76,8 @@ namespace SoldByWizards.Maps
                 _playerCamera.transform.rotation = _safetyTeleportPoint.rotation;
                 await UniTask.Yield();
             }
+
+            await _portalController.CloseAsync();
 
             await _mapLoader.UnloadMap();
         }
