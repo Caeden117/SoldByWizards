@@ -15,7 +15,9 @@ Run a dropshipping operation with goods stolen from alternate dimensions in orde
 
 - **Bobbie** - Programming, UI, Map Design (Cargo Ship), SFX
 - **Caeden117** - Programming, UI, Map Design (Backrooms, Landfill, Warehouse)
-- **PlusOneRabbit** - Programming, Map Design (Wizard Tower), Graphic Design
+- **PlusOneRabbit** - Programming, Map Design (Wizard Tower), 3D Artist
+
+Douglas Santos and Ryan Kaldari - [Magic Wand Icon 229981 Color Flipped](https://commons.wikimedia.org/wiki/File:Magic_Wand_Icon_229981_Color_Flipped.svg), [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/legalcode)
 
 # Build
 
