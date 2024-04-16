@@ -750,6 +750,7 @@ MonoBehaviour:
   _playerController: {fileID: 5490063951668748881}
   _tweenManager: {fileID: 7906262010617632155}
   _computerController: {fileID: 6746458872283953923}
+  _listingPageSpamController: {fileID: 0}
   _animationEase: 6
   _animationLength: 0.4
 --- !u!1 &1432855322688375745
@@ -2101,6 +2102,7 @@ GameObject:
   - component: {fileID: 3726699300678001547}
   - component: {fileID: 3954763355252753622}
   - component: {fileID: 5621221790658933453}
+  - component: {fileID: 4236471005248911669}
   m_Layer: 0
   m_Name: Fail State
   m_TagString: Untagged
@@ -2219,7 +2221,7 @@ MonoBehaviour:
   _textDuration: 3.75
   _animationDuration: 0.75
   _darkDuration: 0.5
-  _tweenManager: {fileID: 7906262010617632155}
+  _tweenManager: {fileID: 4236471005248911669}
   _inputController: {fileID: 7873154328158371443}
   _gameController: {fileID: 1747496151054500473}
   _canvasGroup: {fileID: 3954763355252753622}
@@ -2254,6 +2256,20 @@ MonoBehaviour:
   - Time to lock in...
   - Once more, with feeling...
   - Just simply get better...
+--- !u!114 &4236471005248911669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4484405670983236024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df931618c3507ac4fabf909d6fa79062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultTweenCapacity: 100
+  _timeSource: 1
 --- !u!1 &4493615301275194698
 GameObject:
   m_ObjectHideFlags: 0

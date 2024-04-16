@@ -10,10 +10,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SoldByWizards
+namespace SoldByWizards.UI
 {
     public class FailStateUIController : MonoBehaviour
     {
+        private static bool firstBoot = true;
+
         [SerializeField] private float _textDuration = 5f;
         [SerializeField] private float _animationDuration = 1f;
         [SerializeField] private float _darkDuration = 1f;
@@ -29,13 +31,39 @@ namespace SoldByWizards
 
         private void Start()
         {
-            _failText.text = string.Empty;
-            _tweenManager.Run(1f, 0f, _animationDuration, a => _canvasGroup.alpha = a, Easer.InOutSine);
+            Time.timeScale = 1f;
+
+            if (firstBoot)
+            {
+                _canvasGroup.alpha = 1f;
+                _failText.color = Color.white.WithA(0f);
+                StartLore().Forget();
+            }
+            else
+            {
+                _failText.text = string.Empty;
+                _tweenManager.Run(1f, 0f, _animationDuration, a => _canvasGroup.alpha = a, Easer.InOutSine);
+            }
 
             _gameController.OnDayFailed += OnDayFailed;
         }
 
         private void OnDayFailed() => FailAnimation().Forget();
+
+        private async UniTask StartLore()
+        {
+            Time.timeScale = 0f;
+
+            await DisplayText("You are a wizard who needs to make rent.");
+            await DisplayText("To make money, you choose to start dropshipping.");
+            await DisplayText("You must summon portals, steal- I mean summon items, and sell them.");
+            await DisplayText("Armed with your teleporter, you start your money making scheme...");
+
+            Time.timeScale = 1f;
+            firstBoot = false;
+
+            await _tweenManager.Run(1f, 0f, _animationDuration, a => _canvasGroup.alpha = a, Easer.InOutSine);
+        }
 
         private async UniTask FailAnimation()
         {
@@ -43,16 +71,18 @@ namespace SoldByWizards
 
             var delay = TimeSpan.FromSeconds(_darkDuration);
 
-            await UniTask.Delay(delay);
+            await UniTask.Delay(delay, DelayType.UnscaledDeltaTime);
 
             await _tweenManager.Run(0f, 1f, _animationDuration, a => _canvasGroup.alpha = a, Easer.InOutSine);
 
-            await UniTask.Delay(delay);
+            Time.timeScale = 0f;
+
+            await UniTask.Delay(delay, DelayType.UnscaledDeltaTime);
 
             await DisplayText(_textStrings1);
-            await UniTask.Delay(delay);
+            await UniTask.Delay(delay, DelayType.UnscaledDeltaTime);
             await DisplayText(_textStrings2);
-            await UniTask.Delay(delay);
+            await UniTask.Delay(delay, DelayType.UnscaledDeltaTime);
             await DisplayText(_textStrings3);
 
             // Reset stock market
@@ -67,11 +97,16 @@ namespace SoldByWizards
 
             var randomStr = strings[rng.Next(0, strings.Length)];
 
-            _failText.text = randomStr;
+            await DisplayText(randomStr);
+        }
+
+        private async UniTask DisplayText(string str)
+        {
+            _failText.text = str;
 
             await _tweenManager.Run(0f, 1f, _animationDuration, a => _failText.color = Color.white * a, Easer.InOutSine);
 
-            await UniTask.Delay(TimeSpan.FromSeconds(_textDuration));
+            await UniTask.Delay(TimeSpan.FromSeconds(_textDuration), DelayType.UnscaledDeltaTime);
 
             await _tweenManager.Run(1f, 0f, _animationDuration, a => _failText.color = Color.white * a, Easer.InOutSine);
         }
